@@ -13,6 +13,8 @@
 		B9DAD4EC256E36D500D02EA2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9DAD4EA256E36D500D02EA2 /* Main.storyboard */; };
 		B9DAD4EE256E36D800D02EA2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B9DAD4ED256E36D800D02EA2 /* Assets.xcassets */; };
 		B9DAD4F1256E36D800D02EA2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9DAD4EF256E36D800D02EA2 /* LaunchScreen.storyboard */; };
+		B9DAD502256E4C3F00D02EA2 /* QRCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DAD501256E4C3F00D02EA2 /* QRCodeViewController.swift */; };
+		B9DAD506256E4E3B00D02EA2 /* QRScannerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DAD505256E4E3B00D02EA2 /* QRScannerController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		B9DAD4ED256E36D800D02EA2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B9DAD4F0256E36D800D02EA2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B9DAD4F2256E36D800D02EA2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B9DAD501256E4C3F00D02EA2 /* QRCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeViewController.swift; sourceTree = "<group>"; };
+		B9DAD505256E4E3B00D02EA2 /* QRScannerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRScannerController.swift; sourceTree = "<group>"; };
 		DCD2C2601282BDE8AD025276 /* Pods_Budget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Budget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -64,6 +68,8 @@
 				B9DAD4E4256E36D500D02EA2 /* AppDelegate.swift */,
 				B9DAD4E6256E36D500D02EA2 /* SceneDelegate.swift */,
 				B9DAD4E8256E36D500D02EA2 /* ViewController.swift */,
+				B9DAD501256E4C3F00D02EA2 /* QRCodeViewController.swift */,
+				B9DAD505256E4E3B00D02EA2 /* QRScannerController.swift */,
 				B9DAD4EA256E36D500D02EA2 /* Main.storyboard */,
 				B9DAD4ED256E36D800D02EA2 /* Assets.xcassets */,
 				B9DAD4EF256E36D800D02EA2 /* LaunchScreen.storyboard */,
@@ -205,6 +211,8 @@
 			files = (
 				B9DAD4E9256E36D500D02EA2 /* ViewController.swift in Sources */,
 				B9DAD4E5256E36D500D02EA2 /* AppDelegate.swift in Sources */,
+				B9DAD506256E4E3B00D02EA2 /* QRScannerController.swift in Sources */,
+				B9DAD502256E4C3F00D02EA2 /* QRCodeViewController.swift in Sources */,
 				B9DAD4E7256E36D500D02EA2 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -354,6 +362,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9H772B9TV8;
 				INFOPLIST_FILE = Budget/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -373,6 +382,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9H772B9TV8;
 				INFOPLIST_FILE = Budget/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
