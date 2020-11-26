@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="hCe-gc-8xH">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bh8-ow-8e4">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
@@ -56,25 +56,22 @@
                                 <color key="textColor" red="0.99215686270000003" green="0.81568627449999997" blue="0.3803921569" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tym-nf-qEh">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ju8-Ez-RLd">
                                 <rect key="frame" x="132" y="373" width="150" height="150"/>
                                 <color key="tintColor" red="0.99215686270000003" green="0.81568627449999997" blue="0.3803921569" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" image="focus"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZoJ-6j-aE5">
-                                <rect key="frame" x="132" y="373" width="150" height="150"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="tintColor" red="0.99215686270000003" green="0.81568627449999997" blue="0.3803921569" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" image="focus"/>
+                                <connections>
+                                    <segue destination="8yE-LP-GBR" kind="presentation" modalPresentationStyle="fullScreen" id="MRj-rg-CIY"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="8ZO-ae-L3e"/>
                         <color key="backgroundColor" systemColor="systemIndigoColor"/>
                         <constraints>
                             <constraint firstItem="DGR-GB-AUn" firstAttribute="top" secondItem="8ZO-ae-L3e" secondAttribute="top" constant="14" id="Ewz-Sg-Nvg"/>
-                            <constraint firstItem="Tym-nf-qEh" firstAttribute="centerX" secondItem="8ZO-ae-L3e" secondAttribute="centerX" id="e0A-gy-c9M"/>
+                            <constraint firstItem="Ju8-Ez-RLd" firstAttribute="centerY" secondItem="PKg-Mz-saP" secondAttribute="centerY" id="Wgc-iw-Xcu"/>
                             <constraint firstItem="DGR-GB-AUn" firstAttribute="centerX" secondItem="8ZO-ae-L3e" secondAttribute="centerX" id="lej-yH-hrC"/>
-                            <constraint firstItem="Tym-nf-qEh" firstAttribute="centerY" secondItem="PKg-Mz-saP" secondAttribute="centerY" id="qrB-jz-nFd"/>
+                            <constraint firstItem="Ju8-Ez-RLd" firstAttribute="centerX" secondItem="PKg-Mz-saP" secondAttribute="centerX" id="s3E-r4-bKZ"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -144,6 +141,7 @@
                             <constraint firstItem="2tJ-tp-17u" firstAttribute="leading" secondItem="btr-XI-q2w" secondAttribute="leading" id="oeA-Wm-Fb8"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="0YA-qF-h7l"/>
                     <connections>
                         <outlet property="bar" destination="2tJ-tp-17u" id="c26-em-Hmg"/>
                         <outlet property="label" destination="oCk-Ic-8Ua" id="gct-B2-xEo"/>

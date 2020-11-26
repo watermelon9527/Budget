@@ -40,9 +40,11 @@ class QRScannerController: UIViewController {
             //使用前一個裝置物件來取得AVCaptureDeviceInput類別的實例
             let input = try AVCaptureDeviceInput(device: captureDevice )
             captureSession.addInput(input)
+
             //初始化一個AVCaptureMetadataOutput物件並將其設定作為擷取session的輸出裝置
             let captureMetadataOutput = AVCaptureMetadataOutput()
             captureSession.addOutput(captureMetadataOutput)
+
             // 設定委派並使用預設的調度佇列來執行回呼（call back）
             captureMetadataOutput.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
             captureMetadataOutput.metadataObjectTypes = [AVMetadataObject.ObjectType.qr]
@@ -56,11 +58,13 @@ class QRScannerController: UIViewController {
         videoPreviewLayer?.frame = view.layer.bounds
         view.layer.addSublayer(videoPreviewLayer!)
         captureSession.startRunning()
+
         //初始化 QR Code 框來凸顯QR Code
-        // Move the message label and top bar to the front
+        // Move the label and bar to the front
         view.bringSubviewToFront(label)
         view.bringSubviewToFront(bar)
         qrCodeFrameView = UIView()
+
         if let qrCodeFrameView = qrCodeFrameView {
             qrCodeFrameView.layer.borderColor = UIColor.green.cgColor
             qrCodeFrameView.layer.borderWidth = 2
@@ -94,7 +98,9 @@ class QRScannerController: UIViewController {
 extension QRScannerController: AVCaptureMetadataOutputObjectsDelegate {
     func metadataOutput(_ output: AVCaptureMetadataOutput,
                         didOutput metadataObjects: [AVMetadataObject],
-                        from connection: AVCaptureConnection) { //檢查metadataObjects陣列為非空值，他至少需要包含一個物件
+                        from connection: AVCaptureConnection)
+    {
+        //檢查metadataObjects陣列為非空值，他至少需要包含一個物件
         if metadataObjects.isEmpty {
             qrCodeFrameView?.frame = CGRect.zero
             label.text = "No QR Code is detected."
