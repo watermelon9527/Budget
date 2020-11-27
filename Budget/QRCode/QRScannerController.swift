@@ -99,8 +99,7 @@ extension QRScannerController: AVCaptureMetadataOutputObjectsDelegate {
     func metadataOutput(_ output: AVCaptureMetadataOutput,
                         didOutput metadataObjects: [AVMetadataObject],
                         from connection: AVCaptureConnection)
-    {
-        //檢查metadataObjects陣列為非空值，他至少需要包含一個物件
+ { // 檢查metadataObjects陣列為非空值，他至少需要包含一個物件
         if metadataObjects.isEmpty {
             qrCodeFrameView?.frame = CGRect.zero
             label.text = "No QR Code is detected."

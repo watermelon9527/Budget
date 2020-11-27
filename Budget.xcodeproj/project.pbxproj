@@ -7,9 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B989049D2570AA2E0031A517 /* ChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B989049C2570AA2E0031A517 /* ChartViewController.swift */; };
+		B98904A12570AA680031A517 /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98904A02570AA680031A517 /* RecordViewController.swift */; };
+		B98904A52570AA810031A517 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98904A42570AA810031A517 /* ListViewController.swift */; };
+		B98904A82570AA930031A517 /* MoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98904A72570AA930031A517 /* MoreViewController.swift */; };
 		B9DAD4E5256E36D500D02EA2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DAD4E4256E36D500D02EA2 /* AppDelegate.swift */; };
 		B9DAD4E7256E36D500D02EA2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DAD4E6256E36D500D02EA2 /* SceneDelegate.swift */; };
-		B9DAD4E9256E36D500D02EA2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DAD4E8256E36D500D02EA2 /* ViewController.swift */; };
+		B9DAD4E9256E36D500D02EA2 /* BudgetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DAD4E8256E36D500D02EA2 /* BudgetViewController.swift */; };
 		B9DAD4EC256E36D500D02EA2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9DAD4EA256E36D500D02EA2 /* Main.storyboard */; };
 		B9DAD4EE256E36D800D02EA2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B9DAD4ED256E36D800D02EA2 /* Assets.xcassets */; };
 		B9DAD4F1256E36D800D02EA2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9DAD4EF256E36D800D02EA2 /* LaunchScreen.storyboard */; };
@@ -20,10 +24,14 @@
 /* Begin PBXFileReference section */
 		3B689C68D08EF506026A921A /* Pods-Budget.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Budget.release.xcconfig"; path = "Target Support Files/Pods-Budget/Pods-Budget.release.xcconfig"; sourceTree = "<group>"; };
 		491934241D6E65E10F53DA47 /* Pods-Budget.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Budget.debug.xcconfig"; path = "Target Support Files/Pods-Budget/Pods-Budget.debug.xcconfig"; sourceTree = "<group>"; };
+		B989049C2570AA2E0031A517 /* ChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewController.swift; sourceTree = "<group>"; };
+		B98904A02570AA680031A517 /* RecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
+		B98904A42570AA810031A517 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
+		B98904A72570AA930031A517 /* MoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreViewController.swift; sourceTree = "<group>"; };
 		B9DAD4E1256E36D500D02EA2 /* Budget.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Budget.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9DAD4E4256E36D500D02EA2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B9DAD4E6256E36D500D02EA2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		B9DAD4E8256E36D500D02EA2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		B9DAD4E8256E36D500D02EA2 /* BudgetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetViewController.swift; sourceTree = "<group>"; };
 		B9DAD4EB256E36D500D02EA2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B9DAD4ED256E36D800D02EA2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B9DAD4F0256E36D800D02EA2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -44,6 +52,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B989049F2570AA390031A517 /* QRCode */ = {
+			isa = PBXGroup;
+			children = (
+				B9DAD501256E4C3F00D02EA2 /* QRCodeViewController.swift */,
+				B9DAD505256E4E3B00D02EA2 /* QRScannerController.swift */,
+			);
+			path = QRCode;
+			sourceTree = "<group>";
+		};
 		B9DAD4D8256E36D500D02EA2 = {
 			isa = PBXGroup;
 			children = (
@@ -67,10 +84,13 @@
 			children = (
 				B9DAD4E4256E36D500D02EA2 /* AppDelegate.swift */,
 				B9DAD4E6256E36D500D02EA2 /* SceneDelegate.swift */,
-				B9DAD4E8256E36D500D02EA2 /* ViewController.swift */,
-				B9DAD501256E4C3F00D02EA2 /* QRCodeViewController.swift */,
-				B9DAD505256E4E3B00D02EA2 /* QRScannerController.swift */,
+				B9DAD4E8256E36D500D02EA2 /* BudgetViewController.swift */,
+				B989049F2570AA390031A517 /* QRCode */,
 				B9DAD4EA256E36D500D02EA2 /* Main.storyboard */,
+				B989049C2570AA2E0031A517 /* ChartViewController.swift */,
+				B98904A02570AA680031A517 /* RecordViewController.swift */,
+				B98904A42570AA810031A517 /* ListViewController.swift */,
+				B98904A72570AA930031A517 /* MoreViewController.swift */,
 				B9DAD4ED256E36D800D02EA2 /* Assets.xcassets */,
 				B9DAD4EF256E36D800D02EA2 /* LaunchScreen.storyboard */,
 				B9DAD4F2256E36D800D02EA2 /* Info.plist */,
@@ -209,8 +229,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B9DAD4E9256E36D500D02EA2 /* ViewController.swift in Sources */,
+				B9DAD4E9256E36D500D02EA2 /* BudgetViewController.swift in Sources */,
+				B989049D2570AA2E0031A517 /* ChartViewController.swift in Sources */,
+				B98904A12570AA680031A517 /* RecordViewController.swift in Sources */,
 				B9DAD4E5256E36D500D02EA2 /* AppDelegate.swift in Sources */,
+				B98904A82570AA930031A517 /* MoreViewController.swift in Sources */,
+				B98904A52570AA810031A517 /* ListViewController.swift in Sources */,
 				B9DAD506256E4E3B00D02EA2 /* QRScannerController.swift in Sources */,
 				B9DAD502256E4C3F00D02EA2 /* QRCodeViewController.swift in Sources */,
 				B9DAD4E7256E36D500D02EA2 /* SceneDelegate.swift in Sources */,
