@@ -6,5 +6,6 @@ target 'Budget' do
   use_frameworks!
 
   # Pods for Budget
-    pod 'SwiftLint'
+    pod 'SwiftLint'	
+    pod 'Charts'
 end

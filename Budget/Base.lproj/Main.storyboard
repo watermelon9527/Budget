@@ -31,14 +31,39 @@
                     <view key="view" contentMode="scaleToFill" id="cae-bC-XYr">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="trD-gx-bvq" customClass="BarChartView" customModule="Charts">
+                                <rect key="frame" x="0.0" y="44" width="414" height="385"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DTs-7b-F1D" customClass="PieChartView" customModule="Charts">
+                                <rect key="frame" x="0.0" y="429" width="414" height="384"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="7zt-oG-swb"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="trD-gx-bvq" firstAttribute="top" secondItem="7zt-oG-swb" secondAttribute="top" id="AWu-AB-a5x"/>
+                            <constraint firstItem="DTs-7b-F1D" firstAttribute="leading" secondItem="7zt-oG-swb" secondAttribute="leading" id="Bmj-XM-qTM"/>
+                            <constraint firstItem="DTs-7b-F1D" firstAttribute="top" secondItem="trD-gx-bvq" secondAttribute="bottom" id="EE1-b2-v61"/>
+                            <constraint firstItem="trD-gx-bvq" firstAttribute="leading" secondItem="7zt-oG-swb" secondAttribute="leading" id="cVC-3Y-VmV"/>
+                            <constraint firstItem="trD-gx-bvq" firstAttribute="trailing" secondItem="7zt-oG-swb" secondAttribute="trailing" id="e7T-Gh-Um2"/>
+                            <constraint firstItem="DTs-7b-F1D" firstAttribute="trailing" secondItem="7zt-oG-swb" secondAttribute="trailing" id="ior-Wg-bcr"/>
+                            <constraint firstItem="DTs-7b-F1D" firstAttribute="bottom" secondItem="7zt-oG-swb" secondAttribute="bottom" id="l0E-np-YVo"/>
+                            <constraint firstItem="DTs-7b-F1D" firstAttribute="top" secondItem="cae-bC-XYr" secondAttribute="top" constant="429" id="lFJ-rJ-6nW"/>
+                            <constraint firstItem="DTs-7b-F1D" firstAttribute="top" secondItem="trD-gx-bvq" secondAttribute="bottom" id="xt3-4N-KrM"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="統計" id="qTJ-PA-2if"/>
+                    <connections>
+                        <outlet property="myView" destination="trD-gx-bvq" id="wiE-Cd-cBs"/>
+                        <outlet property="pieChartView" destination="DTs-7b-F1D" id="fh4-fe-UmD"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VCP-7B-L8e" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1312" y="850"/>
+            <point key="canvasLocation" x="-1313.0434782608697" y="849.77678571428567"/>
         </scene>
         <!--新紀錄-->
         <scene sceneID="TLb-d1-xvh">
@@ -47,14 +72,86 @@
                     <view key="view" contentMode="scaleToFill" id="mPY-T2-9tb">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6GY-GM-rZu">
+                                <rect key="frame" x="20" y="229" width="92" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Kkl-uN-R3e">
+                                <rect key="frame" x="114" y="614" width="187" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nvo-ms-nUH">
+                                <rect key="frame" x="84" y="546" width="90" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <segue destination="bh8-ow-8e4" kind="show" id="7uJ-SD-DLW"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CFB-gu-pDL">
+                                <rect key="frame" x="302" y="229" width="92" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZoF-xU-IS8">
+                                <rect key="frame" x="161" y="229" width="92" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Euv-VD-9gJ">
+                                <rect key="frame" x="20" y="457" width="92" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ov5-0b-S1a">
+                                <rect key="frame" x="302" y="457" width="92" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mio-9C-TPO">
+                                <rect key="frame" x="161" y="457" width="92" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x3Q-5m-SAY">
+                                <rect key="frame" x="20" y="342" width="92" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jgf-6U-PvO">
+                                <rect key="frame" x="302" y="342" width="92" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kq8-1C-u7L">
+                                <rect key="frame" x="161" y="342" width="92" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AiO-Ft-5GZ">
+                                <rect key="frame" x="66" y="684" width="282" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pnD-Bv-RVO">
+                                <rect key="frame" x="161" y="141" width="94" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="kYb-qH-w3G"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="新紀錄" id="PAN-HR-jFk"/>
+                    <navigationItem key="navigationItem" title="新紀錄" id="uD9-x6-pX3"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WTF-TF-31a" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-568" y="850"/>
+            <point key="canvasLocation" x="-568" y="1535"/>
         </scene>
         <!--我的紀錄-->
         <scene sceneID="zz9-en-EGE">
@@ -70,7 +167,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jkw-hB-y1A" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="233" y="850"/>
+            <point key="canvasLocation" x="252" y="850"/>
         </scene>
         <!--更多-->
         <scene sceneID="HAR-Vl-e5c">
@@ -86,7 +183,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b5j-Tq-Ig8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1009" y="850"/>
+            <point key="canvasLocation" x="1023" y="850"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="mo5-yo-ymO">
@@ -101,7 +198,7 @@
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="3j6-g7-3F5"/>
                         <segue destination="xUm-uG-qrU" kind="relationship" relationship="viewControllers" id="iDp-98-iU5"/>
-                        <segue destination="sk2-u3-KzP" kind="relationship" relationship="viewControllers" id="4c0-yd-6UQ"/>
+                        <segue destination="uPy-e4-jg7" kind="relationship" relationship="viewControllers" id="4c0-yd-6UQ"/>
                         <segue destination="D83-AN-aux" kind="relationship" relationship="viewControllers" id="qhX-W8-DFQ"/>
                         <segue destination="8uN-Ob-eA3" kind="relationship" relationship="viewControllers" id="Sck-7O-Dhe"/>
                     </connections>
@@ -119,7 +216,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="發票掃描" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DGR-GB-AUn">
-                                <rect key="frame" x="107" y="58" width="200" height="69"/>
+                                <rect key="frame" x="107" y="102" width="200" height="69"/>
                                 <fontDescription key="fontDescription" name="AvenirNextCondensed-Medium" family="Avenir Next Condensed" pointSize="50"/>
                                 <color key="textColor" red="0.99215686270000003" green="0.81568627449999997" blue="0.3803921569" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -142,10 +239,11 @@
                             <constraint firstItem="Ju8-Ez-RLd" firstAttribute="centerX" secondItem="PKg-Mz-saP" secondAttribute="centerX" id="s3E-r4-bKZ"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="L6g-To-Qiz"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ddg-60-gtF" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1062" y="88"/>
+            <point key="canvasLocation" x="-568" y="2259"/>
         </scene>
         <!--Scanner Controller-->
         <scene sceneID="FXK-iH-Cry">
@@ -218,7 +316,26 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GCY-WO-C9y" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="Eae-a9-Awe" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1952" y="88"/>
+            <point key="canvasLocation" x="-568" y="2969"/>
+        </scene>
+        <!--新紀錄-->
+        <scene sceneID="eFY-eV-fm8">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="uPy-e4-jg7" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="新紀錄" id="PAN-HR-jFk"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="CIX-3v-jcm">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="sk2-u3-KzP" kind="relationship" relationship="rootViewController" id="tXe-0K-CSB"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0ea-yd-5aj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-568.1159420289855" y="849.77678571428567"/>
         </scene>
     </scenes>
     <resources>

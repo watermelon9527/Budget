@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2F04B8FB20FEC04086E9838F /* Pods_Budget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCD2C2601282BDE8AD025276 /* Pods_Budget.framework */; };
 		B989049D2570AA2E0031A517 /* ChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B989049C2570AA2E0031A517 /* ChartViewController.swift */; };
 		B98904A12570AA680031A517 /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98904A02570AA680031A517 /* RecordViewController.swift */; };
 		B98904A52570AA810031A517 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98904A42570AA810031A517 /* ListViewController.swift */; };
@@ -46,6 +47,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F04B8FB20FEC04086E9838F /* Pods_Budget.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -127,6 +129,7 @@
 				B9DAD4DE256E36D500D02EA2 /* Frameworks */,
 				B9DAD4DF256E36D500D02EA2 /* Resources */,
 				B9DAD4FB256E375500D02EA2 /* ShellScript */,
+				06C913E5943308AAE2121F2C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -183,6 +186,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		06C913E5943308AAE2121F2C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Budget/Pods-Budget-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Budget/Pods-Budget-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Budget/Pods-Budget-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		8E33A9CDEBEF5E3EBE922A9A /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
