@@ -21,6 +21,7 @@ class ChartViewController: UIViewController {
 
         updateChartsData()
         updateChartData()
+
     }
 
     func updateChartData() {
