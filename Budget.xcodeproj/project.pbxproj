@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2F04B8FB20FEC04086E9838F /* Pods_Budget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCD2C2601282BDE8AD025276 /* Pods_Budget.framework */; };
+		B956EDB02574E5060010CD46 /* BudgetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B956EDAF2574E5060010CD46 /* BudgetTableViewCell.swift */; };
 		B983079C25748BDC00C90464 /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B983079B25748BDC00C90464 /* ListTableViewCell.swift */; };
 		B989049D2570AA2E0031A517 /* ChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B989049C2570AA2E0031A517 /* ChartViewController.swift */; };
 		B98904A12570AA680031A517 /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98904A02570AA680031A517 /* RecordViewController.swift */; };
@@ -27,6 +28,7 @@
 /* Begin PBXFileReference section */
 		3B689C68D08EF506026A921A /* Pods-Budget.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Budget.release.xcconfig"; path = "Target Support Files/Pods-Budget/Pods-Budget.release.xcconfig"; sourceTree = "<group>"; };
 		491934241D6E65E10F53DA47 /* Pods-Budget.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Budget.debug.xcconfig"; path = "Target Support Files/Pods-Budget/Pods-Budget.debug.xcconfig"; sourceTree = "<group>"; };
+		B956EDAF2574E5060010CD46 /* BudgetTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetTableViewCell.swift; sourceTree = "<group>"; };
 		B983079B25748BDC00C90464 /* ListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
 		B989049C2570AA2E0031A517 /* ChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewController.swift; sourceTree = "<group>"; };
 		B98904A02570AA680031A517 /* RecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
@@ -92,6 +94,7 @@
 				B9DAD4E6256E36D500D02EA2 /* SceneDelegate.swift */,
 				B99606F02574B88E00A18EBA /* LoginViewController.swift */,
 				B9DAD4E8256E36D500D02EA2 /* BudgetViewController.swift */,
+				B956EDAF2574E5060010CD46 /* BudgetTableViewCell.swift */,
 				B989049C2570AA2E0031A517 /* ChartViewController.swift */,
 				B98904A02570AA680031A517 /* RecordViewController.swift */,
 				B98904A42570AA810031A517 /* ListViewController.swift */,
@@ -257,6 +260,7 @@
 			files = (
 				B9DAD4E9256E36D500D02EA2 /* BudgetViewController.swift in Sources */,
 				B989049D2570AA2E0031A517 /* ChartViewController.swift in Sources */,
+				B956EDB02574E5060010CD46 /* BudgetTableViewCell.swift in Sources */,
 				B98904A12570AA680031A517 /* RecordViewController.swift in Sources */,
 				B9DAD4E5256E36D500D02EA2 /* AppDelegate.swift in Sources */,
 				B98904A82570AA930031A517 /* MoreViewController.swift in Sources */,
