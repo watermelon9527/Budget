@@ -160,14 +160,47 @@
                     <view key="view" contentMode="scaleToFill" id="SZV-K5-3uY">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="q1X-yS-Ba2">
+                                <rect key="frame" x="150" y="44" width="278" height="162"/>
+                            </datePicker>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="CSK-uG-2Ux">
+                                <rect key="frame" x="0.0" y="214" width="414" height="682"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="91" id="RrI-Mz-ZsH">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="91"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="RrI-Mz-ZsH" id="LwA-Ze-lZ6">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="91"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="Xth-V7-bo3"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="CSK-uG-2Ux" secondAttribute="bottom" id="Eax-tF-2UX"/>
+                            <constraint firstItem="q1X-yS-Ba2" firstAttribute="leading" secondItem="Xth-V7-bo3" secondAttribute="leading" constant="150" id="LTA-8s-odg"/>
+                            <constraint firstItem="CSK-uG-2Ux" firstAttribute="top" secondItem="q1X-yS-Ba2" secondAttribute="bottom" constant="8" id="QBE-f9-RHC"/>
+                            <constraint firstItem="q1X-yS-Ba2" firstAttribute="top" secondItem="Xth-V7-bo3" secondAttribute="top" id="ZDl-vL-gy8"/>
+                            <constraint firstItem="Xth-V7-bo3" firstAttribute="bottom" secondItem="q1X-yS-Ba2" secondAttribute="bottom" constant="607" id="ZQm-rf-q0Z"/>
+                            <constraint firstItem="CSK-uG-2Ux" firstAttribute="trailing" secondItem="Xth-V7-bo3" secondAttribute="trailing" id="gfl-ym-GzW"/>
+                            <constraint firstItem="CSK-uG-2Ux" firstAttribute="leading" secondItem="Xth-V7-bo3" secondAttribute="leading" id="tOL-IA-HlT"/>
+                            <constraint firstItem="q1X-yS-Ba2" firstAttribute="centerX" secondItem="SZV-K5-3uY" secondAttribute="centerX" constant="82" id="v7T-6n-ekL"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="我的紀錄" id="7L4-7y-1UW"/>
+                    <connections>
+                        <outlet property="datePicker" destination="q1X-yS-Ba2" id="67g-Qj-9WN"/>
+                        <outlet property="listTableView" destination="CSK-uG-2Ux" id="lKL-VI-IFN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jkw-hB-y1A" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="252" y="850"/>
+            <point key="canvasLocation" x="250.72463768115944" y="849.77678571428567"/>
         </scene>
         <!--更多-->
         <scene sceneID="HAR-Vl-e5c">
@@ -183,7 +216,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b5j-Tq-Ig8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1023" y="850"/>
+            <point key="canvasLocation" x="1187" y="850"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="mo5-yo-ymO">

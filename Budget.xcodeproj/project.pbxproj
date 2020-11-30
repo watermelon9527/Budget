@@ -3,11 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		2F04B8FB20FEC04086E9838F /* Pods_Budget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCD2C2601282BDE8AD025276 /* Pods_Budget.framework */; };
+		B983079C25748BDC00C90464 /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B983079B25748BDC00C90464 /* ListTableViewCell.swift */; };
 		B989049D2570AA2E0031A517 /* ChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B989049C2570AA2E0031A517 /* ChartViewController.swift */; };
 		B98904A12570AA680031A517 /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98904A02570AA680031A517 /* RecordViewController.swift */; };
 		B98904A52570AA810031A517 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98904A42570AA810031A517 /* ListViewController.swift */; };
@@ -25,6 +26,7 @@
 /* Begin PBXFileReference section */
 		3B689C68D08EF506026A921A /* Pods-Budget.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Budget.release.xcconfig"; path = "Target Support Files/Pods-Budget/Pods-Budget.release.xcconfig"; sourceTree = "<group>"; };
 		491934241D6E65E10F53DA47 /* Pods-Budget.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Budget.debug.xcconfig"; path = "Target Support Files/Pods-Budget/Pods-Budget.debug.xcconfig"; sourceTree = "<group>"; };
+		B983079B25748BDC00C90464 /* ListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
 		B989049C2570AA2E0031A517 /* ChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewController.swift; sourceTree = "<group>"; };
 		B98904A02570AA680031A517 /* RecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
 		B98904A42570AA810031A517 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
@@ -92,6 +94,7 @@
 				B989049C2570AA2E0031A517 /* ChartViewController.swift */,
 				B98904A02570AA680031A517 /* RecordViewController.swift */,
 				B98904A42570AA810031A517 /* ListViewController.swift */,
+				B983079B25748BDC00C90464 /* ListTableViewCell.swift */,
 				B98904A72570AA930031A517 /* MoreViewController.swift */,
 				B9DAD4ED256E36D800D02EA2 /* Assets.xcassets */,
 				B9DAD4EF256E36D800D02EA2 /* LaunchScreen.storyboard */,
@@ -258,6 +261,7 @@
 				B9DAD506256E4E3B00D02EA2 /* QRScannerController.swift in Sources */,
 				B9DAD502256E4C3F00D02EA2 /* QRCodeViewController.swift in Sources */,
 				B9DAD4E7256E36D500D02EA2 /* SceneDelegate.swift in Sources */,
+				B983079C25748BDC00C90464 /* ListTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
