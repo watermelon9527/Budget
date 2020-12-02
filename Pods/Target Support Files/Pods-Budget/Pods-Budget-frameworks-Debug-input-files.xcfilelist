@@ -1,2 +1,3 @@
 ${PODS_ROOT}/Target Support Files/Pods-Budget/Pods-Budget-frameworks.sh
 ${BUILT_PRODUCTS_DIR}/Charts/Charts.framework
+${BUILT_PRODUCTS_DIR}/UICircularProgressRing/UICircularProgressRing.framework

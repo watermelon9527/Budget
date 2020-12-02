@@ -8,4 +8,5 @@ target 'Budget' do
   # Pods for Budget
     pod 'SwiftLint'	
     pod 'Charts'
+    pod 'UICircularProgressRing'
 end

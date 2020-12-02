@@ -3,20 +3,24 @@ PODS:
     - Charts/Core (= 3.6.0)
   - Charts/Core (3.6.0)
   - SwiftLint (0.41.0)
+  - UICircularProgressRing (7.0.0)
 
 DEPENDENCIES:
   - Charts
   - SwiftLint
+  - UICircularProgressRing
 
 SPEC REPOS:
   trunk:
     - Charts
     - SwiftLint
+    - UICircularProgressRing
 
 SPEC CHECKSUMS:
   Charts: b1e3a1f5a1c9ba5394438ca3b91bd8c9076310af
   SwiftLint: c585ebd615d9520d7fbdbe151f527977b0534f1e
+  UICircularProgressRing: 738b48db0ec1fbbd8482d727979392bb8c272e8d
 
-PODFILE CHECKSUM: 8fee094fad442d88e0e894863954b5da30143484
+PODFILE CHECKSUM: 4a5d838fc7a19a542e559a64c6099282292a5848
 
 COCOAPODS: 1.10.0
