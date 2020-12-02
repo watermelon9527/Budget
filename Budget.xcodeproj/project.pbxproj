@@ -14,6 +14,7 @@
 		B98904A12570AA680031A517 /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98904A02570AA680031A517 /* RecordViewController.swift */; };
 		B98904A52570AA810031A517 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98904A42570AA810031A517 /* ListViewController.swift */; };
 		B99606F12574B88E00A18EBA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99606F02574B88E00A18EBA /* LoginViewController.swift */; };
+		B9AD55B8257788BE00B50B15 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD55B7257788BE00B50B15 /* TabBarViewController.swift */; };
 		B9DAD4E5256E36D500D02EA2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DAD4E4256E36D500D02EA2 /* AppDelegate.swift */; };
 		B9DAD4E7256E36D500D02EA2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DAD4E6256E36D500D02EA2 /* SceneDelegate.swift */; };
 		B9DAD4E9256E36D500D02EA2 /* BudgetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DAD4E8256E36D500D02EA2 /* BudgetViewController.swift */; };
@@ -34,6 +35,7 @@
 		B98904A02570AA680031A517 /* RecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
 		B98904A42570AA810031A517 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		B99606F02574B88E00A18EBA /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		B9AD55B7257788BE00B50B15 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		B9DAD4E1256E36D500D02EA2 /* Budget.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Budget.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9DAD4E4256E36D500D02EA2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B9DAD4E6256E36D500D02EA2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -92,6 +94,7 @@
 			children = (
 				B9DAD4E4256E36D500D02EA2 /* AppDelegate.swift */,
 				B9DAD4E6256E36D500D02EA2 /* SceneDelegate.swift */,
+				B9AD55B7257788BE00B50B15 /* TabBarViewController.swift */,
 				B99606F02574B88E00A18EBA /* LoginViewController.swift */,
 				B9DAD4E8256E36D500D02EA2 /* BudgetViewController.swift */,
 				B956EDAF2574E5060010CD46 /* BudgetTableViewCell.swift */,
@@ -268,6 +271,7 @@
 				B9DAD502256E4C3F00D02EA2 /* QRCodeViewController.swift in Sources */,
 				B9DAD4E7256E36D500D02EA2 /* SceneDelegate.swift in Sources */,
 				B9FD6567257632180032BB13 /* MoreViewController.swift in Sources */,
+				B9AD55B8257788BE00B50B15 /* TabBarViewController.swift in Sources */,
 				B983079C25748BDC00C90464 /* ListTableViewCell.swift in Sources */,
 				B99606F12574B88E00A18EBA /* LoginViewController.swift in Sources */,
 			);

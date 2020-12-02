@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -16,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hiK-Ht-f4Q">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hiK-Ht-f4Q">
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
@@ -97,7 +98,7 @@
                             </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="systemIndigoColor"/>
                         <constraints>
                             <constraint firstItem="hiK-Ht-f4Q" firstAttribute="top" secondItem="OOd-gy-v9z" secondAttribute="bottom" constant="17" id="Id9-ba-Pfc"/>
                             <constraint firstItem="hiK-Ht-f4Q" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="R8D-k0-XFX"/>
@@ -112,7 +113,9 @@
                             <constraint firstItem="hiK-Ht-f4Q" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="xbA-n0-mgj"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="預算列表" id="7iV-c2-pFi"/>
+                    <tabBarItem key="tabBarItem" title="預算列表" id="7iV-c2-pFi">
+                        <imageReference key="image" image="list.dash" catalog="system" renderingMode="original"/>
+                    </tabBarItem>
                     <navigationItem key="navigationItem" id="baZ-rH-utv"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
@@ -132,15 +135,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="trD-gx-bvq" customClass="BarChartView" customModule="Charts">
-                                <rect key="frame" x="0.0" y="71" width="414" height="377"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DTs-7b-F1D" customClass="PieChartView" customModule="Charts">
-                                <rect key="frame" x="0.0" y="480" width="414" height="333"/>
+                                <rect key="frame" x="0.0" y="86" width="414" height="358"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="消費佔比" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Og1-CR-MfG">
-                                <rect key="frame" x="162" y="452" width="90" height="27"/>
+                                <rect key="frame" x="162" y="445" width="90" height="27"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -151,27 +150,33 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DTs-7b-F1D" customClass="PieChartView" customModule="Charts">
+                                <rect key="frame" x="0.0" y="480" width="414" height="333"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="7zt-oG-swb"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="systemGray5Color"/>
                         <constraints>
                             <constraint firstItem="DTs-7b-F1D" firstAttribute="bottom" secondItem="7zt-oG-swb" secondAttribute="bottom" id="99M-FN-QoR"/>
                             <constraint firstItem="trD-gx-bvq" firstAttribute="trailing" secondItem="DTs-7b-F1D" secondAttribute="trailing" id="ADA-xU-JUz"/>
                             <constraint firstItem="trD-gx-bvq" firstAttribute="leading" secondItem="DTs-7b-F1D" secondAttribute="leading" id="BRJ-cZ-iOa"/>
-                            <constraint firstItem="Og1-CR-MfG" firstAttribute="top" secondItem="trD-gx-bvq" secondAttribute="bottom" constant="4" id="Fre-cy-6dI"/>
+                            <constraint firstItem="Og1-CR-MfG" firstAttribute="top" secondItem="trD-gx-bvq" secondAttribute="bottom" constant="1" id="Fre-cy-6dI"/>
                             <constraint firstItem="8HG-pL-XIa" firstAttribute="centerX" secondItem="trD-gx-bvq" secondAttribute="centerX" id="JAN-yj-wg1"/>
                             <constraint firstItem="DTs-7b-F1D" firstAttribute="top" secondItem="cae-bC-XYr" secondAttribute="top" constant="480" id="MWN-Zy-zj8"/>
-                            <constraint firstItem="DTs-7b-F1D" firstAttribute="top" secondItem="Og1-CR-MfG" secondAttribute="bottom" constant="1" id="SHZ-Wm-j90"/>
+                            <constraint firstItem="DTs-7b-F1D" firstAttribute="top" secondItem="Og1-CR-MfG" secondAttribute="bottom" constant="8" id="SHZ-Wm-j90"/>
                             <constraint firstItem="8HG-pL-XIa" firstAttribute="top" secondItem="cae-bC-XYr" secondAttribute="topMargin" id="Xv0-TB-dVG"/>
                             <constraint firstItem="7zt-oG-swb" firstAttribute="trailing" secondItem="8HG-pL-XIa" secondAttribute="trailing" constant="162" id="YaC-xi-rcK"/>
                             <constraint firstItem="trD-gx-bvq" firstAttribute="leading" secondItem="cae-bC-XYr" secondAttribute="leading" id="bFo-lR-eGm"/>
-                            <constraint firstItem="trD-gx-bvq" firstAttribute="top" secondItem="8HG-pL-XIa" secondAttribute="bottom" id="cea-Uu-bV7"/>
+                            <constraint firstItem="trD-gx-bvq" firstAttribute="top" secondItem="8HG-pL-XIa" secondAttribute="bottom" constant="15" id="cea-Uu-bV7"/>
                             <constraint firstItem="8HG-pL-XIa" firstAttribute="leading" secondItem="7zt-oG-swb" secondAttribute="leading" constant="162" id="h2Z-HH-4pC"/>
                             <constraint firstAttribute="trailing" secondItem="trD-gx-bvq" secondAttribute="trailing" id="jEV-Wo-52H"/>
                             <constraint firstItem="8HG-pL-XIa" firstAttribute="leading" secondItem="Og1-CR-MfG" secondAttribute="leading" id="xg4-oL-5N5"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="統計" id="qTJ-PA-2if"/>
+                    <tabBarItem key="tabBarItem" title="統計" id="qTJ-PA-2if">
+                        <imageReference key="image" image="chart.bar" catalog="system" renderingMode="original"/>
+                    </tabBarItem>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="myView" destination="trD-gx-bvq" id="wiE-Cd-cBs"/>
@@ -180,7 +185,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VCP-7B-L8e" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1320.289855072464" y="849.77678571428567"/>
+            <point key="canvasLocation" x="-1407.2463768115942" y="849.77678571428567"/>
         </scene>
         <!--Record View Controller-->
         <scene sceneID="TLb-d1-xvh">
@@ -214,24 +219,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AiO-Ft-5GZ">
-                                <rect key="frame" x="66" y="728" width="282" height="60"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="kZ0-6J-vkt"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                <state key="normal" title="完成輸入">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="3"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </button>
                             <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="$1000000" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pnD-Bv-RVO">
                                 <rect key="frame" x="64" y="101" width="330" height="39"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
@@ -395,9 +382,27 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AiO-Ft-5GZ">
+                                <rect key="frame" x="66" y="699" width="282" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="kZ0-6J-vkt"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <state key="normal" title="完成輸入">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="3"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="kYb-qH-w3G"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="systemGray6Color"/>
                         <constraints>
                             <constraint firstItem="784-mj-Pjg" firstAttribute="baseline" secondItem="AcJ-oZ-oc9" secondAttribute="firstBaseline" id="18V-Jr-1iM"/>
                             <constraint firstItem="aQO-FF-ZEP" firstAttribute="leading" secondItem="kYb-qH-w3G" secondAttribute="leading" constant="23" id="2I4-jh-86u"/>
@@ -446,10 +451,10 @@
                             <constraint firstItem="Nvo-ms-nUH" firstAttribute="centerX" secondItem="AiO-Ft-5GZ" secondAttribute="centerX" id="qds-SB-8vp"/>
                             <constraint firstItem="784-mj-Pjg" firstAttribute="centerX" secondItem="Kkl-uN-R3e" secondAttribute="centerX" id="s7G-qI-3Hd"/>
                             <constraint firstItem="Xg9-Fo-Ua8" firstAttribute="trailing" secondItem="784-mj-Pjg" secondAttribute="trailing" id="saD-Eo-A5U"/>
-                            <constraint firstItem="kYb-qH-w3G" firstAttribute="bottom" secondItem="AiO-Ft-5GZ" secondAttribute="bottom" constant="25" id="sgq-do-mhn"/>
+                            <constraint firstItem="kYb-qH-w3G" firstAttribute="bottom" secondItem="AiO-Ft-5GZ" secondAttribute="bottom" constant="54" id="sgq-do-mhn"/>
                             <constraint firstItem="2oa-gb-UZC" firstAttribute="leading" secondItem="JKL-hH-BdT" secondAttribute="trailing" constant="49" id="up9-GW-YCA"/>
                             <constraint firstItem="JKL-hH-BdT" firstAttribute="baseline" secondItem="2oa-gb-UZC" secondAttribute="firstBaseline" id="vKv-dR-H2I"/>
-                            <constraint firstItem="AiO-Ft-5GZ" firstAttribute="top" secondItem="Nvo-ms-nUH" secondAttribute="bottom" constant="59" id="xpc-lV-43g"/>
+                            <constraint firstItem="AiO-Ft-5GZ" firstAttribute="top" secondItem="Nvo-ms-nUH" secondAttribute="bottom" constant="30" id="xpc-lV-43g"/>
                             <constraint firstItem="Nvo-ms-nUH" firstAttribute="leading" secondItem="kYb-qH-w3G" secondAttribute="leading" constant="147" id="yhd-Be-9Wg"/>
                             <constraint firstItem="Kkl-uN-R3e" firstAttribute="leading" secondItem="kYb-qH-w3G" secondAttribute="leading" constant="77" id="zgE-HE-M8k"/>
                             <constraint firstItem="6GY-GM-rZu" firstAttribute="leading" secondItem="mPY-T2-9tb" secondAttribute="leadingMargin" id="zw0-ez-DNs"/>
@@ -470,7 +475,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="CSK-uG-2Ux">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="CSK-uG-2Ux">
                                 <rect key="frame" x="0.0" y="155" width="414" height="741"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
@@ -547,7 +552,7 @@
                             </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Xth-V7-bo3"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="systemIndigoColor"/>
                         <constraints>
                             <constraint firstItem="i3Q-EI-s2O" firstAttribute="top" secondItem="Xth-V7-bo3" secondAttribute="top" id="B5i-db-2EP"/>
                             <constraint firstAttribute="bottom" secondItem="CSK-uG-2Ux" secondAttribute="bottom" id="Eax-tF-2UX"/>
@@ -561,7 +566,9 @@
                             <constraint firstItem="i3Q-EI-s2O" firstAttribute="leading" secondItem="q1X-yS-Ba2" secondAttribute="leading" id="zar-Fq-7SN"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="我的紀錄" id="7L4-7y-1UW"/>
+                    <tabBarItem key="tabBarItem" title="我的紀錄" id="7L4-7y-1UW">
+                        <imageReference key="image" image="folder" catalog="system" renderingMode="original"/>
+                    </tabBarItem>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="datePicker" destination="q1X-yS-Ba2" id="67g-Qj-9WN"/>
@@ -582,7 +589,9 @@
                         <viewLayoutGuide key="safeArea" id="wJV-ZW-gGm"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="更多" id="iLg-nf-O4f"/>
+                    <tabBarItem key="tabBarItem" title="更多" id="iLg-nf-O4f">
+                        <imageReference key="image" image="person" catalog="system" renderingMode="original"/>
+                    </tabBarItem>
                     <nil key="simulatedTopBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OJu-bN-NZ2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -644,10 +653,10 @@
             </objects>
             <point key="canvasLocation" x="-1297" y="103"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Tab Bar View Controller-->
         <scene sceneID="mo5-yo-ymO">
             <objects>
-                <tabBarController storyboardIdentifier="MainTabbarController" automaticallyAdjustsScrollViewInsets="NO" id="hCe-gc-8xH" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="MainTabbarController" automaticallyAdjustsScrollViewInsets="NO" id="hCe-gc-8xH" customClass="TabBarViewController" customModule="Budget" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="ZEz-hr-pnR"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="bp3-Pd-OUw">
@@ -789,11 +798,11 @@
             </objects>
             <point key="canvasLocation" x="-568.1159420289855" y="2968.5267857142858"/>
         </scene>
-        <!--新紀錄-->
+        <!--Navigation Controller-->
         <scene sceneID="eFY-eV-fm8">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="uPy-e4-jg7" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="新紀錄" id="PAN-HR-jFk"/>
+                    <tabBarItem key="tabBarItem" tag="1" title="" id="PAN-HR-jFk"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="CIX-3v-jcm">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -830,13 +839,23 @@
     <resources>
         <image name="3638614" width="256" height="256"/>
         <image name="apple-id-maximum-corner-radii" width="212" height="38"/>
+        <image name="chart.bar" catalog="system" width="128" height="90"/>
         <image name="cross" width="40" height="40"/>
         <image name="focus" width="150" height="150"/>
+        <image name="folder" catalog="system" width="128" height="97"/>
+        <image name="list.dash" catalog="system" width="128" height="85"/>
+        <image name="person" catalog="system" width="128" height="117"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
+        <systemColor name="systemGray5Color">
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemGray6Color">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemIndigoColor">
+            <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
