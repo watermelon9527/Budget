@@ -30,10 +30,10 @@ class TabBarViewController: UITabBarController {
         customButton.frame.size = CGSize(width: 70, height: 70)
         // 這邊希望他超出 tabBar 範圍，因此在這邊提高其 y 軸位置。
         customButton.center = CGPoint(x: tabBar.bounds.midX, y: tabBar.bounds.midY - customButton.frame.height / 5)
-                customButton.backgroundColor = .white
+        customButton.backgroundColor = .white
         customButton.layer.cornerRadius = 35
-//        customButton.layer.borderColor = UIColor.black.cgColor
-      customButton.layer.borderWidth = 3
+        customButton.layer.borderColor = UIColor.darkGray.cgColor
+        customButton.layer.borderWidth = 3
         customButton.clipsToBounds = true
         // 取消按鈕點選 highLight 效果
         customButton.adjustsImageWhenHighlighted = false

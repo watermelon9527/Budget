@@ -9,7 +9,7 @@ import UIKit
 import Charts
 class ChartViewController: UIViewController {
 
-    @IBOutlet weak var myView: BarChartView!
+    @IBOutlet weak var barChartView: BarChartView!
     @IBOutlet weak var pieChartView: PieChartView!
 
     var monthArray = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
@@ -21,7 +21,7 @@ class ChartViewController: UIViewController {
 
         updateBarChartsData()
         updatePieChartData()
-        myView.backgroundColor = .white
+        barChartView.backgroundColor = .white
         pieChartView.backgroundColor = .white
     }
 
@@ -58,10 +58,10 @@ class ChartViewController: UIViewController {
         chart.isUserInteractionEnabled = true
 
         let description = Description()
-        description.text = "項目佔比"
+//        description.text = "項目佔比"
         chart.chartDescription = description
 //        chart.centerText = "Pie Chart"
-        chart.holeRadiusPercent = 0.2
+        chart.holeRadiusPercent = 0.3
         chart.transparentCircleColor = UIColor.clear
 
     }
@@ -81,18 +81,18 @@ class ChartViewController: UIViewController {
         //把整個dataset轉換成可以顯示的BarChartData
         let charData = BarChartData(dataSet: chartDataSet)
         //最後在指定剛剛連結的myView要顯示的資料為charData
-        myView.data = charData
+        barChartView.data = charData
+        barChartView.xAxis.valueFormatter = IndexAxisValueFormatter(values: monthArray)
+        barChartView.xAxis.granularity = 1
 
-        myView.xAxis.valueFormatter = IndexAxisValueFormatter(values: monthArray)
-        myView.xAxis.granularity = 1
-
-        myView.xAxis.labelPosition = .bottom
-        chartDataSet.colors = ChartColorTemplates.colorful()
-        myView.animate(xAxisDuration: 2.0, yAxisDuration: 2.0)
-        myView.animate(xAxisDuration: 2.0, yAxisDuration: 2.0, easingOption: .easeInBounce)
+        barChartView.xAxis.labelPosition = .bottom
+        barChartView.animate(xAxisDuration: 2.0, yAxisDuration: 2.0)
+        barChartView.animate(xAxisDuration: 2.0, yAxisDuration: 2.0, easingOption: .easeInBounce)
 
         let limit = ChartLimitLine(limit: 25, label: "Budget Target")
-        myView.rightAxis.addLimitLine(limit)
+        limit.lineColor = .black
+        barChartView.rightAxis.addLimitLine(limit)
+        chartDataSet.colors = [UIColor(red: 104/255, green: 117/255, blue: 139/255, alpha: 1)]
     }
     //            //改變chartDataSet的顏色，此為橘色
     //            chartDataSet.colors = [UIColor(red: 230/255, green: 126/255, blue: 34/255, alpha: 1)]
