@@ -21,7 +21,8 @@ class ChartViewController: UIViewController {
 
         updateChartsData()
         updateChartData()
-
+        myView.backgroundColor = .white
+        pieChartView.backgroundColor = .white
     }
 
     func updateChartData() {

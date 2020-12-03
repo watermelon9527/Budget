@@ -14,7 +14,6 @@ class BudgetViewController: UIViewController, UITableViewDelegate {
         super.viewDidLoad()
         budgetTableView.dataSource = self
         budgetTableView.delegate = self
-
     }
     override func viewDidAppear(_ animated: Bool) {
         let circle = cell.circleView

@@ -12,15 +12,15 @@ class TabBarViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         settingButton()
-        tabBar.barTintColor = .systemGray5
+        tabBar.barTintColor = .white
     }
     let customButton = UIButton()
 
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         if item.title == "新紀錄" {
-            customButton.backgroundColor = .white
-        } else {
             customButton.backgroundColor = .systemGray5
+        } else {
+            customButton.backgroundColor = .white
         }
     }
 
@@ -30,7 +30,7 @@ class TabBarViewController: UITabBarController {
         customButton.frame.size = CGSize(width: 70, height: 70)
         // 這邊希望他超出 tabBar 範圍，因此在這邊提高其 y 軸位置。
         customButton.center = CGPoint(x: tabBar.bounds.midX, y: tabBar.bounds.midY - customButton.frame.height / 5)
-                customButton.backgroundColor = .systemGray5
+                customButton.backgroundColor = .white
         customButton.layer.cornerRadius = 35
 //        customButton.layer.borderColor = UIColor.black.cgColor
       customButton.layer.borderWidth = 3
@@ -50,7 +50,7 @@ class TabBarViewController: UITabBarController {
             let position = touch.location(in: tabBar)
             let offset = customButton.frame.height / 5
             if customButton.frame.minX <= position.x && position.x <= customButton.frame.maxX {
-                if customButton.frame.minY - offset <= position.y && position.y <= customButton.frame.maxY - offset{
+                if customButton.frame.minY - offset <= position.y && position.y <= customButton.frame.maxY - offset {
                     showViewController()
                 }
             }
