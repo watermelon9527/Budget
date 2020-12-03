@@ -19,13 +19,13 @@ class ChartViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        updateChartsData()
-        updateChartData()
+        updateBarChartsData()
+        updatePieChartData()
         myView.backgroundColor = .white
         pieChartView.backgroundColor = .white
     }
 
-    func updateChartData() {
+    func updatePieChartData() {
 
         let chart = pieChartView!
         let track = ["Food", "Drink", "Entertainment", "Traffic"]
@@ -65,8 +65,7 @@ class ChartViewController: UIViewController {
         chart.transparentCircleColor = UIColor.clear
 
     }
-
-    func updateChartsData() {
+    func updateBarChartsData() {
         //生成一個存放資料的陣列，型別是BarChartDataEntry.
         var dataEntries: [BarChartDataEntry] = []
 
