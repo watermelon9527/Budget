@@ -9,4 +9,5 @@ target 'Budget' do
     pod 'SwiftLint'	
     pod 'Charts'
     pod 'UICircularProgressRing'
+    pod 'FSCalendar'
 end

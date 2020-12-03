@@ -6,12 +6,12 @@
 //
 
 import UIKit
-
+import FSCalendar
 class ListViewController: UIViewController {
 
-    @IBOutlet weak var datePicker: UIDatePicker! {
-        didSet {
-            datePicker.tintColor = .black
+    @IBOutlet weak var FSCalendar: FSCalendar!{
+        didSet{
+
         }
     }
     @IBOutlet weak var listTableView: UITableView!

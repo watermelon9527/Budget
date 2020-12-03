@@ -2,25 +2,29 @@ PODS:
   - Charts (3.6.0):
     - Charts/Core (= 3.6.0)
   - Charts/Core (3.6.0)
+  - FSCalendar (2.8.2)
   - SwiftLint (0.41.0)
   - UICircularProgressRing (7.0.0)
 
 DEPENDENCIES:
   - Charts
+  - FSCalendar
   - SwiftLint
   - UICircularProgressRing
 
 SPEC REPOS:
   trunk:
     - Charts
+    - FSCalendar
     - SwiftLint
     - UICircularProgressRing
 
 SPEC CHECKSUMS:
   Charts: b1e3a1f5a1c9ba5394438ca3b91bd8c9076310af
+  FSCalendar: e6a2eb9c571bf0719ed797ef807e08426753c241
   SwiftLint: c585ebd615d9520d7fbdbe151f527977b0534f1e
   UICircularProgressRing: 738b48db0ec1fbbd8482d727979392bb8c272e8d
 
-PODFILE CHECKSUM: 4a5d838fc7a19a542e559a64c6099282292a5848
+PODFILE CHECKSUM: 3ac0b440c5e12dbe28babc4c98d8d36f5af77efb
 
 COCOAPODS: 1.10.0
