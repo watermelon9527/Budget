@@ -9,6 +9,7 @@ import UIKit
 
 class RecordViewController: UIViewController {
 
+    @IBOutlet weak var amountTextField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = true

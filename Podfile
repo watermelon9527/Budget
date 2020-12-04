@@ -10,4 +10,8 @@ target 'Budget' do
     pod 'Charts'
     pod 'UICircularProgressRing'
     pod 'FSCalendar'
+    pod 'Firebase/Firestore'
+    pod 'FirebaseFirestoreSwift'
+    pod 'IQKeyboardManager'
+
 end

@@ -9,11 +9,8 @@ import UIKit
 import FSCalendar
 class ListViewController: UIViewController {
 
-    @IBOutlet weak var FSCalendar: FSCalendar!{
-        didSet{
+    @IBOutlet weak var FSCalendar: FSCalendar!
 
-        }
-    }
     @IBOutlet weak var listTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -12,7 +12,7 @@ class TabBarViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         settingButton()
-        tabBar.barTintColor = .white
+        tabBar.barTintColor = .systemGray6
     }
     let customButton = UIButton()
 
