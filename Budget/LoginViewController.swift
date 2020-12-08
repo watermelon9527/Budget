@@ -11,9 +11,7 @@ import FirebaseAuth
 import CryptoKit
 
 class LoginViewController: UIViewController {
-    @IBAction func button(_ sender: Any) {
-    }
-    
+
     @IBOutlet weak var loginView: UIStackView!
     override func viewDidLoad() {
         super.viewDidLoad()
