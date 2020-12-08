@@ -10,17 +10,16 @@ import FirebaseCore
 import FirebaseFirestoreSwift
 import FirebaseFirestore
 struct Record: Codable {
-    var amount: String
+    var amount: Int
     var category: String
     var timeStamp: Date
-    var commit: String
-
+    var comments: String
     var dictionary: [String: Any] {
         return [
             "amount": amount,
             "category": category,
             "timestamp": timeStamp,
-            "commit": commit
+            "comments": comments
         ]
     }
 }
@@ -30,13 +29,12 @@ protocol DocumentSerializeable {
 
 extension Record: DocumentSerializeable {
     init?(dictionary: [String:Any]) {
-        guard let amount = dictionary["name"] as? String,
+        guard let amount = dictionary["name"] as? Int,
               let category = dictionary["content"] as? String,
               let timeStamp = dictionary["timeStamp"] as? Date,
-              let commit = dictionary["commit"] as? String
+              let comments = dictionary["comments"] as? String
         else {return nil}
 
-        self.init(amount: amount, category: category, timeStamp: timeStamp, commit: commit)
-
+        self.init(amount: amount, category: category, timeStamp: timeStamp, comments: comments)
     }
 }
