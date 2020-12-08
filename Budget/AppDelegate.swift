@@ -7,11 +7,17 @@
 
 import UIKit
 import Firebase
+import FirebaseAuth
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
+
+        if let user = Auth.auth().currentUser{
+            print("Nice ! You're sign in as \(user.uid),email: \(user.email) ??")
+        }
+
         return true
     }
 

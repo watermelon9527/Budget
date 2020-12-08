@@ -707,7 +707,7 @@
         <!--Login View Controller-->
         <scene sceneID="Ueo-mX-aod">
             <objects>
-                <viewController id="G4l-cJ-WrV" customClass="LoginViewController" customModule="Budget" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="loginViewController" id="G4l-cJ-WrV" customClass="LoginViewController" customModule="Budget" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="WUg-da-xJ7">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -718,14 +718,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UlK-HR-GlC">
-                                <rect key="frame" x="99" y="579" width="217" height="38"/>
-                                <state key="normal" title="Button" image="apple-id-maximum-corner-radii"/>
-                                <connections>
-                                    <action selector="login:" destination="G4l-cJ-WrV" eventType="touchUpInside" id="kOm-0d-yGI"/>
-                                    <segue destination="hCe-gc-8xH" kind="show" id="ycu-BW-SvS"/>
-                                </connections>
-                            </button>
                             <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="veQ-X5-yBQ">
                                 <rect key="frame" x="43" y="516" width="329" height="2"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -736,28 +728,40 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="pg9-k3-mGi">
+                                <rect key="frame" x="60" y="578" width="294" height="80"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="45"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="983-x0-6t4"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="aso-Sp-2g0" firstAttribute="leading" secondItem="auQ-ZF-f9G" secondAttribute="leading" id="6As-R5-UBL"/>
-                            <constraint firstItem="983-x0-6t4" firstAttribute="bottom" secondItem="UlK-HR-GlC" secondAttribute="bottom" constant="245" id="CVs-ij-C0d"/>
-                            <constraint firstItem="aso-Sp-2g0" firstAttribute="top" secondItem="983-x0-6t4" secondAttribute="top" constant="193" id="G6p-ew-sAc"/>
-                            <constraint firstItem="aso-Sp-2g0" firstAttribute="leading" secondItem="983-x0-6t4" secondAttribute="leading" constant="60" id="Pij-z4-7Yu"/>
-                            <constraint firstItem="veQ-X5-yBQ" firstAttribute="centerX" secondItem="WUg-da-xJ7" secondAttribute="centerX" id="S50-sy-ANM"/>
-                            <constraint firstItem="auQ-ZF-f9G" firstAttribute="top" secondItem="aso-Sp-2g0" secondAttribute="bottom" constant="64" id="TEE-bw-CRN"/>
-                            <constraint firstItem="UlK-HR-GlC" firstAttribute="top" secondItem="veQ-X5-yBQ" secondAttribute="bottom" constant="61" id="aY6-2z-WcU"/>
-                            <constraint firstItem="veQ-X5-yBQ" firstAttribute="top" secondItem="WUg-da-xJ7" secondAttribute="top" constant="516" id="afh-bJ-VFl"/>
-                            <constraint firstItem="UlK-HR-GlC" firstAttribute="leading" secondItem="983-x0-6t4" secondAttribute="leading" constant="99" id="kEg-Zq-ktl"/>
-                            <constraint firstItem="veQ-X5-yBQ" firstAttribute="leading" secondItem="WUg-da-xJ7" secondAttribute="leadingMargin" constant="23" id="ojO-6a-66x"/>
-                            <constraint firstItem="veQ-X5-yBQ" firstAttribute="centerX" secondItem="UlK-HR-GlC" secondAttribute="centerX" id="w0o-uR-yR8"/>
+                            <constraint firstItem="veQ-X5-yBQ" firstAttribute="centerX" secondItem="WUg-da-xJ7" secondAttribute="centerX" id="1Yb-a6-c3w"/>
+                            <constraint firstItem="aso-Sp-2g0" firstAttribute="top" secondItem="983-x0-6t4" secondAttribute="top" constant="193" id="C5b-3F-6eo"/>
+                            <constraint firstItem="pg9-k3-mGi" firstAttribute="top" secondItem="veQ-X5-yBQ" secondAttribute="bottom" constant="60" id="EBF-EG-dtU"/>
+                            <constraint firstItem="veQ-X5-yBQ" firstAttribute="centerX" secondItem="pg9-k3-mGi" secondAttribute="centerX" id="IlG-rV-Lt4"/>
+                            <constraint firstItem="aso-Sp-2g0" firstAttribute="leading" secondItem="983-x0-6t4" secondAttribute="leading" constant="60" id="UwH-3R-TXe"/>
+                            <constraint firstItem="auQ-ZF-f9G" firstAttribute="leading" secondItem="pg9-k3-mGi" secondAttribute="leading" id="cCP-AK-Iuu"/>
+                            <constraint firstItem="veQ-X5-yBQ" firstAttribute="leading" secondItem="WUg-da-xJ7" secondAttribute="leadingMargin" constant="23" id="hrU-Di-5LW"/>
+                            <constraint firstItem="auQ-ZF-f9G" firstAttribute="top" secondItem="aso-Sp-2g0" secondAttribute="bottom" constant="64" id="kXD-m2-Tfl"/>
+                            <constraint firstItem="pg9-k3-mGi" firstAttribute="top" secondItem="WUg-da-xJ7" secondAttribute="top" constant="578" id="noB-Xv-x0J"/>
+                            <constraint firstItem="983-x0-6t4" firstAttribute="bottom" secondItem="pg9-k3-mGi" secondAttribute="bottom" constant="204" id="peb-hk-5RF"/>
+                            <constraint firstItem="veQ-X5-yBQ" firstAttribute="top" secondItem="WUg-da-xJ7" secondAttribute="top" constant="516" id="sVs-Vk-Jp7"/>
+                            <constraint firstItem="aso-Sp-2g0" firstAttribute="leading" secondItem="auQ-ZF-f9G" secondAttribute="leading" id="y2x-E8-Ufe"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="itq-xT-Dys"/>
+                    <connections>
+                        <outlet property="loginView" destination="pg9-k3-mGi" id="WXo-t6-HtX"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jHm-a2-9IV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1362" y="102"/>
+            <point key="canvasLocation" x="-1407" y="102"/>
         </scene>
         <!--Tab Bar View Controller-->
         <scene sceneID="mo5-yo-ymO">
@@ -780,7 +784,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="10D-GK-d8J" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-726" y="102"/>
+            <point key="canvasLocation" x="-794" y="102"/>
         </scene>
         <!--Code View Controller-->
         <scene sceneID="IvQ-43-W7h">
@@ -952,11 +956,10 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZrB-e2-jcF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2004" y="103"/>
+            <point key="canvasLocation" x="-2026" y="102"/>
         </scene>
     </scenes>
     <resources>
-        <image name="apple-id-maximum-corner-radii" width="212" height="38"/>
         <image name="chart.bar" catalog="system" width="128" height="90"/>
         <image name="cross" width="40" height="40"/>
         <image name="focus" width="150" height="150"/>

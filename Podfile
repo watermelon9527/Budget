@@ -13,5 +13,6 @@ target 'Budget' do
     pod 'Firebase/Firestore'
     pod 'FirebaseFirestoreSwift'
     pod 'IQKeyboardManager'
+    pod 'Firebase/Auth'
 
 end
