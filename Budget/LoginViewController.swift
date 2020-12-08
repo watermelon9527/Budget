@@ -22,7 +22,6 @@ class LoginViewController: UIViewController {
         let button = ASAuthorizationAppleIDButton()
         button.addTarget(self, action: #selector(handleAuthorizationAppleIDButtonPress), for: .touchUpInside)
         self.loginView.addArrangedSubview(button)
-
     }
     @objc
     func handleAuthorizationAppleIDButtonPress() {

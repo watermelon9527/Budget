@@ -63,7 +63,6 @@ class ChartViewController: UIViewController {
 //        chart.centerText = "Pie Chart"
         chart.holeRadiusPercent = 0.3
         chart.transparentCircleColor = UIColor.clear
-
     }
     func updateBarChartsData() {
         //生成一個存放資料的陣列，型別是BarChartDataEntry.
