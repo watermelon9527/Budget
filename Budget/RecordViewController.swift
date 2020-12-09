@@ -10,9 +10,52 @@ import FirebaseCore
 import FirebaseFirestoreSwift
 import FirebaseFirestore
 class RecordViewController: UIViewController {
-    
+    let db = Firestore.firestore()
+    var ref: DocumentReference?
+    let date = Date()
+    var today: String!
+    var selectedCategory = ""
+
+    @IBOutlet weak var commentTextField: UITextField!
     @IBOutlet weak var amountTextField: UITextField!
     @IBOutlet weak var foodButton: UIButton!
+    @IBAction func foodBTN(_ sender: UIButton) {
+
+        guard let title = sender.currentTitle else { return }
+        selectedCategory = title
+    }
+    @IBAction func drinkBTN(_ sender: UIButton) {
+        guard let title = sender.currentTitle else { return }
+        selectedCategory = title
+    }
+    @IBAction func entertainBTN(_ sender: UIButton) {
+        guard let title = sender.currentTitle else { return }
+        selectedCategory = title
+    }
+    @IBAction func trafficBTN(_ sender: UIButton) {
+        guard let title = sender.currentTitle else { return }
+        selectedCategory = title
+    }
+    @IBAction func consumeBTN(_ sender: UIButton) {
+        guard let title = sender.currentTitle else { return }
+        selectedCategory = title
+    }
+    @IBAction func houseHoldBTN(_ sender: UIButton) {
+        guard let title = sender.currentTitle else { return }
+        selectedCategory = title
+    }
+    @IBAction func medicalBTN(_ sender: UIButton) {
+        guard let title = sender.currentTitle else { return }
+        selectedCategory = title
+    }
+    @IBAction func incomeBTN(_ sender: UIButton) {
+        guard let title = sender.currentTitle else { return }
+        selectedCategory = title
+    }
+    @IBAction func othersBTN(_ sender: UIButton) {
+        guard let title = sender.currentTitle else { return }
+        selectedCategory = title
+    }
     @IBOutlet weak var drinkButton: UIButton!
     @IBOutlet weak var entertainButton: UIButton!
     @IBOutlet weak var trafficButton: UIButton!
@@ -22,6 +65,8 @@ class RecordViewController: UIViewController {
     @IBOutlet weak var othersButton: UIButton!
     @IBOutlet weak var incomeButton: UIButton!
     @IBAction func confimButton(_ sender: Any) {
+        getDate()
+        addData(today: today)
         amountTextField.text = "0"
     }
     @IBOutlet var categoryButtons: [UIButton]!
@@ -31,35 +76,38 @@ class RecordViewController: UIViewController {
             if button.tag == tag {
                 button.setTitleColor(.black, for: .normal)
                 button.backgroundColor = UIColor(red: 89/255, green: 142/255, blue: 212/255, alpha: 1)
-
             } else {
                 button.setTitleColor(.gray, for: .normal)
                 button.backgroundColor = .white
-
             }
-
         }
-
     }
-    let db = Firestore.firestore()
-    var ref : DocumentReference? = nil
-    let date = Date()
-    var today: String!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = true
     }
-//    func addArticle(today: String) {
-//        ref = db.collection("User").document("Y04LSGt0HVgAmmAO8ojU").collection("record").addDocument(data: [
-//            "amount":       ,
-//            "category":    ,
-//            "comments":     ,
-//            "timeStamp":     ,
-//            "date":
-//        ])
-//
-//    }
+    fileprivate lazy var dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy/MM/dd"
+        return formatter
+    }()
+    func addData(today: String) {
+        let dateString = self.dateFormatter.string(from: Date())
+        ref = db.collection("User").document("Y04LSGt0HVgAmmAO8ojU").collection("record").addDocument(data: [
+            "amount": Int(amountTextField.text ?? "0") ?? 0   ,
+            "category": selectedCategory,
+            "comments": "\(commentTextField.text ?? "bad")",
+            "timeStamp": today,
+            "date": dateString
+        ]) { err in
+            if let err = err {
+                print("Error adding document: \(err)")
+            } else {
+                print("Document added with ID: \(self.ref?.documentID ?? "9999")")
+            }
+        }
+    }
     func getDate() {
         let timeStamp = date.timeIntervalSince1970
         let timeInterval = TimeInterval(timeStamp)

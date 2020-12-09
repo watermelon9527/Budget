@@ -262,6 +262,7 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="categoryButtons:" destination="sk2-u3-KzP" eventType="touchUpInside" id="THg-Hd-DtM"/>
+                                    <action selector="foodBTN:" destination="sk2-u3-KzP" eventType="touchUpInside" id="6wM-qw-g6D"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="備註：" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Kkl-uN-R3e">
@@ -296,6 +297,7 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="categoryButtons:" destination="sk2-u3-KzP" eventType="touchUpInside" id="kAs-4s-hlL"/>
+                                    <action selector="entertainBTN:" destination="sk2-u3-KzP" eventType="touchUpInside" id="ate-uU-IUw"/>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JKL-hH-BdT">
@@ -314,6 +316,7 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="categoryButtons:" destination="sk2-u3-KzP" eventType="touchUpInside" id="g3b-AR-Yan"/>
+                                    <action selector="drinkBTN:" destination="sk2-u3-KzP" eventType="touchUpInside" id="bIe-iw-zrU"/>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a2w-Dp-jMO">
@@ -335,6 +338,7 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="categoryButtons:" destination="sk2-u3-KzP" eventType="touchUpInside" id="hvz-7y-y49"/>
+                                    <action selector="trafficBTN:" destination="sk2-u3-KzP" eventType="touchUpInside" id="rVX-gN-4mZ"/>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PoT-Vh-fRe">
@@ -353,6 +357,7 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="categoryButtons:" destination="sk2-u3-KzP" eventType="touchUpInside" id="LID-9m-VQh"/>
+                                    <action selector="houseHoldBTN:" destination="sk2-u3-KzP" eventType="touchUpInside" id="N18-Og-l3I"/>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xg9-Fo-Ua8">
@@ -371,6 +376,7 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="categoryButtons:" destination="sk2-u3-KzP" eventType="touchUpInside" id="uQx-q2-udn"/>
+                                    <action selector="consumeBTN:" destination="sk2-u3-KzP" eventType="touchUpInside" id="Xw5-15-hZl"/>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sAU-er-opM">
@@ -392,6 +398,7 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="categoryButtons:" destination="sk2-u3-KzP" eventType="touchUpInside" id="Qdj-mZ-AB1"/>
+                                    <action selector="medicalBTN:" destination="sk2-u3-KzP" eventType="touchUpInside" id="hgK-KV-RvV"/>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="8" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AcJ-oZ-oc9">
@@ -410,6 +417,7 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="categoryButtons:" destination="sk2-u3-KzP" eventType="touchUpInside" id="gUb-ce-iQw"/>
+                                    <action selector="othersBTN:" destination="sk2-u3-KzP" eventType="touchUpInside" id="Tfb-FJ-AH9"/>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="784-mj-Pjg">
@@ -428,6 +436,7 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="categoryButtons:" destination="sk2-u3-KzP" eventType="touchUpInside" id="X4L-l7-Nx9"/>
+                                    <action selector="incomeBTN:" destination="sk2-u3-KzP" eventType="touchUpInside" id="lbg-wd-hvp"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nvo-ms-nUH">
@@ -516,8 +525,9 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="amountTextField" destination="pnD-Bv-RVO" id="FHM-3Q-jZ7"/>
+                        <outlet property="commentTextField" destination="Kkl-uN-R3e" id="Fum-UZ-2fa"/>
                         <outlet property="consumeButton" destination="Xg9-Fo-Ua8" id="UL3-o2-rwI"/>
-                        <outlet property="drinkButton" destination="JKL-hH-BdT" id="Ded-fO-mVT"/>
+                        <outlet property="drinkButton" destination="6GY-GM-rZu" id="ja9-Gn-LoM"/>
                         <outlet property="entertainButton" destination="2oa-gb-UZC" id="Rka-TE-3VQ"/>
                         <outlet property="foodButton" destination="6GY-GM-rZu" id="n7N-pq-RdR"/>
                         <outlet property="houseHoldButton" destination="PoT-Vh-fRe" id="dID-OS-wx2"/>
@@ -538,7 +548,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WTF-TF-31a" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-781" y="1513"/>
+            <point key="canvasLocation" x="-794" y="1547"/>
         </scene>
         <!--我的紀錄-->
         <scene sceneID="zz9-en-EGE">
