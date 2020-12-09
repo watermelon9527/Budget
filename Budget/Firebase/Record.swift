@@ -14,12 +14,14 @@ struct Record: Codable {
     var category: String
     var timeStamp: Date
     var comments: String
+    var date: String
     var dictionary: [String: Any] {
         return [
             "amount": amount,
             "category": category,
             "timestamp": timeStamp,
-            "comments": comments
+            "comments": comments,
+            "date": date
         ]
     }
 }
@@ -32,9 +34,10 @@ extension Record: DocumentSerializeable {
         guard let amount = dictionary["name"] as? Int,
               let category = dictionary["content"] as? String,
               let timeStamp = dictionary["timeStamp"] as? Date,
-              let comments = dictionary["comments"] as? String
+              let comments = dictionary["comments"] as? String,
+              let date = dictionary["date"] as? String
         else {return nil}
 
-        self.init(amount: amount, category: category, timeStamp: timeStamp, comments: comments)
+        self.init(amount: amount, category: category, timeStamp: timeStamp, comments: comments, date: date)
     }
 }
