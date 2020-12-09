@@ -19,11 +19,6 @@ class ListViewController: UIViewController {
     var recordArray = [Record]()
     private var document: [DocumentSnapshot] = []
 
-    fileprivate lazy var dateFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy/MM/dd"
-        return formatter
-    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,14 +49,16 @@ class ListViewController: UIViewController {
         }
     }
     //將時間戳轉換為年月日
-    static func timeStampToString(_ timeStamp:String)->String {
-        let string = NSString(string: timeStamp)
-        let timeSta:TimeInterval = string.doubleValue
+     func timeStampToString(_ timeStamp:Date)->String {
+//        let string = NSString(string: timeStamp)
+      //  let timeSta:TimeInterval = string.doubleValue
         let dfmatter = DateFormatter()
+        dfmatter.timeZone = NSTimeZone.local
         dfmatter.dateFormat="yyyy年MM月dd日"
-        let date = Date(timeIntervalSince1970: timeSta)
-        return dfmatter.string(from: date)
+    //    let date = Date(timeIntervalSince1970: timeSta)
+        return dfmatter.string(from: timeStamp)
     }
+
 }
 extension ListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -73,8 +70,11 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
         let record = recordArray[indexPath.row]
         cell.amountLabel.text = "$\(record.amount)"
         cell.categoryLabel.text = "\(record.category)"
+        let date = record.timeStamp
+        let time = timeStampToString(date)
         cell.commitLabel.text = "\(record.comments)"
-        cell.timeLabel.text = "\(record.timeStamp)"
+    //  cell.timeLabel.text = "\(record.timeStamp)"
+          cell.timeLabel.text = time
         return cell
     }
 
