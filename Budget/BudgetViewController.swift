@@ -19,14 +19,12 @@ class BudgetViewController: UIViewController, UITableViewDelegate {
         let circle = cell.circleView
         circle?.startProgress(to: 60, duration: 1)
     }
-
 }
 
 extension BudgetViewController: UITabBarDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
-
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = budgetTableView.dequeueReusableCell(withIdentifier: "BudgetTableViewCell", for: indexPath) as! BudgetTableViewCell
         self.cell = cell
@@ -35,5 +33,4 @@ extension BudgetViewController: UITabBarDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
-
 }

@@ -34,7 +34,6 @@ class ListViewController: UIViewController {
         //顯示目前日期
         let dateString = self.dateFormatter.string(from: Date())
         loaddata1(time: dateString)
-
     }
     func loaddata() {
         db.collection("User").document("Y04LSGt0HVgAmmAO8ojU").collection("record").getDocuments { snapshot, error in
@@ -102,7 +101,6 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
         //        let time = timeStampToString(date)
         //        cell.timeLabel.text = "time"
         cell.timeLabel.text = "\(record.date)"
-
         return cell
     }
 

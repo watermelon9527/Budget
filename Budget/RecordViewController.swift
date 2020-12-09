@@ -20,7 +20,6 @@ class RecordViewController: UIViewController {
     @IBOutlet weak var amountTextField: UITextField!
     @IBOutlet weak var foodButton: UIButton!
     @IBAction func foodBTN(_ sender: UIButton) {
-
         guard let title = sender.currentTitle else { return }
         selectedCategory = title
     }

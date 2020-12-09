@@ -12,7 +12,6 @@ class PersonalViewController: UIViewController {
     @IBOutlet weak var personalTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
         personalTableView.dataSource = self
         personalTableView.delegate = self
     }
