@@ -23,6 +23,7 @@ class ListViewController: UIViewController {
         formatter.dateFormat = "yyyy/MM/dd"
         return formatter
     }()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         listTableView.dataSource = self
@@ -30,7 +31,9 @@ class ListViewController: UIViewController {
         FSCalendar.delegate = self
         FSCalendar.dataSource = self
         db = Firestore.firestore()
-       // loaddata()
+        //顯示目前日期
+        let dateString = self.dateFormatter.string(from: Date())
+        loaddata1(time: dateString)
 
     }
     func loaddata() {
@@ -53,8 +56,7 @@ class ListViewController: UIViewController {
             }
         }
     }
-    func loaddata1(time: String) {
-        db.collection("User").document("Y04LSGt0HVgAmmAO8ojU").collection("record").whereField("date", isEqualTo: time).getDocuments { snapshot, error in
+    func loaddata1(time: String) {db.collection("User").document("Y04LSGt0HVgAmmAO8ojU").collection("record").whereField("date", isEqualTo: time).getDocuments { snapshot, error in
             if let error = error {
                 print("\(error.localizedDescription)")
             } else {
@@ -67,7 +69,6 @@ class ListViewController: UIViewController {
                     let comments = data["comments"] as? String ?? ""
                     let date = data["date"] as? String ?? ""
                     let newRecord = Record(amount: amount, category: category, timeStamp: timeStamp, comments: comments, date: date)
-                    self.recordArray = []
                     self.recordArray.append(newRecord)
                 }
                 self.listTableView.reloadData()
@@ -79,7 +80,7 @@ class ListViewController: UIViewController {
         //        let string = NSString(string: timeStamp)
         //  let timeSta:TimeInterval = string.doubleValue
         let dfmatter = DateFormatter()
-//        dfmatter.timeZone = NSTimeZone.local
+        //        dfmatter.timeZone = NSTimeZone.local
         dfmatter.dateFormat="yyyy年MM月dd日"
         //    let date = Date(timeIntervalSince1970: timeSta)
         return dfmatter.string(from: timeStamp)
@@ -97,9 +98,9 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
         cell.amountLabel.text = "$\(record.amount)"
         cell.categoryLabel.text = "\(record.category)"
         cell.commitLabel.text = "\(record.comments)"
-//        let date = record.timeStamp
-//        let time = timeStampToString(date)
-//        cell.timeLabel.text = "time"
+        //        let date = record.timeStamp
+        //        let time = timeStampToString(date)
+        //        cell.timeLabel.text = "time"
         cell.timeLabel.text = "\(record.date)"
 
         return cell
@@ -112,9 +113,9 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
 extension ListViewController: FSCalendarDelegate, FSCalendarDataSource, UIGestureRecognizerDelegate {
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         let dateString = self.dateFormatter.string(from: date)
-     //   print("did select date \(dateString)")
+        //   print("did select date \(dateString)")
         self.recordArray = []
-         loaddata1(time: dateString)
+        loaddata1(time: dateString)
         let selectedDates = calendar.selectedDates.map({self.dateFormatter.string(from: $0)})
         print("selected dates is \(selectedDates)")
         if monthPosition == .next || monthPosition == .previous {
