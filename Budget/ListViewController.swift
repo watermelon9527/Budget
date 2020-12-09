@@ -67,6 +67,7 @@ class ListViewController: UIViewController {
                     let comments = data["comments"] as? String ?? ""
                     let date = data["date"] as? String ?? ""
                     let newRecord = Record(amount: amount, category: category, timeStamp: timeStamp, comments: comments, date: date)
+                    self.recordArray = []
                     self.recordArray.append(newRecord)
                 }
                 self.listTableView.reloadData()
@@ -96,14 +97,14 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
         cell.amountLabel.text = "$\(record.amount)"
         cell.categoryLabel.text = "\(record.category)"
         cell.commitLabel.text = "\(record.comments)"
-        let date = record.timeStamp
-        let time = timeStampToString(date)
+//        let date = record.timeStamp
+//        let time = timeStampToString(date)
 //        cell.timeLabel.text = "time"
         cell.timeLabel.text = "\(record.date)"
 
         return cell
     }
-    
+
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 91
     }
@@ -112,9 +113,10 @@ extension ListViewController: FSCalendarDelegate, FSCalendarDataSource, UIGestur
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         let dateString = self.dateFormatter.string(from: date)
      //   print("did select date \(dateString)")
+        self.recordArray = []
          loaddata1(time: dateString)
         let selectedDates = calendar.selectedDates.map({self.dateFormatter.string(from: $0)})
-    //    print("selected dates is \(selectedDates)")
+        print("selected dates is \(selectedDates)")
         if monthPosition == .next || monthPosition == .previous {
             calendar.setCurrentPage(date, animated: true)
         }
