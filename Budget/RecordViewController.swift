@@ -18,7 +18,6 @@ class RecordViewController: UIViewController {
 
     @IBOutlet weak var commentTextField: UITextField!
     @IBOutlet weak var amountTextField: UITextField!
-    @IBOutlet weak var foodButton: UIButton!
     @IBAction func foodBTN(_ sender: UIButton) {
         guard let title = sender.currentTitle else { return }
         selectedCategory = title
@@ -55,6 +54,14 @@ class RecordViewController: UIViewController {
         guard let title = sender.currentTitle else { return }
         selectedCategory = title
     }
+    @IBOutlet weak var foodButton: UIButton! {
+        didSet {
+            foodButton.setTitleColor(.black, for: .normal)
+            foodButton.backgroundColor = UIColor(red: 89/255, green: 142/255, blue: 212/255, alpha: 1)
+            guard let title = foodButton.currentTitle else { return }
+            selectedCategory = title
+        }
+    }
     @IBOutlet weak var drinkButton: UIButton!
     @IBOutlet weak var entertainButton: UIButton!
     @IBOutlet weak var trafficButton: UIButton!
@@ -64,9 +71,17 @@ class RecordViewController: UIViewController {
     @IBOutlet weak var othersButton: UIButton!
     @IBOutlet weak var incomeButton: UIButton!
     @IBAction func confimButton(_ sender: Any) {
+        if amountTextField.text?.isEmpty != true{
         getDate()
         addData(today: today)
         amountTextField.text = "0"
+        commentTextField.text = ""
+        } else {
+            let controller = UIAlertController(title: "輸入金額!", message: "請輸入您的支出金額", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+            controller.addAction(okAction)
+            present(controller, animated: true, completion: nil)
+        }
     }
     @IBOutlet var categoryButtons: [UIButton]!
     @IBAction func categoryButtons(_ sender: UIButton) {

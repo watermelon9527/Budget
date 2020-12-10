@@ -26,11 +26,11 @@ struct Record: Codable {
     }
 }
 protocol DocumentSerializeable {
-    init?(dictionary: [String:Any])
+    init?(dictionary: [String: Any])
 }
 
 extension Record: DocumentSerializeable {
-    init?(dictionary: [String:Any]) {
+    init?(dictionary: [String: Any]) {
         guard let amount = dictionary["name"] as? Int,
               let category = dictionary["content"] as? String,
               let timeStamp = dictionary["timeStamp"] as? Date,

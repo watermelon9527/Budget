@@ -34,6 +34,8 @@ class ListViewController: UIViewController {
         //顯示目前日期
         let dateString = self.dateFormatter.string(from: Date())
         loaddata1(time: dateString)
+        //loaddata()
+        listTableView.reloadData()
     }
     func loaddata() {
         db.collection("User").document("Y04LSGt0HVgAmmAO8ojU").collection("record").getDocuments { snapshot, error in

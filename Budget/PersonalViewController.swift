@@ -15,7 +15,6 @@ class PersonalViewController: UIViewController {
         personalTableView.dataSource = self
         personalTableView.delegate = self
     }
-
 }
 extension PersonalViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		2F04B8FB20FEC04086E9838F /* Pods_Budget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCD2C2601282BDE8AD025276 /* Pods_Budget.framework */; };
 		B90C0D97257F138E001C657B /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90C0D96257F138E001C657B /* Record.swift */; };
-		B90C0D9B257F144C001C657B /* RecordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90C0D9A257F144C001C657B /* RecordViewModel.swift */; };
 		B90C0D9E257F3765001C657B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90C0D9D257F3765001C657B /* User.swift */; };
 		B956EDB02574E5060010CD46 /* BudgetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B956EDAF2574E5060010CD46 /* BudgetTableViewCell.swift */; };
 		B96093D22578BD770043851C /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96093D12578BD770043851C /* CardView.swift */; };
@@ -36,7 +35,6 @@
 		3B689C68D08EF506026A921A /* Pods-Budget.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Budget.release.xcconfig"; path = "Target Support Files/Pods-Budget/Pods-Budget.release.xcconfig"; sourceTree = "<group>"; };
 		491934241D6E65E10F53DA47 /* Pods-Budget.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Budget.debug.xcconfig"; path = "Target Support Files/Pods-Budget/Pods-Budget.debug.xcconfig"; sourceTree = "<group>"; };
 		B90C0D96257F138E001C657B /* Record.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
-		B90C0D9A257F144C001C657B /* RecordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewModel.swift; sourceTree = "<group>"; };
 		B90C0D9D257F3765001C657B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		B956EDAF2574E5060010CD46 /* BudgetTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetTableViewCell.swift; sourceTree = "<group>"; };
 		B96093D12578BD770043851C /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
@@ -80,7 +78,6 @@
 			children = (
 				B90C0D96257F138E001C657B /* Record.swift */,
 				B90C0D9D257F3765001C657B /* User.swift */,
-				B90C0D9A257F144C001C657B /* RecordViewModel.swift */,
 			);
 			path = Firebase;
 			sourceTree = "<group>";
@@ -290,7 +287,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B90C0D9B257F144C001C657B /* RecordViewModel.swift in Sources */,
 				B90C0D97257F138E001C657B /* Record.swift in Sources */,
 				B96214EB2578BFE100AA3417 /* PersonalTableViewCell.swift in Sources */,
 				B96093D22578BD770043851C /* CardView.swift in Sources */,
