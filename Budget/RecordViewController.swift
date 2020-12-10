@@ -10,6 +10,7 @@ import FirebaseCore
 import FirebaseFirestoreSwift
 import FirebaseFirestore
 class RecordViewController: UIViewController {
+
     let db = Firestore.firestore()
     var ref: DocumentReference?
     let date = Date()
@@ -71,7 +72,7 @@ class RecordViewController: UIViewController {
     @IBOutlet weak var othersButton: UIButton!
     @IBOutlet weak var incomeButton: UIButton!
     @IBAction func confimButton(_ sender: Any) {
-        if amountTextField.text?.isEmpty != true{
+        if amountTextField.text?.isEmpty != true {
         getDate()
         addData(today: today)
         amountTextField.text = "0"
@@ -106,6 +107,17 @@ class RecordViewController: UIViewController {
         formatter.dateFormat = "yyyy/MM/dd"
         return formatter
     }()
+    func listen() {
+        db.collection("User").document("Y04LSGt0HVgAmmAO8ojU").collection("record")
+            .addSnapshotListener { documentSnapshot, error in
+                guard let document = documentSnapshot else {
+                    print("Error fetching document: \(error!)")
+                    return
+                }
+                _ = document.documentChanges.map {print($0.document.data())}
+            }
+    }
+
     func addData(today: String) {
         let dateString = self.dateFormatter.string(from: Date())
         ref = db.collection("User").document("Y04LSGt0HVgAmmAO8ojU").collection("record").addDocument(data: [
