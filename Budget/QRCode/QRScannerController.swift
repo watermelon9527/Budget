@@ -97,6 +97,10 @@ class QRScannerController: UIViewController {
     
 }
 extension QRScannerController: AVCaptureMetadataOutputObjectsDelegate {
+     func unwindToContainerVC(segue: UIStoryboardSegue) {
+        self.performSegue(withIdentifier: "unwindToHomeScreenWithSegue", sender: self)
+
+    }
     func metadataOutput(_ output: AVCaptureMetadataOutput,
                         didOutput metadataObjects: [AVMetadataObject],
                         from connection: AVCaptureConnection) {
@@ -114,9 +118,6 @@ extension QRScannerController: AVCaptureMetadataOutputObjectsDelegate {
                 qrCodeFrameView?.frame = barCodeObject!.bounds
                 if metadataObj.stringValue != nil {
                   // print(metadataObj)
-                    print(metadataObj)
-                    let abc = metadataObj.stringValue
-                    print(abc?.count)
                     label.text = metadataObj.stringValue
                     if metadataObj.stringValue!.count != 2 {
                     let receipt = metadataObj.stringValue
@@ -125,10 +126,12 @@ extension QRScannerController: AVCaptureMetadataOutputObjectsDelegate {
                     let range = start..<end
                     let myReceipt = receipt![range]
                     print(myReceipt)
-                    } else{return}
+                    } else {return}
 
                 }
                 launchApp(decodedURL: metadataObj.stringValue!)
+         //       self.dismiss(animated: true, completion: nil)
+                self.navigationController?.popViewController(animated: true)
             }
         } else {return}
     }
