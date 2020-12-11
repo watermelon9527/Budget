@@ -99,8 +99,8 @@ class QRScannerController: UIViewController {
 extension QRScannerController: AVCaptureMetadataOutputObjectsDelegate {
     func metadataOutput(_ output: AVCaptureMetadataOutput,
                         didOutput metadataObjects: [AVMetadataObject],
-                        from connection: AVCaptureConnection)
- { // 檢查metadataObjects陣列為非空值，他至少需要包含一個物件
+                        from connection: AVCaptureConnection) {
+        // 檢查metadataObjects陣列為非空值，他至少需要包含一個物件
         if metadataObjects.isEmpty {
             qrCodeFrameView?.frame = CGRect.zero
             label.text = "No QR Code is detected."
@@ -113,8 +113,20 @@ extension QRScannerController: AVCaptureMetadataOutputObjectsDelegate {
                 let barCodeObject = videoPreviewLayer?.transformedMetadataObject(for: metadataObj)
                 qrCodeFrameView?.frame = barCodeObject!.bounds
                 if metadataObj.stringValue != nil {
+                  // print(metadataObj)
                     print(metadataObj)
+                    let abc = metadataObj.stringValue
+                    print(abc?.count)
                     label.text = metadataObj.stringValue
+                    if metadataObj.stringValue!.count != 2 {
+                    let receipt = metadataObj.stringValue
+                    guard let start = receipt?.index(receipt!.startIndex, offsetBy: 95) else { return  }
+                    guard let end = receipt?.index(receipt!.endIndex, offsetBy: 0) else { return  }
+                    let range = start..<end
+                    let myReceipt = receipt![range]
+                    print(myReceipt)
+                    } else{return}
+
                 }
                 launchApp(decodedURL: metadataObj.stringValue!)
             }
