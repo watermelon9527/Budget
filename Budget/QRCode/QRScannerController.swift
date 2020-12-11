@@ -113,6 +113,7 @@ extension QRScannerController: AVCaptureMetadataOutputObjectsDelegate {
                 let barCodeObject = videoPreviewLayer?.transformedMetadataObject(for: metadataObj)
                 qrCodeFrameView?.frame = barCodeObject!.bounds
                 if metadataObj.stringValue != nil {
+                    print(metadataObj)
                     label.text = metadataObj.stringValue
                 }
                 launchApp(decodedURL: metadataObj.stringValue!)

@@ -75,7 +75,7 @@ class RecordViewController: UIViewController {
         if amountTextField.text?.isEmpty != true {
         getDate()
         addData(today: today)
-        amountTextField.text = "0"
+        amountTextField.text = ""
         commentTextField.text = ""
         } else {
             let controller = UIAlertController(title: "輸入金額!", message: "請輸入您的支出金額", preferredStyle: .alert)
