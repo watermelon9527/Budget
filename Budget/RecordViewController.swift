@@ -97,16 +97,15 @@ class RecordViewController: UIViewController {
             }
         }
     }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.navigationController?.navigationBar.isHidden = true
-    }
     fileprivate lazy var dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy/MM/dd"
         return formatter
     }()
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.navigationController?.navigationBar.isHidden = true
+    }
     func listen() {
         db.collection("User").document("Y04LSGt0HVgAmmAO8ojU").collection("record")
             .addSnapshotListener { documentSnapshot, error in
