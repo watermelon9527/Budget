@@ -118,7 +118,7 @@ extension QRScannerController: AVCaptureMetadataOutputObjectsDelegate {
                 let barCodeObject = videoPreviewLayer?.transformedMetadataObject(for: metadataObj)
                 qrCodeFrameView?.frame = barCodeObject!.bounds
                 if metadataObj.stringValue != nil {
-                  // print(metadataObj)
+              print(metadataObj)
                     label.text = metadataObj.stringValue
                     if metadataObj.stringValue!.count != 2 {
                     let receipt = metadataObj.stringValue
@@ -127,10 +127,20 @@ extension QRScannerController: AVCaptureMetadataOutputObjectsDelegate {
                     let range = start..<end
                     let myReceipt = receipt![range]
                     print(myReceipt)
+
+//                        guard let start = receipt?.lastIndex(of: "*") else { return }
+//                        guard let end = receipt?.index(receipt!.endIndex, offsetBy: 0) else { return  }
+//
+//                        let range = start..<end
+//                        let myReceipt = receipt![range]
+//                        let deRange = receipt!.range(of: "*")
+//                        let backNumber = receipt!.suffix(from: deRange!.upperBound)
+//
+//                        print(backNumber)
                     } else {return}
 
                 }
-                launchApp(decodedURL: metadataObj.stringValue!)
+          //      launchApp(decodedURL: metadataObj.stringValue!)
          //       self.dismiss(animated: true, completion: nil)
                 self.navigationController?.popViewController(animated: true)
             }
