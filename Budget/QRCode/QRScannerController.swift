@@ -122,26 +122,25 @@ extension QRScannerController: AVCaptureMetadataOutputObjectsDelegate {
                     label.text = metadataObj.stringValue
                     if metadataObj.stringValue!.count != 2 {
                     let receipt = metadataObj.stringValue
-                    guard let start = receipt?.index(receipt!.startIndex, offsetBy: 95) else { return  }
-                    guard let end = receipt?.index(receipt!.endIndex, offsetBy: 0) else { return  }
-                    let range = start..<end
-                    let myReceipt = receipt![range]
-                    print(myReceipt)
+//                    guard let start = receipt?.index(receipt!.startIndex, offsetBy: 95) else { return  }
+//                    guard let end = receipt?.index(receipt!.endIndex, offsetBy: 0) else { return  }
+//                    let range = start..<end
+//                    let myReceipt = receipt![range]
+//                    print(myReceipt)
 
-//                        guard let start = receipt?.lastIndex(of: "*") else { return }
-//                        guard let end = receipt?.index(receipt!.endIndex, offsetBy: 0) else { return  }
-//
-//                        let range = start..<end
-//                        let myReceipt = receipt![range]
-//                        let deRange = receipt!.range(of: "*")
-//                        let backNumber = receipt!.suffix(from: deRange!.upperBound)
-//
-//                        print(backNumber)
+                        guard let start = receipt?.lastIndex(of: "*") else { return }
+                        guard let end = receipt?.index(receipt!.endIndex, offsetBy: 0) else { return  }
+
+                        let range = start..<end
+                        let myReceipt = receipt![range]
+                        let deRange = receipt!.range(of: "*")
+                        let backNumber = receipt!.suffix(from: deRange!.upperBound)
+
+                        print(backNumber)
                     } else {return}
 
                 }
           //      launchApp(decodedURL: metadataObj.stringValue!)
-         //       self.dismiss(animated: true, completion: nil)
                 self.navigationController?.popViewController(animated: true)
             }
         } else {return}
