@@ -16,8 +16,9 @@ class BudgetTableViewCell: UITableViewCell {
     @IBOutlet weak var circleView: UICircularProgressRing! {
         didSet {
             circleView.outerRingColor = .systemGray
-            circleView.outerRingWidth = 5
+            circleView.outerRingWidth = 10
             circleView.innerRingColor = .systemIndigo
+            circleView.innerRingWidth = 10
         }
     }
     @IBOutlet weak var categoryLabel: UILabel!

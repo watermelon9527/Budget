@@ -14,6 +14,7 @@ class BudgetViewController: UIViewController, UITableViewDelegate {
         super.viewDidLoad()
         budgetTableView.dataSource = self
         budgetTableView.delegate = self
+        budgetTableView.backgroundColor = .systemGray5
     }
     override func viewDidAppear(_ animated: Bool) {
         let circle = cell.circleView
