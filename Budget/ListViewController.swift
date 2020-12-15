@@ -18,6 +18,14 @@ class ListViewController: UIViewController {
     var db: Firestore!
     var recordArray = [Record]()
     private var document: [DocumentSnapshot] = []
+
+    var datesWithEvent = [Record]()//小於等於3件事
+    var datesWithMultipleEvents = [String]()//大於3件事
+    override func viewDidDisappear(_ animated: Bool) {
+          datesWithEvent = []
+          datesWithMultipleEvents = []
+      }
+
     fileprivate lazy var dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy/MM/dd"
@@ -82,6 +90,7 @@ class ListViewController: UIViewController {
                 let date = data["date"] as? String ?? ""
                 let newRecord = Record(amount: amount, category: category, timeStamp: timeStamp, comments: comments, date: date)
                 self.recordArray.append(newRecord)
+                self.datesWithEvent.append(newRecord)
             }
             self.listTableView.reloadData()
         }
@@ -116,6 +125,17 @@ class ListViewController: UIViewController {
         //    let date = Date(timeIntervalSince1970: timeSta)
         return dfmatter.string(from: timeStamp)
     }
+    //將時間戳轉換為年月日
+     func timeStampToStringDetail(_ timeStamp: Timestamp) -> String {
+        let time = timeStamp.dateValue()
+//        let timeStamp: TimeInterval = TimeInterval(timeStamp)
+        let dfmatter = DateFormatter()
+        dfmatter.dateFormat="yyyy年MM月dd日HH:mm"
+        dfmatter.timeZone = NSTimeZone.local
+        //        let date = Date(timeIntervalSince1970: timeStamp)
+        return dfmatter.string(from: time)
+     }
+
 
 }
 extension ListViewController: UITableViewDelegate, UITableViewDataSource {
@@ -129,10 +149,11 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
         cell.amountLabel.text = "$\(record.amount)"
         cell.categoryLabel.text = "\(record.category)"
         cell.commitLabel.text = "\(record.comments)"
-        //        let date = record.timeStamp
-        //        let time = timeStampToString(date)
-        //        cell.timeLabel.text = "time"
-        cell.timeLabel.text = "\(record.date)"
+        let timeStamp = record.timeStamp
+        let time = timeStampToStringDetail(timeStamp)
+        cell.timeLabel.text = "\(time)"
+        //  cell.timeLabel.text = "\(record.date)"
+
         return cell
     }
 
@@ -143,13 +164,26 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
 extension ListViewController: FSCalendarDelegate, FSCalendarDataSource, UIGestureRecognizerDelegate {
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         let dateString = self.dateFormatter.string(from: date)
-        //   print("did select date \(dateString)")
         self.recordArray = []
         loadRecord(time: dateString)
         let selectedDates = calendar.selectedDates.map({self.dateFormatter.string(from: $0)})
+        
         print("selected dates is \(selectedDates)")
         if monthPosition == .next || monthPosition == .previous {
             calendar.setCurrentPage(date, animated: true)
+        }
+    }
+
+    func calendar(_ calendar: FSCalendar, imageFor date: Date) -> UIImage? {
+        let dateString = self.dateFormatter.string(from: date)
+
+        return UIImage(named: "cross")!.resized(to: CGSize(width: 7, height: 7))
+    }
+}
+extension UIImage {
+    func resized(to size: CGSize) -> UIImage {
+        return UIGraphicsImageRenderer(size: size).image { _ in
+            draw(in: CGRect(origin: .zero, size: size))
         }
     }
 }
