@@ -12,6 +12,11 @@ class QRScannerController: UIViewController {
     @IBOutlet weak var bar: UIView!
     @IBOutlet weak var label: UILabel!
 
+    @IBAction func backButton(_ sender: UIButton) {
+        self.navigationController?.popViewController(animated: true)
+ 
+    }
+
     var captureSession = AVCaptureSession()
     var videoPreviewLayer: AVCaptureVideoPreviewLayer?
     var qrCodeFrameView: UIView?
@@ -140,7 +145,8 @@ extension QRScannerController: AVCaptureMetadataOutputObjectsDelegate {
                     } else {return}
 
                 }
-          //      launchApp(decodedURL: metadataObj.stringValue!)
+           //
+                launchApp(decodedURL: metadataObj.stringValue!)
                 self.navigationController?.popViewController(animated: true)
             }
         } else {return}

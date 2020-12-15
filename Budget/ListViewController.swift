@@ -26,6 +26,7 @@ class ListViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        listTableView.backgroundColor = .systemGray5
         listTableView.dataSource = self
         listTableView.delegate = self
         FSCalendar.delegate = self
@@ -39,6 +40,7 @@ class ListViewController: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        FSCalendar.backgroundColor = .systemGray6
         let dateString = self.dateFormatter.string(from: Date())
            listen(time: dateString)
            listTableView.reloadData()

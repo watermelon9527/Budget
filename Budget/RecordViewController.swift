@@ -105,6 +105,7 @@ class RecordViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = true
+
     }
     func listen() {
         db.collection("User").document("Y04LSGt0HVgAmmAO8ojU").collection("record")
