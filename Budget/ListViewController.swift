@@ -67,7 +67,7 @@ class ListViewController: UIViewController {
                     let data = $0.document.data()
                     let amount = data["amount"] as? Int ?? 0
                     let category = data["category"] as? String ?? ""
-                    let timeStamp = data["timeStamp"] as? Timestamp ?? Timestamp()
+                    let timeStamp = data["timeStamp"] as? String ?? ""
                     let comments = data["comments"] as? String ?? ""
                     let date = data["date"] as? String ?? ""
                     let newRecord = Record(amount: amount, category: category, timeStamp: timeStamp, comments: comments, date: date)
@@ -85,7 +85,7 @@ class ListViewController: UIViewController {
                 let data = document.data()
                 let amount = data["amount"] as? Int ?? 0
                 let category = data["category"] as? String ?? ""
-                let timeStamp = data["timeStamp"] as? Timestamp ?? Timestamp()
+                let timeStamp = data["timeStamp"] as? String ?? ""
                 let comments = data["comments"] as? String ?? ""
                 let date = data["date"] as? String ?? ""
                 let newRecord = Record(amount: amount, category: category, timeStamp: timeStamp, comments: comments, date: date)
@@ -106,7 +106,7 @@ class ListViewController: UIViewController {
                     let data = document.data()
                     let amount = data["amount"] as? Int ?? 0
                     let category = data["category"] as? String ?? ""
-                    let timeStamp = data["timeStamp"] as? Timestamp ?? Timestamp()
+                    let timeStamp = data["timeStamp"] as? String ?? ""
                     let comments = data["comments"] as? String ?? ""
                     let date = data["date"] as? String ?? ""
                     let newRecord = Record(amount: amount, category: category, timeStamp: timeStamp, comments: comments, date: date)
@@ -116,26 +116,6 @@ class ListViewController: UIViewController {
             }
         }
     }
-    func timeStampToString(_ timeStamp: Date) -> String {
-        //        let string = NSString(string: timeStamp)
-        //  let timeSta:TimeInterval = string.doubleValue
-        let dfmatter = DateFormatter()
-        //        dfmatter.timeZone = NSTimeZone.local
-        dfmatter.dateFormat="yyyy年MM月dd日"
-        //    let date = Date(timeIntervalSince1970: timeSta)
-        return dfmatter.string(from: timeStamp)
-    }
-    //將時間戳轉換為年月日
-     func timeStampToStringDetail(_ timeStamp: Timestamp) -> String {
-        let time = timeStamp.dateValue()
-//        let timeStamp: TimeInterval = TimeInterval(timeStamp)
-        let dfmatter = DateFormatter()
-        dfmatter.dateFormat="yyyy年MM月dd日HH:mm"
-        dfmatter.timeZone = NSTimeZone.local
-        //        let date = Date(timeIntervalSince1970: timeStamp)
-        return dfmatter.string(from: time)
-     }
-
 
 }
 extension ListViewController: UITableViewDelegate, UITableViewDataSource {
@@ -149,10 +129,7 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
         cell.amountLabel.text = "$\(record.amount)"
         cell.categoryLabel.text = "\(record.category)"
         cell.commitLabel.text = "\(record.comments)"
-        let timeStamp = record.timeStamp
-        let time = timeStampToStringDetail(timeStamp)
-        cell.timeLabel.text = "\(time)"
-        //  cell.timeLabel.text = "\(record.date)"
+        cell.timeLabel.text = "\(record.timeStamp)"
 
         return cell
     }

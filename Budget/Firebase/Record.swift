@@ -12,7 +12,7 @@ import FirebaseFirestore
 struct Record: Codable {
     var amount: Int
     var category: String
-    var timeStamp: Timestamp
+    var timeStamp: String
     var comments: String
     var date: String
     var dictionary: [String: Any] {
@@ -33,7 +33,7 @@ extension Record: DocumentSerializeable {
     init?(dictionary: [String: Any]) {
         guard let amount = dictionary["name"] as? Int,
               let category = dictionary["content"] as? String,
-              let timeStamp = dictionary["timeStamp"] as? Timestamp,
+              let timeStamp = dictionary["timeStamp"] as? String,
               let comments = dictionary["comments"] as? String,
               let date = dictionary["date"] as? String
         else {return nil}
