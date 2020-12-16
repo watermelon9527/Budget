@@ -18,19 +18,17 @@ class ListViewController: UIViewController {
     var db: Firestore!
     var allRecordArray = [Record]()
     var recordArray = [Record]()
-
-    private var document: [DocumentSnapshot] = []
-
     var datesWithEvent = [Record]()
-    override func viewDidDisappear(_ animated: Bool) {
-          datesWithEvent = []
-      }
 
     fileprivate lazy var dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy/MM/dd"
         return formatter
     }()
+
+    override func viewDidDisappear(_ animated: Bool) {
+        datesWithEvent = []
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,19 +38,8 @@ class ListViewController: UIViewController {
         FSCalendar.delegate = self
         FSCalendar.dataSource = self
         db = Firestore.firestore()
-        //顯示目前日期
-        // loadRecord(time: dateString)
-        // let dateString = self.dateFormatter.string(from: Date())
-        // listen(time: dateString)
-        listTableView.reloadData()
-    }
-    fileprivate func fetchDate(_ dateString: String) {
-        for record in allRecordArray {
 
-            if record.date == dateString {
-                recordArray.append(record)
-            }
-        }
+        listTableView.reloadData()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -60,15 +47,19 @@ class ListViewController: UIViewController {
         FSCalendar.backgroundColor = .systemGray6
         let dateString = self.dateFormatter.string(from: Date())
         listen(time: dateString)
-
-        //           listen1(time: dateString)
+        self.recordArray = []
         listTableView.reloadData()
         self.FSCalendar.reloadData()
     }
+
+    fileprivate func fetchDate(_ dateString: String) {
+        for record in allRecordArray
+        where record.date == dateString {
+            recordArray.append(record)
+        }
+    }
     func listen(time: String) {
-
         let dateString = self.dateFormatter.string(from: Date())
-
         db.collection("User").document("Y04LSGt0HVgAmmAO8ojU").collection("record").order(by: "timeStamp", descending: true)
             .addSnapshotListener { documentSnapshot, error in
                 guard let document = documentSnapshot else {
@@ -92,30 +83,6 @@ class ListViewController: UIViewController {
                 self.FSCalendar.reloadData()
             }
     }
-    func listen1(time: String) {
-        db.collection("User").document("Y04LSGt0HVgAmmAO8ojU").collection("record").whereField("date", isEqualTo: time)
-            .order(by: "timeStamp", descending: true)
-            .addSnapshotListener { documentSnapshot, error in
-                guard let document = documentSnapshot else {
-                    print("Error fetching document: \(error!)")
-                    return
-                }
-                self.allRecordArray.removeAll()
-                _ = document.documentChanges.map {
-                    print($0.document.data())
-                    let data = $0.document.data()
-                    let amount = data["amount"] as? Int ?? 0
-                    let category = data["category"] as? String ?? ""
-                    let timeStamp = data["timeStamp"] as? String ?? ""
-                    let comments = data["comments"] as? String ?? ""
-                    let date = data["date"] as? String ?? ""
-                    let newRecord = Record(amount: amount, category: category, timeStamp: timeStamp, comments: comments, date: date)
-                    self.allRecordArray.append(newRecord)
-                }
-                self.listTableView.reloadData()
-                self.FSCalendar.reloadData()
-            }
-    }
     func loadRecord(time: String) {db.collection("User").document("Y04LSGt0HVgAmmAO8ojU").collection("record").whereField("date", isEqualTo: time).getDocuments { snapshot, error in
         if let error = error {
             print("\(error.localizedDescription)")
@@ -134,27 +101,7 @@ class ListViewController: UIViewController {
             }
             self.listTableView.reloadData()
         }
-      }
     }
-    func loaddata() {
-        db.collection("User").document("Y04LSGt0HVgAmmAO8ojU").collection("record").getDocuments { snapshot, error in
-            if let error = error {
-                print("\(error.localizedDescription)")
-            } else {
-                for document in snapshot!.documents {
-                    print(document.data())
-                    let data = document.data()
-                    let amount = data["amount"] as? Int ?? 0
-                    let category = data["category"] as? String ?? ""
-                    let timeStamp = data["timeStamp"] as? String ?? ""
-                    let comments = data["comments"] as? String ?? ""
-                    let date = data["date"] as? String ?? ""
-                    let newRecord = Record(amount: amount, category: category, timeStamp: timeStamp, comments: comments, date: date)
-                    self.allRecordArray.append(newRecord)
-                }
-                self.listTableView.reloadData()
-            }
-        }
     }
 
 }
@@ -184,7 +131,6 @@ extension ListViewController: FSCalendarDelegate, FSCalendarDataSource, UIGestur
         self.recordArray = []
         loadRecord(time: dateString)
         let selectedDates = calendar.selectedDates.map({self.dateFormatter.string(from: $0)})
-        
         print("selected dates is \(selectedDates)")
         if monthPosition == .next || monthPosition == .previous {
             calendar.setCurrentPage(date, animated: true)
@@ -193,29 +139,11 @@ extension ListViewController: FSCalendarDelegate, FSCalendarDataSource, UIGestur
 
     func calendar(_ calendar: FSCalendar, imageFor date: Date) -> UIImage? {
         let dateString = self.dateFormatter.string(from: date)
- //       loadRecord(time: dateString)
-//        self.datesWithEvent = []
-
-//        let datesWithEvent = recordArray.map { $0.date }
         if allRecordArray.map({ $0.date }).contains(dateString) {
-
-            return UIImage(named: "cross")!.resized(to: CGSize(width: 7, height: 7))
+            return UIImage(systemName: "circle.fill")!.resized(to: CGSize(width: 7, height: 7))
         }
-
-//        for day in recordArray {
-//
-//            if day.date == dateString {
-//
-//              //  calender(date)
-////                datesWithEvent.append(contentsOf: recordArray)
-////                print(datesWithEvent)
-//                print(recordArray)
-//                return UIImage(named: "cross")!.resized(to: CGSize(width: 7, height: 7))
-//            }
-//        }
         return nil
     }
-
 
 }
 extension UIImage {
