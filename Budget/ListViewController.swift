@@ -68,7 +68,7 @@ class ListViewController: UIViewController {
                 }
                 self.allRecordArray.removeAll()
                 _ = document.documentChanges.map {
-                    print($0.document.data())
+             //       print($0.document.data())
                     let data = $0.document.data()
                     let amount = data["amount"] as? Int ?? 0
                     let category = data["category"] as? String ?? ""
@@ -88,7 +88,7 @@ class ListViewController: UIViewController {
             print("\(error.localizedDescription)")
         } else {
             for document in snapshot!.documents {
-                print(document.data())
+           //     print(document.data())
                 let data = document.data()
                 let amount = data["amount"] as? Int ?? 0
                 let category = data["category"] as? String ?? ""
@@ -106,6 +106,7 @@ class ListViewController: UIViewController {
 
 }
 extension ListViewController: UITableViewDelegate, UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return recordArray.count
     }
