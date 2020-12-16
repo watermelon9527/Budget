@@ -52,10 +52,10 @@ class ListViewController: UIViewController {
         let dateString = self.dateFormatter.string(from: Date())
            listen(time: dateString)
            listTableView.reloadData()
+        self.FSCalendar.reloadData()
     }
     func listen(time: String) {
-        db.collection("User").document("Y04LSGt0HVgAmmAO8ojU").collection("record").whereField("date", isEqualTo: time)
-            .order(by: "timeStamp", descending: true)
+        db.collection("User").document("Y04LSGt0HVgAmmAO8ojU").collection("record").order(by: "timeStamp", descending: true)
             .addSnapshotListener { documentSnapshot, error in
                 guard let document = documentSnapshot else {
                     print("Error fetching document: \(error!)")
@@ -74,6 +74,7 @@ class ListViewController: UIViewController {
                     self.recordArray.append(newRecord)
                 }
                 self.listTableView.reloadData()
+                self.FSCalendar.reloadData()
             }
     }
     func loadRecord(time: String) {db.collection("User").document("Y04LSGt0HVgAmmAO8ojU").collection("record").whereField("date", isEqualTo: time).getDocuments { snapshot, error in
@@ -153,9 +154,33 @@ extension ListViewController: FSCalendarDelegate, FSCalendarDataSource, UIGestur
 
     func calendar(_ calendar: FSCalendar, imageFor date: Date) -> UIImage? {
         let dateString = self.dateFormatter.string(from: date)
+ //       loadRecord(time: dateString)
+//        self.datesWithEvent = []
 
-        return UIImage(named: "cross")!.resized(to: CGSize(width: 7, height: 7))
+//        let datesWithEvent = recordArray.map { $0.date }
+        if recordArray.map({ $0.date }).contains(dateString) {
+
+            return UIImage(named: "cross")!.resized(to: CGSize(width: 7, height: 7))
+        }
+
+//        for day in recordArray {
+//
+//            if day.date == dateString {
+//
+//              //  calender(date)
+////                datesWithEvent.append(contentsOf: recordArray)
+////                print(datesWithEvent)
+//                print(recordArray)
+//                return UIImage(named: "cross")!.resized(to: CGSize(width: 7, height: 7))
+//            }
+//        }
+        return nil
     }
+
+//    func calendar(_ calendar: FSCalendar, imageFor date: Date) -> UIImage? {
+//        <#code#>
+//    }
+
 }
 extension UIImage {
     func resized(to size: CGSize) -> UIImage {
