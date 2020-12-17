@@ -224,8 +224,15 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HrY-vP-Jrg">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="90"/>
                                 <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nvo-ms-nUH">
+                                        <rect key="frame" x="355" y="41" width="41" height="41"/>
+                                        <state key="normal" title="Button" image="focus"/>
+                                        <connections>
+                                            <segue destination="8yE-LP-GBR" kind="show" id="nUb-9s-3LA"/>
+                                        </connections>
+                                    </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="新紀錄" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yxt-YB-BNF">
-                                        <rect key="frame" x="174" y="52" width="70" height="27"/>
+                                        <rect key="frame" x="172" y="52" width="70" height="27"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="70" id="jIC-5d-xEy"/>
                                         </constraints>
@@ -233,19 +240,15 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nvo-ms-nUH">
-                                        <rect key="frame" x="334" y="22" width="60" height="60"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Button" image="focus"/>
-                                        <connections>
-                                            <segue destination="8yE-LP-GBR" kind="show" id="nUb-9s-3LA"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.1137254902" green="0.30588235289999999" blue="0.56078431370000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstItem="Yxt-YB-BNF" firstAttribute="leading" secondItem="HrY-vP-Jrg" secondAttribute="leading" constant="174" id="1q7-db-V6b"/>
+                                    <constraint firstItem="Yxt-YB-BNF" firstAttribute="leading" secondItem="HrY-vP-Jrg" secondAttribute="leading" constant="172" id="1q7-db-V6b"/>
+                                    <constraint firstItem="Nvo-ms-nUH" firstAttribute="top" secondItem="HrY-vP-Jrg" secondAttribute="top" constant="41" id="OdO-rj-OOI"/>
+                                    <constraint firstAttribute="bottom" secondItem="Nvo-ms-nUH" secondAttribute="bottom" constant="8" id="QbL-bC-aPa"/>
                                     <constraint firstItem="Yxt-YB-BNF" firstAttribute="top" secondItem="HrY-vP-Jrg" secondAttribute="topMargin" id="TpK-mg-pKR"/>
+                                    <constraint firstItem="Nvo-ms-nUH" firstAttribute="leading" secondItem="Yxt-YB-BNF" secondAttribute="trailing" constant="113" id="bjW-5x-h1g"/>
+                                    <constraint firstAttribute="trailing" secondItem="Nvo-ms-nUH" secondAttribute="trailing" constant="18" id="jf8-rz-gpU"/>
                                 </constraints>
                             </view>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="備註：" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Kkl-uN-R3e">
@@ -286,239 +289,251 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AiO-Ft-5GZ">
                                 <rect key="frame" x="68" y="718" width="279" height="48"/>
+                                <color key="backgroundColor" red="0.1137254902" green="0.30588235289999999" blue="0.56078431370000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="Pp8-kb-Evp"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <state key="normal" title="完成輸入">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
                                         <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="3"/>
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="14"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="confimButton:" destination="sk2-u3-KzP" eventType="touchUpInside" id="BG0-e0-N1D"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a2w-Dp-jMO">
-                                <rect key="frame" x="13" y="420" width="120" height="106"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <inset key="titleEdgeInsets" minX="-46" minY="43" maxX="0.0" maxY="0.0"/>
-                                <inset key="imageEdgeInsets" minX="30" minY="-24" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" title="交通" image="ic_car">
-                                    <color key="titleColor" systemColor="systemGrayColor"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="categoryButtons:" destination="sk2-u3-KzP" eventType="touchUpInside" id="hvz-7y-y49"/>
-                                    <action selector="trafficBTN:" destination="sk2-u3-KzP" eventType="touchUpInside" id="rVX-gN-4mZ"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JKL-hH-BdT">
-                                <rect key="frame" x="147" y="306" width="120" height="106"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <inset key="titleEdgeInsets" minX="-46" minY="43" maxX="0.0" maxY="0.0"/>
-                                <inset key="imageEdgeInsets" minX="30" minY="-24" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" title="飲品" image="ic_drink">
-                                    <color key="titleColor" systemColor="systemGrayColor"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="categoryButtons:" destination="sk2-u3-KzP" eventType="touchUpInside" id="g3b-AR-Yan"/>
-                                    <action selector="drinkBTN:" destination="sk2-u3-KzP" eventType="touchUpInside" id="bIe-iw-zrU"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2oa-gb-UZC">
-                                <rect key="frame" x="281" y="306" width="120" height="106"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <inset key="titleEdgeInsets" minX="-46" minY="43" maxX="0.0" maxY="0.0"/>
-                                <inset key="imageEdgeInsets" minX="30" minY="-24" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" title="娛樂" image="ic_entertainmmment">
-                                    <color key="titleColor" systemColor="systemGrayColor"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="categoryButtons:" destination="sk2-u3-KzP" eventType="touchUpInside" id="kAs-4s-hlL"/>
-                                    <action selector="entertainBTN:" destination="sk2-u3-KzP" eventType="touchUpInside" id="ate-uU-IUw"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" tag="5" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PoT-Vh-fRe">
-                                <rect key="frame" x="281" y="420" width="120" height="106"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <inset key="titleEdgeInsets" minX="-46" minY="43" maxX="0.0" maxY="0.0"/>
-                                <inset key="imageEdgeInsets" minX="30" minY="-24" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" title="家用" image="ic_home">
-                                    <color key="titleColor" systemColor="systemGrayColor"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="categoryButtons:" destination="sk2-u3-KzP" eventType="touchUpInside" id="LID-9m-VQh"/>
-                                    <action selector="houseHoldBTN:" destination="sk2-u3-KzP" eventType="touchUpInside" id="N18-Og-l3I"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" tag="4" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xg9-Fo-Ua8">
-                                <rect key="frame" x="147" y="420" width="120" height="106"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <inset key="titleEdgeInsets" minX="-46" minY="43" maxX="0.0" maxY="0.0"/>
-                                <inset key="imageEdgeInsets" minX="30" minY="-24" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" title="消費" image="ic_Clothes">
-                                    <color key="titleColor" systemColor="systemGrayColor"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="categoryButtons:" destination="sk2-u3-KzP" eventType="touchUpInside" id="uQx-q2-udn"/>
-                                    <action selector="consumeBTN:" destination="sk2-u3-KzP" eventType="touchUpInside" id="Xw5-15-hZl"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" tag="6" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sAU-er-opM">
-                                <rect key="frame" x="13" y="534" width="120" height="106"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <inset key="titleEdgeInsets" minX="-46" minY="43" maxX="0.0" maxY="0.0"/>
-                                <inset key="imageEdgeInsets" minX="30" minY="-24" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" title="醫藥" image="ic_medical">
-                                    <color key="titleColor" systemColor="systemGrayColor"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="categoryButtons:" destination="sk2-u3-KzP" eventType="touchUpInside" id="Qdj-mZ-AB1"/>
-                                    <action selector="medicalBTN:" destination="sk2-u3-KzP" eventType="touchUpInside" id="hgK-KV-RvV"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" tag="7" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="784-mj-Pjg">
-                                <rect key="frame" x="147" y="534" width="120" height="106"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <inset key="titleEdgeInsets" minX="-46" minY="43" maxX="0.0" maxY="0.0"/>
-                                <inset key="imageEdgeInsets" minX="30" minY="-24" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" title="收入" image="ic_sell">
-                                    <color key="titleColor" systemColor="systemGrayColor"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="categoryButtons:" destination="sk2-u3-KzP" eventType="touchUpInside" id="X4L-l7-Nx9"/>
-                                    <action selector="incomeBTN:" destination="sk2-u3-KzP" eventType="touchUpInside" id="lbg-wd-hvp"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleAspectFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6GY-GM-rZu">
-                                <rect key="frame" x="13" y="306" width="120" height="106"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <inset key="titleEdgeInsets" minX="-46" minY="43" maxX="0.0" maxY="0.0"/>
-                                <inset key="imageEdgeInsets" minX="30" minY="-24" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" title="食物" image="ic_Food">
-                                    <color key="titleColor" systemColor="systemGrayColor"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="categoryButtons:" destination="sk2-u3-KzP" eventType="touchUpInside" id="THg-Hd-DtM"/>
-                                    <action selector="foodBTN:" destination="sk2-u3-KzP" eventType="touchUpInside" id="6wM-qw-g6D"/>
-                                </connections>
-                            </button>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wyk-QG-C38">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oGq-PU-vXm">
+                                <rect key="frame" x="13" y="306" width="388" height="334"/>
+                                <subviews>
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JKL-hH-BdT">
+                                        <rect key="frame" x="134" y="0.0" width="120" height="106"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <inset key="titleEdgeInsets" minX="-42" minY="50" maxX="0.0" maxY="0.0"/>
+                                        <inset key="imageEdgeInsets" minX="36" minY="-24" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" title="飲品" image="ic_drink">
+                                            <color key="titleColor" systemColor="systemGrayColor"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" systemColor="systemGrayColor"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="categoryButtons:" destination="sk2-u3-KzP" eventType="touchUpInside" id="g3b-AR-Yan"/>
+                                            <action selector="drinkBTN:" destination="sk2-u3-KzP" eventType="touchUpInside" id="bIe-iw-zrU"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2oa-gb-UZC">
+                                        <rect key="frame" x="268" y="0.0" width="120" height="106"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <inset key="titleEdgeInsets" minX="-42" minY="50" maxX="0.0" maxY="0.0"/>
+                                        <inset key="imageEdgeInsets" minX="36" minY="-24" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" title="娛樂" image="ic_entertainmmment">
+                                            <color key="titleColor" systemColor="systemGrayColor"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" systemColor="systemGrayColor"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="categoryButtons:" destination="sk2-u3-KzP" eventType="touchUpInside" id="kAs-4s-hlL"/>
+                                            <action selector="entertainBTN:" destination="sk2-u3-KzP" eventType="touchUpInside" id="ate-uU-IUw"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a2w-Dp-jMO">
+                                        <rect key="frame" x="0.0" y="114" width="120" height="106"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <inset key="titleEdgeInsets" minX="-42" minY="50" maxX="0.0" maxY="0.0"/>
+                                        <inset key="imageEdgeInsets" minX="36" minY="-24" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" title="交通" image="ic_car">
+                                            <color key="titleColor" systemColor="systemGrayColor"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" systemColor="systemGrayColor"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="categoryButtons:" destination="sk2-u3-KzP" eventType="touchUpInside" id="hvz-7y-y49"/>
+                                            <action selector="trafficBTN:" destination="sk2-u3-KzP" eventType="touchUpInside" id="rVX-gN-4mZ"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="4" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xg9-Fo-Ua8">
+                                        <rect key="frame" x="134" y="114" width="120" height="106"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <inset key="titleEdgeInsets" minX="-42" minY="50" maxX="0.0" maxY="0.0"/>
+                                        <inset key="imageEdgeInsets" minX="36" minY="-24" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" title="消費" image="ic_Clothes">
+                                            <color key="titleColor" systemColor="systemGrayColor"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" systemColor="systemGrayColor"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="categoryButtons:" destination="sk2-u3-KzP" eventType="touchUpInside" id="uQx-q2-udn"/>
+                                            <action selector="consumeBTN:" destination="sk2-u3-KzP" eventType="touchUpInside" id="Xw5-15-hZl"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="5" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PoT-Vh-fRe">
+                                        <rect key="frame" x="268" y="114" width="120" height="106"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <inset key="titleEdgeInsets" minX="-42" minY="50" maxX="0.0" maxY="0.0"/>
+                                        <inset key="imageEdgeInsets" minX="36" minY="-24" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" title="家用" image="ic_home">
+                                            <color key="titleColor" systemColor="systemGrayColor"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" systemColor="systemGrayColor"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="categoryButtons:" destination="sk2-u3-KzP" eventType="touchUpInside" id="LID-9m-VQh"/>
+                                            <action selector="houseHoldBTN:" destination="sk2-u3-KzP" eventType="touchUpInside" id="N18-Og-l3I"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="6" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sAU-er-opM">
+                                        <rect key="frame" x="0.0" y="228" width="120" height="106"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <inset key="titleEdgeInsets" minX="-42" minY="50" maxX="0.0" maxY="0.0"/>
+                                        <inset key="imageEdgeInsets" minX="36" minY="-24" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" title="醫藥" image="ic_medical">
+                                            <color key="titleColor" systemColor="systemGrayColor"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" systemColor="systemGrayColor"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="categoryButtons:" destination="sk2-u3-KzP" eventType="touchUpInside" id="Qdj-mZ-AB1"/>
+                                            <action selector="medicalBTN:" destination="sk2-u3-KzP" eventType="touchUpInside" id="hgK-KV-RvV"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="7" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="784-mj-Pjg">
+                                        <rect key="frame" x="134" y="228" width="120" height="106"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <inset key="titleEdgeInsets" minX="-42" minY="50" maxX="0.0" maxY="0.0"/>
+                                        <inset key="imageEdgeInsets" minX="36" minY="-24" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" title="收入" image="ic_sell">
+                                            <color key="titleColor" systemColor="systemGrayColor"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" systemColor="systemGrayColor"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="categoryButtons:" destination="sk2-u3-KzP" eventType="touchUpInside" id="X4L-l7-Nx9"/>
+                                            <action selector="incomeBTN:" destination="sk2-u3-KzP" eventType="touchUpInside" id="lbg-wd-hvp"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="8" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AcJ-oZ-oc9">
+                                        <rect key="frame" x="268" y="228" width="120" height="106"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <inset key="titleEdgeInsets" minX="-42" minY="50" maxX="0.0" maxY="0.0"/>
+                                        <inset key="imageEdgeInsets" minX="36" minY="-24" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" title="其他" image="ic_other">
+                                            <color key="titleColor" systemColor="systemGrayColor"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" systemColor="systemGrayColor"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="categoryButtons:" destination="sk2-u3-KzP" eventType="touchUpInside" id="gUb-ce-iQw"/>
+                                            <action selector="othersBTN:" destination="sk2-u3-KzP" eventType="touchUpInside" id="Tfb-FJ-AH9"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleAspectFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6GY-GM-rZu">
+                                        <rect key="frame" x="0.0" y="0.0" width="120" height="106"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <inset key="titleEdgeInsets" minX="-42" minY="50" maxX="0.0" maxY="0.0"/>
+                                        <inset key="imageEdgeInsets" minX="36" minY="-24" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" title="食物" image="ic_Food">
+                                            <color key="titleColor" systemColor="systemGrayColor"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="categoryButtons:" destination="sk2-u3-KzP" eventType="touchUpInside" id="THg-Hd-DtM"/>
+                                            <action selector="foodBTN:" destination="sk2-u3-KzP" eventType="touchUpInside" id="6wM-qw-g6D"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemGray6Color"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wyk-QG-C38">
                                 <rect key="frame" x="0.0" y="680" width="414" height="1"/>
                                 <color key="backgroundColor" systemColor="systemGray4Color"/>
                             </view>
-                            <button opaque="NO" tag="8" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AcJ-oZ-oc9">
-                                <rect key="frame" x="281" y="534" width="120" height="106"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <inset key="titleEdgeInsets" minX="-46" minY="43" maxX="0.0" maxY="0.0"/>
-                                <inset key="imageEdgeInsets" minX="30" minY="-24" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" title="其他" image="ic_other">
-                                    <color key="titleColor" systemColor="systemGrayColor"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="categoryButtons:" destination="sk2-u3-KzP" eventType="touchUpInside" id="gUb-ce-iQw"/>
-                                    <action selector="othersBTN:" destination="sk2-u3-KzP" eventType="touchUpInside" id="Tfb-FJ-AH9"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="kYb-qH-w3G"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" systemColor="systemGray6Color"/>
                         <constraints>
                             <constraint firstItem="cmY-3h-xkH" firstAttribute="top" secondItem="OXk-nO-7Gb" secondAttribute="bottom" constant="23" id="0I7-t3-fuP"/>
                             <constraint firstItem="9vs-Mm-Nik" firstAttribute="leading" secondItem="mPY-T2-9tb" secondAttribute="leading" id="0ex-7a-gZ2"/>
                             <constraint firstItem="kYb-qH-w3G" firstAttribute="trailing" secondItem="Yl7-rn-8kq" secondAttribute="trailing" constant="360" id="2v7-4u-vQJ"/>
                             <constraint firstItem="HrY-vP-Jrg" firstAttribute="leading" secondItem="kYb-qH-w3G" secondAttribute="leading" id="3B0-tn-szS"/>
+                            <constraint firstItem="kYb-qH-w3G" firstAttribute="trailing" secondItem="oGq-PU-vXm" secondAttribute="trailing" constant="13" id="3d2-vw-KCy"/>
                             <constraint firstItem="Yl7-rn-8kq" firstAttribute="top" secondItem="cmY-3h-xkH" secondAttribute="bottom" constant="23" id="3u9-On-Nga"/>
+                            <constraint firstItem="oGq-PU-vXm" firstAttribute="leading" secondItem="kYb-qH-w3G" secondAttribute="leading" constant="13" id="4fD-8z-mmb"/>
                             <constraint firstAttribute="trailing" secondItem="9vs-Mm-Nik" secondAttribute="trailing" id="98e-Up-u6e"/>
-                            <constraint firstItem="wyk-QG-C38" firstAttribute="leading" secondItem="mPY-T2-9tb" secondAttribute="leading" id="AhI-sN-b9l"/>
+                            <constraint firstItem="wyk-QG-C38" firstAttribute="top" secondItem="oGq-PU-vXm" secondAttribute="bottom" constant="40" id="Ase-X4-1sI"/>
                             <constraint firstItem="9vs-Mm-Nik" firstAttribute="top" secondItem="pnD-Bv-RVO" secondAttribute="bottom" constant="18" id="Axu-bn-l77"/>
                             <constraint firstItem="OXk-nO-7Gb" firstAttribute="top" secondItem="9vs-Mm-Nik" secondAttribute="bottom" constant="26" id="B93-Fk-VW6"/>
                             <constraint firstItem="HrY-vP-Jrg" firstAttribute="top" secondItem="mPY-T2-9tb" secondAttribute="top" id="C4L-oq-OwO"/>
@@ -530,14 +545,16 @@
                             <constraint firstItem="Kkl-uN-R3e" firstAttribute="top" secondItem="9vs-Mm-Nik" secondAttribute="bottom" constant="21" id="KdM-1d-X0H"/>
                             <constraint firstItem="pnD-Bv-RVO" firstAttribute="leading" secondItem="1Jb-X6-Pgh" secondAttribute="trailing" constant="27.5" id="LLH-ho-H4k"/>
                             <constraint firstItem="9vs-Mm-Nik" firstAttribute="top" secondItem="1Jb-X6-Pgh" secondAttribute="bottom" constant="23" id="OBT-t8-tqJ"/>
+                            <constraint firstItem="wyk-QG-C38" firstAttribute="leading" secondItem="cmY-3h-xkH" secondAttribute="leading" id="QWg-hU-vcq"/>
                             <constraint firstItem="Kkl-uN-R3e" firstAttribute="top" secondItem="9vs-Mm-Nik" secondAttribute="bottom" constant="21" id="Qmc-ZY-5Cu"/>
                             <constraint firstItem="kYb-qH-w3G" firstAttribute="trailing" secondItem="pnD-Bv-RVO" secondAttribute="trailing" constant="13" id="R0V-4D-p9x"/>
                             <constraint firstItem="cmY-3h-xkH" firstAttribute="leading" secondItem="mPY-T2-9tb" secondAttribute="leading" id="SUy-Ma-02U"/>
-                            <constraint firstItem="AiO-Ft-5GZ" firstAttribute="top" secondItem="wyk-QG-C38" secondAttribute="bottom" constant="37" id="Tjm-rS-O5c"/>
+                            <constraint firstItem="oGq-PU-vXm" firstAttribute="top" secondItem="Yl7-rn-8kq" secondAttribute="bottom" constant="21" id="TtS-bX-t7O"/>
                             <constraint firstItem="OXk-nO-7Gb" firstAttribute="leading" secondItem="kYb-qH-w3G" secondAttribute="leading" constant="13" id="XTN-uV-P8h"/>
                             <constraint firstItem="Yl7-rn-8kq" firstAttribute="leading" secondItem="kYb-qH-w3G" secondAttribute="leading" constant="13" id="ZGu-8U-OMI"/>
                             <constraint firstAttribute="trailing" secondItem="cmY-3h-xkH" secondAttribute="trailing" id="aMC-Jq-ShB"/>
                             <constraint firstItem="9vs-Mm-Nik" firstAttribute="top" secondItem="pnD-Bv-RVO" secondAttribute="bottom" constant="18" id="bAK-ls-efB"/>
+                            <constraint firstItem="kYb-qH-w3G" firstAttribute="trailing" secondItem="AiO-Ft-5GZ" secondAttribute="trailing" constant="67" id="biy-mc-OfQ"/>
                             <constraint firstAttribute="trailing" secondItem="cmY-3h-xkH" secondAttribute="trailing" id="d5J-2h-jgq"/>
                             <constraint firstItem="9vs-Mm-Nik" firstAttribute="leading" secondItem="mPY-T2-9tb" secondAttribute="leading" id="dqg-hE-oMI"/>
                             <constraint firstItem="cmY-3h-xkH" firstAttribute="leading" secondItem="mPY-T2-9tb" secondAttribute="leading" id="eTA-pZ-Udc"/>
@@ -545,16 +562,19 @@
                             <constraint firstItem="1Jb-X6-Pgh" firstAttribute="top" secondItem="HrY-vP-Jrg" secondAttribute="bottom" constant="26" id="gTQ-bm-BBp"/>
                             <constraint firstItem="Kkl-uN-R3e" firstAttribute="leading" secondItem="OXk-nO-7Gb" secondAttribute="trailing" constant="25" id="gyQ-ov-Czh"/>
                             <constraint firstItem="kYb-qH-w3G" firstAttribute="trailing" secondItem="Kkl-uN-R3e" secondAttribute="trailing" constant="13" id="jzB-OA-zTw"/>
+                            <constraint firstItem="oGq-PU-vXm" firstAttribute="centerX" secondItem="wyk-QG-C38" secondAttribute="centerX" id="kYU-zp-njt"/>
                             <constraint firstAttribute="trailing" secondItem="9vs-Mm-Nik" secondAttribute="trailing" id="ltu-dn-k30"/>
                             <constraint firstItem="pnD-Bv-RVO" firstAttribute="leading" secondItem="Kkl-uN-R3e" secondAttribute="leading" id="pFK-ZA-zAZ"/>
+                            <constraint firstItem="oGq-PU-vXm" firstAttribute="top" secondItem="cmY-3h-xkH" secondAttribute="bottom" constant="68" id="qYa-mZ-aIK"/>
                             <constraint firstAttribute="bottom" secondItem="9vs-Mm-Nik" secondAttribute="bottom" constant="732" id="rGq-Mq-KwJ"/>
                             <constraint firstItem="pnD-Bv-RVO" firstAttribute="trailing" secondItem="Kkl-uN-R3e" secondAttribute="trailing" id="rNy-Jz-Z87"/>
+                            <constraint firstItem="AiO-Ft-5GZ" firstAttribute="top" secondItem="wyk-QG-C38" secondAttribute="bottom" constant="37" id="rxa-8q-nx6"/>
                             <constraint firstItem="pnD-Bv-RVO" firstAttribute="top" secondItem="HrY-vP-Jrg" secondAttribute="bottom" constant="21" id="sZ6-VW-KyO"/>
+                            <constraint firstAttribute="bottom" secondItem="oGq-PU-vXm" secondAttribute="bottom" constant="256" id="srP-dg-rg7"/>
                             <constraint firstItem="cmY-3h-xkH" firstAttribute="top" secondItem="Kkl-uN-R3e" secondAttribute="bottom" constant="18" id="tdO-p9-SaL"/>
                             <constraint firstItem="1Jb-X6-Pgh" firstAttribute="leading" secondItem="kYb-qH-w3G" secondAttribute="leading" constant="13" id="uaE-76-mZz"/>
                             <constraint firstItem="cmY-3h-xkH" firstAttribute="top" secondItem="Kkl-uN-R3e" secondAttribute="bottom" constant="18" id="uw0-Oc-1AD"/>
                             <constraint firstItem="pnD-Bv-RVO" firstAttribute="top" secondItem="mPY-T2-9tb" secondAttribute="top" constant="111" id="vJb-oI-hDz"/>
-                            <constraint firstAttribute="trailing" secondItem="wyk-QG-C38" secondAttribute="trailing" id="vWp-9X-iIQ"/>
                             <constraint firstItem="9vs-Mm-Nik" firstAttribute="leading" secondItem="cmY-3h-xkH" secondAttribute="leading" id="wRR-eo-YCT"/>
                             <constraint firstItem="Yl7-rn-8kq" firstAttribute="top" secondItem="cmY-3h-xkH" secondAttribute="bottom" constant="23" id="yYL-X4-hsx"/>
                         </constraints>
@@ -573,15 +593,15 @@
                         <outlet property="medicalButton" destination="sAU-er-opM" id="uq3-E2-Yrm"/>
                         <outlet property="othersButton" destination="AcJ-oZ-oc9" id="Z5r-aA-x4E"/>
                         <outlet property="trafficButton" destination="a2w-Dp-jMO" id="Y8j-vh-6SC"/>
-                        <outletCollection property="categoryButtons" destination="a2w-Dp-jMO" collectionClass="NSMutableArray" id="cpk-MS-Wjl"/>
+                        <outletCollection property="categoryButtons" destination="6GY-GM-rZu" collectionClass="NSMutableArray" id="PZB-qn-oKc"/>
                         <outletCollection property="categoryButtons" destination="JKL-hH-BdT" collectionClass="NSMutableArray" id="V4h-Ph-StP"/>
                         <outletCollection property="categoryButtons" destination="2oa-gb-UZC" collectionClass="NSMutableArray" id="N83-D8-7gZ"/>
-                        <outletCollection property="categoryButtons" destination="PoT-Vh-fRe" collectionClass="NSMutableArray" id="rbx-VP-MTz"/>
+                        <outletCollection property="categoryButtons" destination="a2w-Dp-jMO" collectionClass="NSMutableArray" id="cpk-MS-Wjl"/>
                         <outletCollection property="categoryButtons" destination="Xg9-Fo-Ua8" collectionClass="NSMutableArray" id="mED-gG-Bou"/>
+                        <outletCollection property="categoryButtons" destination="PoT-Vh-fRe" collectionClass="NSMutableArray" id="rbx-VP-MTz"/>
                         <outletCollection property="categoryButtons" destination="sAU-er-opM" collectionClass="NSMutableArray" id="Nkn-pb-Rrp"/>
                         <outletCollection property="categoryButtons" destination="784-mj-Pjg" collectionClass="NSMutableArray" id="w1a-HT-GpS"/>
                         <outletCollection property="categoryButtons" destination="AcJ-oZ-oc9" collectionClass="NSMutableArray" id="5xA-Jq-SIM"/>
-                        <outletCollection property="categoryButtons" destination="6GY-GM-rZu" collectionClass="NSMutableArray" id="PZB-qn-oKc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WTF-TF-31a" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

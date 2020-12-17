@@ -59,7 +59,7 @@ class RecordViewController: UIViewController {
         didSet {
             foodButton.imageView?.contentMode = .scaleAspectFill
             foodButton.setTitleColor(.black, for: .normal)
-            foodButton.backgroundColor = UIColor(red: 89/255, green: 142/255, blue: 212/255, alpha: 1)
+//            foodButton.backgroundColor = UIColor(red: 89/255, green: 142/255, blue: 212/255, alpha: 1)
             guard let title = foodButton.currentTitle else { return }
             selectedCategory = title
         }
@@ -122,9 +122,11 @@ class RecordViewController: UIViewController {
         let tag = sender.tag
         for button in categoryButtons {
             if button.tag == tag {
+                button.layer.borderColor = UIColor.black.cgColor
                 button.setTitleColor(.black, for: .normal)
-                button.backgroundColor = UIColor(red: 89/255, green: 142/255, blue: 212/255, alpha: 1)
+//                button.backgroundColor = UIColor(red: 89/255, green: 142/255, blue: 212/255, alpha: 1)
             } else {
+                button.layer.borderColor = UIColor.gray.cgColor
                 button.setTitleColor(.gray, for: .normal)
                 button.backgroundColor = .white
             }
