@@ -218,15 +218,9 @@ PODS:
   - BoringSSL-GRPC/Implementation (0.0.7):
     - BoringSSL-GRPC/Interface (= 0.0.7)
   - BoringSSL-GRPC/Interface (0.0.7)
-  - CardParts (3.2.0):
-    - RxCocoa (~> 5.0)
-    - RxDataSources (~> 4.0)
-    - RxGesture (~> 3.0)
-    - RxSwift (~> 5.0)
   - Charts (3.6.0):
     - Charts/Core (= 3.6.0)
   - Charts/Core (3.6.0)
-  - Differentiator (4.0.1)
   - Firebase/Auth (6.34.0):
     - Firebase/CoreOnly
     - FirebaseAuth (~> 6.9.2)
@@ -314,24 +308,10 @@ PODS:
   - nanopb/decode (1.30906.0)
   - nanopb/encode (1.30906.0)
   - PromisesObjC (1.2.11)
-  - RxCocoa (5.1.1):
-    - RxRelay (~> 5)
-    - RxSwift (~> 5)
-  - RxDataSources (4.0.1):
-    - Differentiator (~> 4.0)
-    - RxCocoa (~> 5.0)
-    - RxSwift (~> 5.0)
-  - RxGesture (3.0.2):
-    - RxCocoa (~> 5.1)
-    - RxSwift (~> 5.1)
-  - RxRelay (5.1.1):
-    - RxSwift (~> 5)
-  - RxSwift (5.1.1)
   - SwiftLint (0.41.0)
   - UICircularProgressRing (7.0.0)
 
 DEPENDENCIES:
-  - CardParts
   - Charts
   - Firebase/Auth
   - Firebase/Firestore
@@ -345,9 +325,7 @@ SPEC REPOS:
   trunk:
     - abseil
     - BoringSSL-GRPC
-    - CardParts
     - Charts
-    - Differentiator
     - Firebase
     - FirebaseAuth
     - FirebaseCore
@@ -364,20 +342,13 @@ SPEC REPOS:
     - leveldb-library
     - nanopb
     - PromisesObjC
-    - RxCocoa
-    - RxDataSources
-    - RxGesture
-    - RxRelay
-    - RxSwift
     - SwiftLint
     - UICircularProgressRing
 
 SPEC CHECKSUMS:
   abseil: 6c8eb7892aefa08d929b39f9bb108e5367e3228f
   BoringSSL-GRPC: 8edf627ee524575e2f8d19d56f068b448eea3879
-  CardParts: ba1655367d4fa053e45d5ec932ee298f70f9464d
   Charts: b1e3a1f5a1c9ba5394438ca3b91bd8c9076310af
-  Differentiator: 886080237d9f87f322641dedbc5be257061b0602
   Firebase: c23a36d9e4cdf7877dfcba8dd0c58add66358999
   FirebaseAuth: c92d49ada7948d1a23466e3db17bc4c2039dddc3
   FirebaseCore: d3a978a3cfa3240bf7e4ba7d137fdf5b22b628ec
@@ -394,14 +365,9 @@ SPEC CHECKSUMS:
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
   nanopb: 59317e09cf1f1a0af72f12af412d54edf52603fc
   PromisesObjC: 8c196f5a328c2cba3e74624585467a557dcb482f
-  RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
-  RxDataSources: efee07fa4de48477eca0a4611e6d11e2da9c1114
-  RxGesture: d6bd7447ca3a596c7a9702a6a2b6a2bb5d8bae54
-  RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
-  RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
   SwiftLint: c585ebd615d9520d7fbdbe151f527977b0534f1e
   UICircularProgressRing: 738b48db0ec1fbbd8482d727979392bb8c272e8d
 
-PODFILE CHECKSUM: bd494e4dfdbc487eb744299984323326dd1d72fd
+PODFILE CHECKSUM: ba5c41dcd0e46df1da24e24f0bba3f9acde31c42
 
 COCOAPODS: 1.10.0

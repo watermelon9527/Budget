@@ -57,20 +57,53 @@ class RecordViewController: UIViewController {
     }
     @IBOutlet weak var foodButton: UIButton! {
         didSet {
+            foodButton.imageView?.contentMode = .scaleAspectFill
             foodButton.setTitleColor(.black, for: .normal)
             foodButton.backgroundColor = UIColor(red: 89/255, green: 142/255, blue: 212/255, alpha: 1)
             guard let title = foodButton.currentTitle else { return }
             selectedCategory = title
         }
     }
-    @IBOutlet weak var drinkButton: UIButton!
-    @IBOutlet weak var entertainButton: UIButton!
-    @IBOutlet weak var trafficButton: UIButton!
-    @IBOutlet weak var consumeButton: UIButton!
-    @IBOutlet weak var houseHoldButton: UIButton!
-    @IBOutlet weak var medicalButton: UIButton!
-    @IBOutlet weak var othersButton: UIButton!
-    @IBOutlet weak var incomeButton: UIButton!
+    @IBOutlet weak var drinkButton: UIButton! {
+        didSet{
+            drinkButton.imageView?.contentMode = .scaleAspectFill
+        }
+    }
+    @IBOutlet weak var entertainButton: UIButton! {
+        didSet{
+            entertainButton.imageView?.contentMode = .scaleAspectFill
+        }
+    }
+    @IBOutlet weak var trafficButton: UIButton! {
+        didSet{
+            trafficButton.imageView?.contentMode = .scaleAspectFill
+        }
+    }
+    @IBOutlet weak var consumeButton: UIButton! {
+        didSet{
+            consumeButton.imageView?.contentMode = .scaleAspectFill
+        }
+    }
+    @IBOutlet weak var houseHoldButton: UIButton! {
+        didSet{
+            houseHoldButton.imageView?.contentMode = .scaleAspectFill
+        }
+    }
+    @IBOutlet weak var medicalButton: UIButton! {
+        didSet{
+            medicalButton.imageView?.contentMode = .scaleAspectFill
+        }
+    }
+    @IBOutlet weak var othersButton: UIButton! {
+        didSet{
+            othersButton.imageView?.contentMode = .scaleAspectFill
+        }
+    }
+    @IBOutlet weak var incomeButton: UIButton! {
+        didSet{
+            incomeButton.imageView?.contentMode = .scaleAspectFill
+        }
+    }
     @IBAction func confimButton(_ sender: Any) {
         if amountTextField.text?.isEmpty != true {
         getDate()
@@ -105,7 +138,7 @@ class RecordViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = true
-        
+
     }
     func listen() {
         db.collection("User").document("Y04LSGt0HVgAmmAO8ojU").collection("record")

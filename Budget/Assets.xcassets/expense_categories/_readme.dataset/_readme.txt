@@ -1,0 +1,1 @@
+This set of 41 expense category icons is intended for using in mobile application or whatever you want. You can use these icons for both commercial and non-commercial projects but not allow to re-sell or offered for free downloading from other websites other than https://sugarysoft.com and https://www.iconfinder.com.
