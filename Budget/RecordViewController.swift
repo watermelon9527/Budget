@@ -65,42 +65,42 @@ class RecordViewController: UIViewController {
         }
     }
     @IBOutlet weak var drinkButton: UIButton! {
-        didSet{
+        didSet {
             drinkButton.imageView?.contentMode = .scaleAspectFill
         }
     }
     @IBOutlet weak var entertainButton: UIButton! {
-        didSet{
+        didSet {
             entertainButton.imageView?.contentMode = .scaleAspectFill
         }
     }
     @IBOutlet weak var trafficButton: UIButton! {
-        didSet{
+        didSet {
             trafficButton.imageView?.contentMode = .scaleAspectFill
         }
     }
     @IBOutlet weak var consumeButton: UIButton! {
-        didSet{
+        didSet {
             consumeButton.imageView?.contentMode = .scaleAspectFill
         }
     }
     @IBOutlet weak var houseHoldButton: UIButton! {
-        didSet{
+        didSet {
             houseHoldButton.imageView?.contentMode = .scaleAspectFill
         }
     }
     @IBOutlet weak var medicalButton: UIButton! {
-        didSet{
+        didSet {
             medicalButton.imageView?.contentMode = .scaleAspectFill
         }
     }
     @IBOutlet weak var othersButton: UIButton! {
-        didSet{
+        didSet {
             othersButton.imageView?.contentMode = .scaleAspectFill
         }
     }
     @IBOutlet weak var incomeButton: UIButton! {
-        didSet{
+        didSet {
             incomeButton.imageView?.contentMode = .scaleAspectFill
         }
     }
