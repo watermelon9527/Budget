@@ -20,7 +20,6 @@ class ListViewController: UIViewController {
     var recordArray = [Record]()
     var datesWithEvent = [Record]()
     var selectedDate = Date()
-
     fileprivate lazy var dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy/MM/dd"
@@ -36,6 +35,10 @@ class ListViewController: UIViewController {
         listTableView.backgroundColor = .systemGray5
         listTableView.dataSource = self
         listTableView.delegate = self
+
+        FSCalendar.firstWeekday = 2
+        FSCalendar.clipsToBounds = true
+
         FSCalendar.delegate = self
         FSCalendar.dataSource = self
         db = Firestore.firestore()
