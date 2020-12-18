@@ -10,12 +10,17 @@ import FirebaseCore
 import FirebaseFirestoreSwift
 import FirebaseFirestore
 class PersonalViewController: UIViewController {
-
+    let picker0 = UIPickerView()
+    let picker1 = UIPickerView()
+    let time = ["月", "週", "日"]
+    let category = ["食物", "飲品", "娛樂", "交通", "消費", "家用", "醫藥", "收入", "其他"]
     @IBOutlet weak var timeTextField: UITextField!
     @IBOutlet weak var budgetTextField: UITextField!
     @IBOutlet weak var categoryTextField: UITextField!
     @IBAction func sendButton(_ sender: UIButton) {
         if timeTextField.text?.isEmpty != true {
+            getDate()
+            addBudget(today: today)
             timeTextField.text = ""
             budgetTextField.text = ""
             categoryTextField.text = ""
@@ -31,10 +36,6 @@ class PersonalViewController: UIViewController {
         }
     }
 
-    let picker0 = UIPickerView()
-    let picker1 = UIPickerView()
-    let time = ["月", "週", "日"]
-    let category = ["食物", "飲品", "娛樂", "交通", "消費", "家用", "醫藥", "收入", "其他"]
     let db = Firestore.firestore()
     var ref: DocumentReference?
     let date = Date()
@@ -54,7 +55,7 @@ class PersonalViewController: UIViewController {
         timeTextField.inputView = picker0
         categoryTextField.inputView = picker1
     }
-    func addData(today: String) {
+    func addBudget(today: String) {
         let dateString = self.dateFormatter.string(from: Date())
         ref = db.collection("User").document("Y04LSGt0HVgAmmAO8ojU").collection("category").addDocument(data: [
             "amount": Int(budgetTextField.text ?? "0") ?? 0   ,
@@ -73,11 +74,8 @@ class PersonalViewController: UIViewController {
     func getDate() {
         let timeStamp = date.timeIntervalSince1970
         let timeInterval = TimeInterval(timeStamp)
-
         let date = Date(timeIntervalSince1970: timeInterval)
-
         let dateFormatter = DateFormatter()
-
         dateFormatter.dateFormat = "yyyy/MM/dd HH:mm"
 
         today = dateFormatter.string(from: date)

@@ -126,7 +126,7 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
         if record.category == "食物" {
             cell.categoryImageView.image = UIImage(named: "ic_Food" )
         } else if record.category == "飲品" {
-            cell.categoryImageView.image = UIImage(named: "ic_drink" )
+            cell.categoryImageView.image = UIImage(named: "ic_beer" )
         } else if record.category == "娛樂" {
             cell.categoryImageView.image = UIImage(named: "ic_entertainmmment" )
         } else if record.category == "交通" {
@@ -150,9 +150,7 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
 }
 extension ListViewController: FSCalendarDelegate, FSCalendarDataSource, UIGestureRecognizerDelegate {
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-
         selectedDate = date
-        print(selectedDate)
         let dateString = self.dateFormatter.string(from: date)
         self.recordArray = []
         loadRecord(time: dateString)
