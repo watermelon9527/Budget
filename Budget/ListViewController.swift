@@ -19,6 +19,7 @@ class ListViewController: UIViewController {
     var allRecordArray = [Record]()
     var recordArray = [Record]()
     var datesWithEvent = [Record]()
+    var selectedDate = Date()
 
     fileprivate lazy var dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -39,13 +40,16 @@ class ListViewController: UIViewController {
         FSCalendar.dataSource = self
         db = Firestore.firestore()
 
+//        let dateString = self.dateFormatter.string(from: Date())
+//        listen(time: dateString)
+
         listTableView.reloadData()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         FSCalendar.backgroundColor = .systemGray6
-        let dateString = self.dateFormatter.string(from: Date())
+        let dateString = self.dateFormatter.string(from: selectedDate)
         listen(time: dateString)
         self.recordArray = []
         listTableView.reloadData()
@@ -59,7 +63,7 @@ class ListViewController: UIViewController {
         }
     }
     func listen(time: String) {
-        let dateString = self.dateFormatter.string(from: Date())
+        let dateString = self.dateFormatter.string(from: selectedDate)
         db.collection("User").document("Y04LSGt0HVgAmmAO8ojU").collection("record").order(by: "timeStamp", descending: true)
             .addSnapshotListener { documentSnapshot, error in
                 guard let document = documentSnapshot else {
@@ -146,6 +150,9 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
 }
 extension ListViewController: FSCalendarDelegate, FSCalendarDataSource, UIGestureRecognizerDelegate {
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+
+        selectedDate = date
+        print(selectedDate)
         let dateString = self.dateFormatter.string(from: date)
         self.recordArray = []
         loadRecord(time: dateString)
