@@ -59,7 +59,7 @@ class PersonalViewController: UIViewController {
         let dateString = self.dateFormatter.string(from: Date())
         ref = db.collection("User").document("Y04LSGt0HVgAmmAO8ojU").collection("category").addDocument(data: [
             "amount": Int(budgetTextField.text ?? "0") ?? 0   ,
-            "category": "\(categoryTextField.text ?? "bad")",
+            "category": "\(categoryTextField.text ?? "bad category")",
             "perioad": "\(timeTextField.text ?? "bad time")",
             "timeStamp": today,
             "date": dateString
@@ -74,8 +74,11 @@ class PersonalViewController: UIViewController {
     func getDate() {
         let timeStamp = date.timeIntervalSince1970
         let timeInterval = TimeInterval(timeStamp)
+
         let date = Date(timeIntervalSince1970: timeInterval)
+
         let dateFormatter = DateFormatter()
+
         dateFormatter.dateFormat = "yyyy/MM/dd HH:mm"
 
         today = dateFormatter.string(from: date)

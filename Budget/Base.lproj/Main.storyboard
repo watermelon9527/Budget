@@ -104,6 +104,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="amountLabel" destination="81t-H5-w6J" id="Ww4-5F-izd"/>
+                                            <outlet property="categoryImage" destination="mjG-Mp-ofR" id="jbd-HT-7sO"/>
                                             <outlet property="categoryLabel" destination="5Yv-M9-Dip" id="99C-zS-rN9"/>
                                             <outlet property="circleView" destination="7WG-XZ-LUo" id="kvI-f6-6hk"/>
                                         </connections>

@@ -19,6 +19,7 @@
 		B98904A52570AA810031A517 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98904A42570AA810031A517 /* ListViewController.swift */; };
 		B99606F12574B88E00A18EBA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99606F02574B88E00A18EBA /* LoginViewController.swift */; };
 		B9AD55B8257788BE00B50B15 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD55B7257788BE00B50B15 /* TabBarViewController.swift */; };
+		B9B40DCE258CADAF00573A46 /* Budget.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B40DCD258CADAF00573A46 /* Budget.swift */; };
 		B9DAD4E5256E36D500D02EA2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DAD4E4256E36D500D02EA2 /* AppDelegate.swift */; };
 		B9DAD4E7256E36D500D02EA2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DAD4E6256E36D500D02EA2 /* SceneDelegate.swift */; };
 		B9DAD4E9256E36D500D02EA2 /* BudgetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DAD4E8256E36D500D02EA2 /* BudgetViewController.swift */; };
@@ -44,6 +45,7 @@
 		B98904A42570AA810031A517 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		B99606F02574B88E00A18EBA /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		B9AD55B7257788BE00B50B15 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		B9B40DCD258CADAF00573A46 /* Budget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Budget.swift; sourceTree = "<group>"; };
 		B9CD02D1257E707E00E53AA2 /* Budget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Budget.entitlements; sourceTree = "<group>"; };
 		B9DAD4E1256E36D500D02EA2 /* Budget.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Budget.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9DAD4E4256E36D500D02EA2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -75,6 +77,7 @@
 			isa = PBXGroup;
 			children = (
 				B90C0D96257F138E001C657B /* Record.swift */,
+				B9B40DCD258CADAF00573A46 /* Budget.swift */,
 				B90C0D9D257F3765001C657B /* User.swift */,
 			);
 			path = Firebase;
@@ -295,6 +298,7 @@
 				B9DAD506256E4E3B00D02EA2 /* QRScannerController.swift in Sources */,
 				B9DAD502256E4C3F00D02EA2 /* QRCodeViewController.swift in Sources */,
 				B9DAD4E7256E36D500D02EA2 /* SceneDelegate.swift in Sources */,
+				B9B40DCE258CADAF00573A46 /* Budget.swift in Sources */,
 				B9FD6567257632180032BB13 /* PersonalViewController.swift in Sources */,
 				B90C0D9E257F3765001C657B /* User.swift in Sources */,
 				B9AD55B8257788BE00B50B15 /* TabBarViewController.swift in Sources */,

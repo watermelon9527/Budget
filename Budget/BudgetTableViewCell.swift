@@ -23,6 +23,7 @@ class BudgetTableViewCell: UITableViewCell {
     }
     @IBOutlet weak var categoryLabel: UILabel!
     @IBOutlet weak var amountLabel: UILabel!
+    @IBOutlet weak var categoryImage: UIImageView!
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
