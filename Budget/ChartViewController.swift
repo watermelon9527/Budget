@@ -30,12 +30,10 @@ class ChartViewController: UIViewController {
     func updatePieChartData() {
 
         let chart = pieChartView!
-   //     let track = ["Food", "Drink", "Entertainment", "Traffic"]
         let track1 = ["食物", "飲品", "娛樂", "交通", "消費", "家用", "醫藥", "其他"]
-   //     let money = [650, 456.13, 78.67, 856.52]
         let money1 = [650, 456.13, 78.67, 856.52, 200, 300, 400, 200]
-
         var entries = [PieChartDataEntry]()
+        
         for (index, value) in money1.enumerated() {
             let entry = PieChartDataEntry()
             entry.y = value
@@ -44,25 +42,16 @@ class ChartViewController: UIViewController {
         }
 
         let set = PieChartDataSet( entries: entries, label: "項目佔比")
-        // this is custom extension method. Download the code for more details.
-//        var colors: [UIColor] = []
         let colors1: [UIColor] = [UIColor(red: 104/255, green: 124/255, blue: 139/255, alpha: 1),
                                   UIColor(red: 73/255, green: 87/255, blue: 93/255, alpha: 1),
                                   UIColor(red: 107/255, green: 111/255, blue: 139/255, alpha: 1),
-                                  UIColor(red: 73/255, green: 97/255, blue: 81/255, alpha: 1),
+                                  UIColor(red: 141/255, green: 220/255, blue: 228/255, alpha: 1),
                                   UIColor(red: 104/255, green: 139/255, blue: 116/255, alpha: 1),
                                   UIColor(red: 139/255, green: 133/255, blue: 104/255, alpha: 1),
-                                  UIColor(red: 97/255, green: 73/255, blue: 88/255, alpha: 1),
-                                  UIColor(red: 139/255, green: 104/255, blue: 126/255, alpha: 1)]
+                                  UIColor(red: 224/255, green: 229/255, blue: 225/255, alpha: 1),
+                                  UIColor(red: 139/255, green: 104/255, blue: 126/255, alpha: 1)
+        ]
 
-//        for _ in 0..<money1.count {
-//            let red = Double(arc4random_uniform(256))
-//            let green = Double(arc4random_uniform(256))
-//            let blue = Double(arc4random_uniform(256))
-//            let color = UIColor(red: CGFloat(red/255), green: CGFloat(green/255), blue: CGFloat(blue/255), alpha: 1)
-//
-//            colors.append(color)
-//        }
         set.colors = colors1
         let data = PieChartData(dataSet: set)
         chart.data = data
@@ -105,7 +94,7 @@ class ChartViewController: UIViewController {
         limit.lineColor = .black
         limit.valueTextColor = .black
         barChartView.rightAxis.addLimitLine(limit)
-        chartDataSet.colors = [UIColor(red: 104/255, green: 117/255, blue: 139/255, alpha: 1)]
+        chartDataSet.colors = [UIColor(red: 29/255, green: 78/255, blue: 143/255, alpha: 1)]
 
         //            //改變chartDataSet的顏色，此為橘色
         //            chartDataSet.colors = [UIColor(red: 230/255, green: 126/255, blue: 34/255, alpha: 1)]

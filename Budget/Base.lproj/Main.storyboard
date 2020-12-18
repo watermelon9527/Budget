@@ -173,7 +173,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DTs-7b-F1D" customClass="PieChartView" customModule="Charts">
-                                <rect key="frame" x="0.0" y="480" width="414" height="333"/>
+                                <rect key="frame" x="0.0" y="480" width="414" height="313"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cUU-th-e9Z">
@@ -197,7 +197,7 @@
                         <color key="backgroundColor" systemColor="systemGray6Color"/>
                         <constraints>
                             <constraint firstItem="cUU-th-e9Z" firstAttribute="leading" secondItem="7zt-oG-swb" secondAttribute="leading" id="8Mx-Bf-ZWT"/>
-                            <constraint firstItem="DTs-7b-F1D" firstAttribute="bottom" secondItem="7zt-oG-swb" secondAttribute="bottom" id="99M-FN-QoR"/>
+                            <constraint firstItem="DTs-7b-F1D" firstAttribute="bottom" secondItem="7zt-oG-swb" secondAttribute="bottom" constant="-20" id="99M-FN-QoR"/>
                             <constraint firstItem="trD-gx-bvq" firstAttribute="trailing" secondItem="DTs-7b-F1D" secondAttribute="trailing" id="ADA-xU-JUz"/>
                             <constraint firstItem="trD-gx-bvq" firstAttribute="leading" secondItem="DTs-7b-F1D" secondAttribute="leading" id="BRJ-cZ-iOa"/>
                             <constraint firstItem="Og1-CR-MfG" firstAttribute="top" secondItem="trD-gx-bvq" secondAttribute="bottom" constant="1" id="Fre-cy-6dI"/>
@@ -1118,7 +1118,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ddg-60-gtF" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-786" y="2320"/>
+            <point key="canvasLocation" x="-794" y="2231"/>
         </scene>
         <!--Scanner Controller-->
         <scene sceneID="FXK-iH-Cry">
