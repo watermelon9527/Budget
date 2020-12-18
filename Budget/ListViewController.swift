@@ -68,7 +68,7 @@ class ListViewController: UIViewController {
                 }
                 self.allRecordArray.removeAll()
                 _ = document.documentChanges.map {
-             //       print($0.document.data())
+                    //       print($0.document.data())
                     let data = $0.document.data()
                     let amount = data["amount"] as? Int ?? 0
                     let category = data["category"] as? String ?? ""
@@ -88,7 +88,7 @@ class ListViewController: UIViewController {
             print("\(error.localizedDescription)")
         } else {
             for document in snapshot!.documents {
-           //     print(document.data())
+                //     print(document.data())
                 let data = document.data()
                 let amount = data["amount"] as? Int ?? 0
                 let category = data["category"] as? String ?? ""
@@ -114,11 +114,29 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = listTableView.dequeueReusableCell(withIdentifier: "ListTableViewCell", for: indexPath) as! ListTableViewCell
         let record = recordArray[indexPath.row]
+
         cell.amountLabel.text = "$\(record.amount)"
         cell.categoryLabel.text = "\(record.category)"
         cell.commitLabel.text = "\(record.comments)"
         cell.timeLabel.text = "\(record.timeStamp)"
-
+        if record.category == "食物" {
+            cell.categoryImageView.image = UIImage(named: "ic_Food" )
+        } else if record.category == "飲品" {
+            cell.categoryImageView.image = UIImage(named: "ic_drink" )
+        } else if record.category == "娛樂" {
+            cell.categoryImageView.image = UIImage(named: "ic_entertainmmment" )
+        } else if record.category == "交通" {
+            cell.categoryImageView.image = UIImage(named: "ic_car" )
+        } else if record.category == "消費" {
+            cell.categoryImageView.image = UIImage(named: "ic_Clothes" )
+        } else if record.category == "家用" {
+            cell.categoryImageView.image = UIImage(named: "ic_home" )
+        } else if record.category == "醫藥" {
+            cell.categoryImageView.image = UIImage(named: "ic_medical" )
+        } else if record.category == "收入" {
+            cell.categoryImageView.image = UIImage(named: "ic_sell" )
+        } else if record.category == "其他" {
+            cell.categoryImageView.image = UIImage(named: "ic_other" )}
         return cell
     }
 
@@ -141,7 +159,7 @@ extension ListViewController: FSCalendarDelegate, FSCalendarDataSource, UIGestur
     func calendar(_ calendar: FSCalendar, imageFor date: Date) -> UIImage? {
         let dateString = self.dateFormatter.string(from: date)
         if allRecordArray.map({ $0.date }).contains(dateString) {
-            return UIImage(systemName: "circle.fill")!.resized(to: CGSize(width: 7, height: 7))
+            return UIImage(systemName: "circle.fill")!.resized(to: CGSize(width: 6, height: 6))
         }
         return nil
     }
