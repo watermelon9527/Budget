@@ -13,7 +13,7 @@ import FirebaseFirestore
 class BudgetViewController: UIViewController, UITableViewDelegate {
 
     var cell = BudgetTableViewCell()
-    var db: Firestore!
+    var db = Firestore.firestore()
     var budgetArray = [Budget]()
 
     @IBOutlet weak var budgetTableView: UITableView!
@@ -22,7 +22,7 @@ class BudgetViewController: UIViewController, UITableViewDelegate {
         budgetTableView.dataSource = self
         budgetTableView.delegate = self
         budgetTableView.backgroundColor = .systemGray5
-        loadBudget()
+    loadBudget()
 
     }
 
@@ -31,7 +31,7 @@ class BudgetViewController: UIViewController, UITableViewDelegate {
         circle?.startProgress(to: 60, duration: 1)
     }
 
-    func loadBudget() {  db.collection("User").document("Y04LSGt0HVgAmmAO8ojU").collection("category").getDocuments { snapshot, error in
+    func loadBudget() {          db.collection("User").document("Y04LSGt0HVgAmmAO8ojU").collection("category").getDocuments { snapshot, error in
             if let error = error {
                 print("\(error.localizedDescription)")
             } else {
