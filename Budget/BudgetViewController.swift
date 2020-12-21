@@ -14,18 +14,6 @@ class BudgetViewController: UIViewController, UITableViewDelegate {
 
     var cell = BudgetTableViewCell()
     var db = Firestore.firestore()
-    var budgetArray = [Budget]()
-//    {
-//        didSet {
-//            for budget in budgetArray {
-//                loadRecordAmount(day1: budget.date, day2: today, category: budget.category) { [weak self] (sum) in
-//
-//                    self?.sum = sum
-//                }
-//            }
-//            self.budgetTableView.reloadData()
-//        }
-//    }
 
     var progressPercentage: Int = 0
     var today: String!
@@ -53,19 +41,36 @@ class BudgetViewController: UIViewController, UITableViewDelegate {
 
     }
     override func viewDidAppear(_ animated: Bool) {
-//        let circle = cell.circleView
-//     circle?.startProgress(to: 60, duration: 1)
+        //        let circle = cell.circleView
+        //     circle?.startProgress(to: 60, duration: 1)
     }
+    var budgetArray = [Budget]()
+//        {
+//            didSet {
+//                getDate()
+//                amountArray = []
+//                for budget in budgetArray {
+//                    loadRecordAmount(day1: budget.date, day2: today, category: budget.category) { [weak self] (sum) in
+//                        self?.sum = sum
+//
+//                        self?.cell.remainderAmount.text = "$\(budget.amount-sum)"
+//                        let remainAmount = Double(budget.amount-sum)
+//                        let amount = Double(budget.amount)
+//                        let progressPercentage = remainAmount/amount*100
+//                        self?.cell.circleView.startProgress(to: CGFloat(progressPercentage), duration: 1.5)
+//
+//                    }
+//                }
+//                self.budgetTableView.reloadData()
+//            }
+//        }
 
     func loadData() {
-//        var records = [Budget]()
-
         loadBudgetCategory { [weak self] (newRecords) in
             self?.getDate()
             self?.budgetArray = newRecords
 
         }
-//        loadRecordAmount(day1: records[0].date, day2: today ?? "")
     }
 
     func getDate() {
@@ -110,16 +115,16 @@ class BudgetViewController: UIViewController, UITableViewDelegate {
     func loadRecordAmount(day1: String, day2: String, category: String, completion: @escaping(Int) -> Void) {
         db.collection("User").document("Y04LSGt0HVgAmmAO8ojU").collection("record")
             .whereField("date", isLessThanOrEqualTo: day2)
-           .whereField("date", isGreaterThan: day1 )
-           .whereField("category", isEqualTo: category)
+            .whereField("date", isGreaterThan: day1 )
+            .whereField("category", isEqualTo: category)
             .getDocuments { snapshot, error in
                 if let error = error {
                     print("\(error.localizedDescription)")
                 } else {
                     for document in snapshot!.documents {
                         let data = document.data()
-//                        print("👻👻👻👻👻👻👻👻👻👻👻👻👻👻👻👻👻👻👻")
-//                        print(data)
+                        //                        print("👻👻👻👻👻👻👻👻👻👻👻👻👻👻👻👻👻👻👻")
+                                                print(data)
                         let amount = data["amount"] as? Int ?? 0
                         self.amountArray.append(amount)
                     }
@@ -128,7 +133,7 @@ class BudgetViewController: UIViewController, UITableViewDelegate {
                     completion(sum)
                 }
             }
-        }
+    }
 }
 
 extension BudgetViewController: UITabBarDelegate, UITableViewDataSource {
@@ -141,15 +146,17 @@ extension BudgetViewController: UITabBarDelegate, UITableViewDataSource {
         let cell = budgetTableView.dequeueReusableCell(withIdentifier: "BudgetTableViewCell", for: indexPath) as! BudgetTableViewCell
         let budget = budgetArray[indexPath.row]
         getDate()
-//        loadData()
-            loadRecordAmount(day1: budget.date, day2: today, category: budget.category) { [ weak self ] (sum) in
+        //        loadData()
+        amountArray = []
+        loadRecordAmount(day1: budget.date, day2: today, category: budget.category) { [ weak self ] (sum) in
             cell.remainderAmount.text = "$\(budget.amount-sum)"
             let remainAmount = Double(budget.amount-sum)
             let amount = Double(budget.amount)
             let progressPercentage = remainAmount/amount*100
-            cell.circleView.startProgress(to: CGFloat(progressPercentage), duration: 2)
+            cell.circleView.startProgress(to: CGFloat(progressPercentage), duration: 1.5)
 
         }
+        
         cell.amountLabel.text = "$\(budget.amount)"
         cell.remainderCategory.text = "剩餘金額"
 
@@ -176,7 +183,6 @@ extension BudgetViewController: UITabBarDelegate, UITableViewDataSource {
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        //        return UITableView.automaticDimension
         return 206
     }
 }
