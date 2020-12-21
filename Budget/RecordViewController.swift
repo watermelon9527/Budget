@@ -136,6 +136,10 @@ class RecordViewController: UIViewController {
         self.navigationController?.navigationBar.isHidden = true
 
     }
+    override func viewWillAppear(_ animated: Bool) {
+        self.tabBarController?.tabBar.isHidden = false
+
+    }
     func listen() {
         db.collection("User").document("Y04LSGt0HVgAmmAO8ojU").collection("record")
             .addSnapshotListener { documentSnapshot, error in

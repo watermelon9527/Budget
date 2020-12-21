@@ -15,7 +15,8 @@ class QRCodeViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     @IBAction func dissmissButton(_ sender: UIButton) {
-        self.navigationController?.popViewController(animated: true)
+//        self.navigationController?.popViewController(animated: true)
+        self.navigationController?.dismiss(animated: true, completion: nil)
     }
     @IBAction func unwindToHomeScreen(segue: UIStoryboardSegue) {
         dismiss(animated: true, completion: nil)

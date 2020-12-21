@@ -142,7 +142,7 @@ extension BudgetViewController: UITabBarDelegate, UITableViewDataSource {
         let budget = budgetArray[indexPath.row]
         getDate()
 //        loadData()
-        loadRecordAmount(day1: budget.date, day2: today, category: budget.category) { [ weak self ] (sum) in
+            loadRecordAmount(day1: budget.date, day2: today, category: budget.category) { [ weak self ] (sum) in
             cell.remainderAmount.text = "$\(budget.amount-sum)"
             let remainAmount = Double(budget.amount-sum)
             let amount = Double(budget.amount)

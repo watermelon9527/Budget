@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="hCe-gc-8xH">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="HeT-0Y-lyK">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
@@ -71,7 +71,7 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uAn-0T-fNT">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uAn-0T-fNT">
                                                             <rect key="frame" x="133" y="162" width="82" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                             <nil key="textColor"/>
@@ -184,7 +184,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="trD-gx-bvq" customClass="BarChartView" customModule="Charts">
-                                <rect key="frame" x="0.0" y="90" width="414" height="354"/>
+                                <rect key="frame" x="0.0" y="133" width="414" height="311"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="消費佔比" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Og1-CR-MfG">
@@ -200,7 +200,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cUU-th-e9Z">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="90"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="消費趨勢" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f3V-gH-TiT">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="統計圖表" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f3V-gH-TiT">
                                         <rect key="frame" x="162" y="52" width="90" height="27"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -213,6 +213,12 @@
                                     <constraint firstItem="f3V-gH-TiT" firstAttribute="top" secondItem="cUU-th-e9Z" secondAttribute="topMargin" id="iXi-uq-HSk"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="消費趨勢" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dB5-QB-Ka8">
+                                <rect key="frame" x="162" y="98" width="90" height="27"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="7zt-oG-swb"/>
                         <color key="backgroundColor" systemColor="systemGray6Color"/>
@@ -222,15 +228,21 @@
                             <constraint firstItem="trD-gx-bvq" firstAttribute="trailing" secondItem="DTs-7b-F1D" secondAttribute="trailing" id="ADA-xU-JUz"/>
                             <constraint firstItem="trD-gx-bvq" firstAttribute="leading" secondItem="DTs-7b-F1D" secondAttribute="leading" id="BRJ-cZ-iOa"/>
                             <constraint firstItem="Og1-CR-MfG" firstAttribute="top" secondItem="trD-gx-bvq" secondAttribute="bottom" constant="1" id="Fre-cy-6dI"/>
+                            <constraint firstItem="dB5-QB-Ka8" firstAttribute="leading" secondItem="7zt-oG-swb" secondAttribute="leading" constant="162" id="Jj8-AM-Pwz"/>
                             <constraint firstItem="DTs-7b-F1D" firstAttribute="top" secondItem="cae-bC-XYr" secondAttribute="top" constant="480" id="MWN-Zy-zj8"/>
+                            <constraint firstItem="dB5-QB-Ka8" firstAttribute="leading" secondItem="Og1-CR-MfG" secondAttribute="leading" id="R2j-1q-RfP"/>
+                            <constraint firstItem="trD-gx-bvq" firstAttribute="top" secondItem="dB5-QB-Ka8" secondAttribute="bottom" constant="8" id="Rj3-UM-Vqb"/>
                             <constraint firstItem="cUU-th-e9Z" firstAttribute="top" secondItem="cae-bC-XYr" secondAttribute="top" id="Rrw-KR-xIL"/>
                             <constraint firstItem="DTs-7b-F1D" firstAttribute="top" secondItem="Og1-CR-MfG" secondAttribute="bottom" constant="8" id="SHZ-Wm-j90"/>
-                            <constraint firstItem="trD-gx-bvq" firstAttribute="top" secondItem="cUU-th-e9Z" secondAttribute="bottom" id="Tk6-ib-cuj"/>
+                            <constraint firstItem="trD-gx-bvq" firstAttribute="top" secondItem="cUU-th-e9Z" secondAttribute="bottom" constant="43" id="Tk6-ib-cuj"/>
                             <constraint firstItem="cUU-th-e9Z" firstAttribute="trailing" secondItem="7zt-oG-swb" secondAttribute="trailing" id="VeZ-Hm-9gv"/>
                             <constraint firstItem="trD-gx-bvq" firstAttribute="leading" secondItem="cae-bC-XYr" secondAttribute="leading" id="bFo-lR-eGm"/>
+                            <constraint firstItem="trD-gx-bvq" firstAttribute="top" secondItem="dB5-QB-Ka8" secondAttribute="bottom" constant="8" id="bca-fQ-JfI"/>
                             <constraint firstAttribute="bottom" secondItem="cUU-th-e9Z" secondAttribute="bottom" constant="806" id="byO-xd-DeW"/>
                             <constraint firstAttribute="trailing" secondItem="trD-gx-bvq" secondAttribute="trailing" id="jEV-Wo-52H"/>
+                            <constraint firstItem="7zt-oG-swb" firstAttribute="trailing" secondItem="dB5-QB-Ka8" secondAttribute="trailing" constant="162" id="qiM-be-kDc"/>
                             <constraint firstItem="Og1-CR-MfG" firstAttribute="centerX" secondItem="DTs-7b-F1D" secondAttribute="centerX" id="shh-Ze-dp7"/>
+                            <constraint firstItem="dB5-QB-Ka8" firstAttribute="top" secondItem="cUU-th-e9Z" secondAttribute="bottom" constant="8" symbolic="YES" id="xRb-XV-qEa"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="統計" id="qTJ-PA-2if">
@@ -873,19 +885,19 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="設立飲品預算" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wX9-UC-WO3">
-                                        <rect key="frame" x="28" y="206" width="104" height="20.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="設立類別預算" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wX9-UC-WO3">
+                                        <rect key="frame" x="28" y="206" width="104" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="金額" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GwE-dJ-jpA">
-                                        <rect key="frame" x="201" y="200" width="146" height="32.5"/>
+                                        <rect key="frame" x="201" y="200" width="146" height="33"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="設立消費類別" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vIu-bW-ZeE">
-                                        <rect key="frame" x="28" y="160" width="104" height="20.5"/>
+                                        <rect key="frame" x="28" y="160.5" width="104" height="20.5"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20.5" id="nvm-fH-NGn"/>
                                         </constraints>
@@ -894,12 +906,12 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="類別" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="q2R-lG-slD">
-                                        <rect key="frame" x="201" y="152.5" width="146" height="35.5"/>
+                                        <rect key="frame" x="201" y="153" width="146" height="35.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7k9-jh-ivn">
-                                        <rect key="frame" x="134.5" y="263" width="106" height="30"/>
+                                        <rect key="frame" x="134.5" y="263.5" width="106" height="29.5"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="106" id="aeY-dn-E4D"/>
                                         </constraints>
