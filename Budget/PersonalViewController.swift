@@ -60,7 +60,7 @@ class PersonalViewController: UIViewController {
         ref = db.collection("User").document("Y04LSGt0HVgAmmAO8ojU").collection("category").addDocument(data: [
             "amount": Int(budgetTextField.text ?? "0") ?? 0   ,
             "category": "\(categoryTextField.text ?? "bad category")",
-            "perioad": "\(timeTextField.text ?? "bad time")",
+            "period": "\(timeTextField.text ?? "bad time")",
             "timeStamp": today,
             "date": dateString
         ]) { err in

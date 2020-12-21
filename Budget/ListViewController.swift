@@ -20,6 +20,7 @@ class ListViewController: UIViewController {
     var recordArray = [Record]()
     var datesWithEvent = [Record]()
     var selectedDate = Date()
+    var weekRange = Date()
     fileprivate lazy var dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy/MM/dd"
@@ -95,7 +96,6 @@ class ListViewController: UIViewController {
             print("\(error.localizedDescription)")
         } else {
             for document in snapshot!.documents {
-                //     print(document.data())
                 let data = document.data()
                 let amount = data["amount"] as? Int ?? 0
                 let category = data["category"] as? String ?? ""
@@ -109,8 +109,46 @@ class ListViewController: UIViewController {
             self.listTableView.reloadData()
         }
     }
-    }
 
+    }
+    func loadBudgetAmount(time: String, day: String) {
+        db.collection("User").document("Y04LSGt0HVgAmmAO8ojU").collection("record")
+            .whereField("date", isGreaterThanOrEqualTo: day)
+            .whereField("date", isLessThanOrEqualTo: time)
+            .getDocuments { snapshot, error in
+                if let error = error {
+                    print("\(error.localizedDescription)")
+                } else {
+                    for document in snapshot!.documents {
+                        let data = document.data()
+                        let amount = data["amount"] as? Int ?? 0
+                        let category = data["category"] as? String ?? ""
+                        let timeStamp = data["timeStamp"] as? String ?? ""
+                        let comments = data["comments"] as? String ?? ""
+                        let date = data["date"] as? String ?? ""
+                        let newRecord = Record(amount: amount, category: category, timeStamp: timeStamp, comments: comments, date: date)
+//                        let today = self.dateStringToDate(date)
+                        self.recordArray.append(newRecord)
+                        self.datesWithEvent.append(newRecord)
+                    }
+                    self.listTableView.reloadData()
+                }
+            }
+        }
+    //計算天數差
+    func dateDifference(_ dateA:Date, from dateB:Date) -> Double {
+            let interval = dateA.timeIntervalSince(dateB)
+            return interval/86400
+
+        }
+    func dateStringToDate(_ dateStr: String) -> Date {
+            let dateFormatter = DateFormatter()
+            dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+            dateFormatter.dateFormat = "yyyy/MM/dd"
+            let date
+                = dateFormatter.date(from: dateStr)
+            return date!
+        }
 }
 extension ListViewController: UITableViewDelegate, UITableViewDataSource {
     

@@ -130,11 +130,7 @@ class RecordViewController: UIViewController {
             }
         }
     }
-    fileprivate lazy var dateFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy/MM/dd"
-        return formatter
-    }()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = true
@@ -150,7 +146,11 @@ class RecordViewController: UIViewController {
                 _ = document.documentChanges.map {print($0.document.data())}
             }
     }
-
+    fileprivate lazy var dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy/MM/dd"
+        return formatter
+    }()
     func addData(today: String) {
         let dateString = self.dateFormatter.string(from: Date())
         ref = db.collection("User").document("Y04LSGt0HVgAmmAO8ojU").collection("record").addDocument(data: [
@@ -167,6 +167,7 @@ class RecordViewController: UIViewController {
             }
         }
     }
+
     func getDate() {
         let timeStamp = date.timeIntervalSince1970
         let timeInterval = TimeInterval(timeStamp)
