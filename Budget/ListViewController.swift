@@ -76,7 +76,7 @@ class ListViewController: UIViewController {
                 }
                 self.allRecordArray.removeAll()
                 _ = document.documentChanges.map {
-                    //       print($0.document.data())
+                   // print($0.document.data())
                     let data = $0.document.data()
                     let amount = data["amount"] as? Int ?? 0
                     let category = data["category"] as? String ?? ""
@@ -111,35 +111,10 @@ class ListViewController: UIViewController {
     }
 
     }
-    func loadBudgetAmount(time: String, day: String) {
-        db.collection("User").document("Y04LSGt0HVgAmmAO8ojU").collection("record")
-            .whereField("date", isGreaterThanOrEqualTo: day)
-            .whereField("date", isLessThanOrEqualTo: time)
-            .getDocuments { snapshot, error in
-                if let error = error {
-                    print("\(error.localizedDescription)")
-                } else {
-                    for document in snapshot!.documents {
-                        let data = document.data()
-                        let amount = data["amount"] as? Int ?? 0
-                        let category = data["category"] as? String ?? ""
-                        let timeStamp = data["timeStamp"] as? String ?? ""
-                        let comments = data["comments"] as? String ?? ""
-                        let date = data["date"] as? String ?? ""
-                        let newRecord = Record(amount: amount, category: category, timeStamp: timeStamp, comments: comments, date: date)
-//                        let today = self.dateStringToDate(date)
-                        self.recordArray.append(newRecord)
-                        self.datesWithEvent.append(newRecord)
-                    }
-                    self.listTableView.reloadData()
-                }
-            }
-        }
     //計算天數差
-    func dateDifference(_ dateA:Date, from dateB:Date) -> Double {
+    func dateDifference(_ dateA: Date, from dateB: Date) -> Double {
             let interval = dateA.timeIntervalSince(dateB)
             return interval/86400
-
         }
     func dateStringToDate(_ dateStr: String) -> Date {
             let dateFormatter = DateFormatter()
