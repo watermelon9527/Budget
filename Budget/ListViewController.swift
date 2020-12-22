@@ -10,11 +10,14 @@ import FirebaseCore
 import FirebaseFirestoreSwift
 import FirebaseFirestore
 import FSCalendar
+import FirebaseAuth
+
 class ListViewController: UIViewController {
 
     @IBOutlet weak var FSCalendar: FSCalendar!
     @IBOutlet weak var listTableView: UITableView!
-
+    
+    let userID = Auth.auth().currentUser?.uid
     var db: Firestore!
     var allRecordArray = [Record]()
     var recordArray = [Record]()
@@ -68,7 +71,7 @@ class ListViewController: UIViewController {
     }
     func listen(time: String) {
         let dateString = self.dateFormatter.string(from: selectedDate)
-        db.collection("User").document("Y04LSGt0HVgAmmAO8ojU").collection("record").order(by: "timeStamp", descending: true)
+        db.collection("User").document("\(userID ?? "user1")").collection("record").order(by: "timeStamp", descending: true)
             .addSnapshotListener { documentSnapshot, error in
                 guard let document = documentSnapshot else {
                     print("Error fetching document: \(error!)")
@@ -91,7 +94,7 @@ class ListViewController: UIViewController {
                 self.FSCalendar.reloadData()
             }
     }
-    func loadRecord(time: String) {db.collection("User").document("Y04LSGt0HVgAmmAO8ojU").collection("record").whereField("date", isEqualTo: time).getDocuments { snapshot, error in
+    func loadRecord(time: String) {db.collection("User").document("\(userID ?? "user1")").collection("record").whereField("date", isEqualTo: time).getDocuments { snapshot, error in
         if let error = error {
             print("\(error.localizedDescription)")
         } else {

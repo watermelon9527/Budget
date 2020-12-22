@@ -7,10 +7,13 @@
 
 import UIKit
 import Charts
+import FirebaseAuth
+
 class ChartViewController: UIViewController {
 
     @IBOutlet weak var barChartView: BarChartView!
     @IBOutlet weak var pieChartView: PieChartView!
+    let userID = Auth.auth().currentUser?.uid
 
     var weekArray = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
 

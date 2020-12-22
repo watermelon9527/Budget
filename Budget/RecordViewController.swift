@@ -9,6 +9,8 @@ import UIKit
 import FirebaseCore
 import FirebaseFirestoreSwift
 import FirebaseFirestore
+import FirebaseAuth
+
 class RecordViewController: UIViewController {
 
     let db = Firestore.firestore()
@@ -16,7 +18,7 @@ class RecordViewController: UIViewController {
     let date = Date()
     var today: String!
     var selectedCategory = ""
-
+    let userID = Auth.auth().currentUser?.uid
     @IBOutlet weak var commentTextField: UITextField!
     @IBOutlet weak var amountTextField: UITextField!
     @IBAction func foodBTN(_ sender: UIButton) {
@@ -141,7 +143,7 @@ class RecordViewController: UIViewController {
 
     }
     func listen() {
-        db.collection("User").document("Y04LSGt0HVgAmmAO8ojU").collection("record")
+        db.collection("User").document("\(userID ?? "user1")").collection("record")
             .addSnapshotListener { documentSnapshot, error in
                 guard let document = documentSnapshot else {
                     print("Error fetching document: \(error!)")
@@ -157,7 +159,7 @@ class RecordViewController: UIViewController {
     }()
     func addData(today: String) {
         let dateString = self.dateFormatter.string(from: Date())
-        ref = db.collection("User").document("Y04LSGt0HVgAmmAO8ojU").collection("record").addDocument(data: [
+        ref = db.collection("User").document("\(userID ?? "user1")").collection("record").addDocument(data: [
             "amount": Int(amountTextField.text ?? "0") ?? 0   ,
             "category": selectedCategory,
             "comments": "\(commentTextField.text ?? "bad")",

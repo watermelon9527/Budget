@@ -9,7 +9,9 @@ import UIKit
 import FirebaseCore
 import FirebaseFirestoreSwift
 import FirebaseFirestore
+import FirebaseAuth
 class PersonalViewController: UIViewController {
+    let userID = Auth.auth().currentUser?.uid
     let picker0 = UIPickerView()
     let picker1 = UIPickerView()
     let time = ["月", "週", "日"]
@@ -57,7 +59,7 @@ class PersonalViewController: UIViewController {
     }
     func addBudget(today: String) {
         let dateString = self.dateFormatter.string(from: Date())
-        ref = db.collection("User").document("Y04LSGt0HVgAmmAO8ojU").collection("category").addDocument(data: [
+        ref = db.collection("User").document("\(userID ?? "user1")").collection("category").addDocument(data: [
             "amount": Int(budgetTextField.text ?? "0") ?? 0   ,
             "category": "\(categoryTextField.text ?? "bad category")",
             "period": "\(timeTextField.text ?? "bad time")",

@@ -131,6 +131,7 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
             Auth.auth().signIn(with: credential) { (authDataResault, _ ) in
                 if let user = authDataResault?.user {
                     print("Nice ! You're sign in as \(user.uid),email: \(user.email ?? "unknown")")
+                    let userID = user.email
                     let controller = (self.storyboard?.instantiateViewController(identifier: "MainTabbarController")) as! TabBarViewController
                     self.navigationController?.pushViewController(controller, animated: true)
                 }

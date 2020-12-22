@@ -10,7 +10,10 @@ import UICircularProgressRing
 import FirebaseCore
 import FirebaseFirestoreSwift
 import FirebaseFirestore
+import FirebaseAuth
+
 class BudgetViewController: UIViewController, UITableViewDelegate {
+    let userID = Auth.auth().currentUser?.uid
 
     var cell = BudgetTableViewCell()
     var db = Firestore.firestore()
@@ -89,7 +92,7 @@ class BudgetViewController: UIViewController, UITableViewDelegate {
     }
 
     func loadBudgetCategory(completion: @escaping ([Budget]) -> Void) {
-        db.collection("User").document("Y04LSGt0HVgAmmAO8ojU").collection("category").getDocuments { snapshot, error in
+        db.collection("User").document("\(userID ?? "user1")").collection("category").getDocuments { snapshot, error in
             if let error = error {
                 print("\(error.localizedDescription)")
             } else {
@@ -106,7 +109,7 @@ class BudgetViewController: UIViewController, UITableViewDelegate {
                     let newRecord = Budget(amount: amount, category: category, timeStamp: timeStamp, date: date, period: period)
 
                     budgetArray.append(newRecord)
-                    print(budgetArray)
+//                    print(budgetArray)
                 }
                 completion(budgetArray)
                 self.budgetTableView.reloadData()
@@ -114,7 +117,7 @@ class BudgetViewController: UIViewController, UITableViewDelegate {
         }
     }
     func loadRecordAmount(day1: String, day2: String, category: String, completion: @escaping(Int) -> Void) {
-        db.collection("User").document("Y04LSGt0HVgAmmAO8ojU").collection("record")
+        db.collection("User").document("\(userID ?? "user1")").collection("record")
             .whereField("date", isLessThanOrEqualTo: day2)
             .whereField("date", isGreaterThanOrEqualTo: day1 )
             .whereField("category", isEqualTo: category)
@@ -124,11 +127,11 @@ class BudgetViewController: UIViewController, UITableViewDelegate {
                 } else {
                     for document in snapshot!.documents {
                         let data = document.data()
-                        print(data)
+//                        print(data)
                         let amount = data["amount"] as? Int ?? 0
                         self.amountArray.append(amount)
                         let sum = self.amountArray.reduce(0, +)
-                        print(sum)
+//                        print(sum)
                         self.sum = sum
                     }
                     completion(self.sum)
