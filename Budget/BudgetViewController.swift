@@ -36,9 +36,19 @@ class BudgetViewController: UIViewController, UITableViewDelegate {
     }
     override func viewWillAppear(_ animated: Bool) {
         self.budgetArray = []
-
         loadData()
-
+        budgetTableView.reloadData()
+//        getDate()
+//        //        loadData()
+//        amountArray = []
+//        loadRecordAmount(day1: budget.date, day2: today, category: budget.category) { [ weak self ] (sum) in
+//            cell.remainderAmount.text = "$\(budget.amount-sum)"
+//            let remainAmount = Double(budget.amount-sum)
+//            let amount = Double(budget.amount)
+//            let progressPercentage = remainAmount/amount*100
+//            cell.circleView.startProgress(to: CGFloat(progressPercentage), duration: 1.5)
+//        }
+//        loadRecordAmount(day1: budgetArray, day2: <#T##String#>, category: <#T##String#>, completion: <#T##(Int) -> Void#>)
     }
     override func viewDidAppear(_ animated: Bool) {
         //        let circle = cell.circleView
@@ -53,11 +63,11 @@ class BudgetViewController: UIViewController, UITableViewDelegate {
 //                    loadRecordAmount(day1: budget.date, day2: today, category: budget.category) { [weak self] (sum) in
 //                        self?.sum = sum
 //
-//                        self?.cell.remainderAmount.text = "$\(budget.amount-sum)"
+////                        self?.cell.remainderAmount.text = "$\(budget.amount-sum)"
 //                        let remainAmount = Double(budget.amount-sum)
 //                        let amount = Double(budget.amount)
 //                        let progressPercentage = remainAmount/amount*100
-//                        self?.cell.circleView.startProgress(to: CGFloat(progressPercentage), duration: 1.5)
+////                        self?.cell.circleView.startProgress(to: CGFloat(progressPercentage), duration: 1.5)
 //
 //                    }
 //                }
@@ -115,7 +125,7 @@ class BudgetViewController: UIViewController, UITableViewDelegate {
     func loadRecordAmount(day1: String, day2: String, category: String, completion: @escaping(Int) -> Void) {
         db.collection("User").document("Y04LSGt0HVgAmmAO8ojU").collection("record")
             .whereField("date", isLessThanOrEqualTo: day2)
-            .whereField("date", isGreaterThan: day1 )
+            .whereField("date", isGreaterThanOrEqualTo: day1 )
             .whereField("category", isEqualTo: category)
             .getDocuments { snapshot, error in
                 if let error = error {
@@ -154,7 +164,6 @@ extension BudgetViewController: UITabBarDelegate, UITableViewDataSource {
             let amount = Double(budget.amount)
             let progressPercentage = remainAmount/amount*100
             cell.circleView.startProgress(to: CGFloat(progressPercentage), duration: 1.5)
-
         }
         
         cell.amountLabel.text = "$\(budget.amount)"
