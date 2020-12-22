@@ -12,7 +12,6 @@ class ChartViewController: UIViewController {
     @IBOutlet weak var barChartView: BarChartView!
     @IBOutlet weak var pieChartView: PieChartView!
 
-//    var monthArray = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
     var weekArray = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
 
     var temperatureArray: [Double] = [ 20, 21, 22, 23, 24, 25, 26]
@@ -42,14 +41,23 @@ class ChartViewController: UIViewController {
         }
 
         let set = PieChartDataSet( entries: entries, label: "項目佔比")
-        let colors1: [UIColor] = [UIColor(red: 104/255, green: 124/255, blue: 139/255, alpha: 1),
-                                  UIColor(red: 73/255, green: 87/255, blue: 93/255, alpha: 1),
-                                  UIColor(red: 107/255, green: 111/255, blue: 139/255, alpha: 1),
-                                  UIColor(red: 141/255, green: 220/255, blue: 228/255, alpha: 1),
-                                  UIColor(red: 104/255, green: 139/255, blue: 116/255, alpha: 1),
-                                  UIColor(red: 139/255, green: 133/255, blue: 104/255, alpha: 1),
-                                  UIColor(red: 224/255, green: 229/255, blue: 225/255, alpha: 1),
-                                  UIColor(red: 139/255, green: 104/255, blue: 126/255, alpha: 1)
+        let colors1: [UIColor] = [UIColor(red: 147/255, green: 158/255, blue: 174/255,
+                                          alpha: 1)
+                                  //#4a7fd3 淺藍
+                                  ,UIColor(red: 74/255, green: 127/255, blue: 211/255, alpha: 1)
+                                  //#939eae 淺灰
+                                  ,UIColor(red: 107/255, green: 111/255, blue: 139/255, alpha: 1)
+                                  //#6b6f8b 灰紫2
+                                  ,UIColor(red: 206/255, green: 166/255, blue: 41/255, alpha: 1)
+                                  //#cea629 芥末
+                                  ,UIColor(red: 135/255, green: 105/255, blue: 94/255, alpha: 1)
+                                  //#87695e 棕色
+                                  ,UIColor(red: 103/255, green: 122/255, blue: 113/255, alpha: 1)
+                                  //#677a71 深白綠
+                                  ,UIColor(red: 147/255, green: 174/255, blue: 161/255, alpha: 1)
+                                  //#93aea1 淡綠
+                                  ,UIColor(red: 150/255, green: 151/255, blue: 174/255, alpha: 1)
+                                  //#9697ae 淡紫
         ]
 
         set.colors = colors1
@@ -90,9 +98,9 @@ class ChartViewController: UIViewController {
         barChartView.animate(xAxisDuration: 2.0, yAxisDuration: 2.0)
         barChartView.animate(xAxisDuration: 2.0, yAxisDuration: 2.0, easingOption: .easeInBounce)
 
-        let limit = ChartLimitLine(limit: 25, label: "Budget Target")
-        limit.lineColor = .black
-        limit.valueTextColor = .black
+//        let limit = ChartLimitLine(limit: 25, label: "Budget Target")
+//        limit.lineColor = .black
+//        limit.valueTextColor = .black
 //        barChartView.rightAxis.addLimitLine(limit)
         chartDataSet.colors = [UIColor(red: 29/255, green: 78/255, blue: 143/255, alpha: 1)]
 

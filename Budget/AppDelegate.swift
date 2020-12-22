@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if let user = Auth.auth().currentUser{
             print("Nice ! You're sign in as \(user.uid),email: \(user.email) ??")
         }
-
+        Thread.sleep(forTimeInterval: 5.0)
         return true
     }
 
