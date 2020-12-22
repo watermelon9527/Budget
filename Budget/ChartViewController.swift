@@ -105,7 +105,7 @@ class ChartViewController: UIViewController {
 //        limit.lineColor = .black
 //        limit.valueTextColor = .black
 //        barChartView.rightAxis.addLimitLine(limit)
-        chartDataSet.colors = [UIColor(red: 29/255, green: 78/255, blue: 143/255, alpha: 1)]
+        chartDataSet.colors = [UIColor(red: 0/255, green: 74/255, blue: 173/255, alpha: 1)]
 
         //            //改變chartDataSet的顏色，此為橘色
         //            chartDataSet.colors = [UIColor(red: 230/255, green: 126/255, blue: 34/255, alpha: 1)]
