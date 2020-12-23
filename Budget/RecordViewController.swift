@@ -114,16 +114,21 @@ class RecordViewController: UIViewController {
         }
     }
     @IBAction func confimButton(_ sender: Any) {
-        if amountTextField.text?.isEmpty != true {
-        getDate()
-        addData(today: today)
-        amountTextField.text = ""
-        commentTextField.text = ""
-        } else {
-            let controller = UIAlertController(title: "輸入金額!", message: "請輸入您的支出金額", preferredStyle: .alert)
+        if amountTextField.text?.isEmpty == true {
+                        let controller = UIAlertController(title: "輸入金額!", message: "請輸入您的支出金額", preferredStyle: .alert)
+                        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+                        controller.addAction(okAction)
+                        present(controller, animated: true, completion: nil)
+        } else if amountTextField.text == "0" {
+            let controller1 = UIAlertController(title: "金額不可為0!", message: "請輸入您的支出金額", preferredStyle: .alert)
             let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-            controller.addAction(okAction)
-            present(controller, animated: true, completion: nil)
+            controller1.addAction(okAction)
+            present(controller1, animated: true, completion: nil)
+        } else {
+                    getDate()
+                    addData(today: today)
+                    amountTextField.text = ""
+                    commentTextField.text = ""
         }
     }
     @IBOutlet var categoryButtons: [UIButton]!

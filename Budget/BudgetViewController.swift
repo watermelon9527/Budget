@@ -39,36 +39,11 @@ class BudgetViewController: UIViewController, UITableViewDelegate {
         self.budgetArray = []
         loadData()
         budgetTableView.reloadData()
-        //        getDate()
-        //        amountArray = []
-        //        loadRecordAmount(day1: budget.date, day2: today, category: budget.category) { [ weak self ] (sum) in
-        //            cell.remainderAmount.text = "$\(budget.amount-sum)"
-        //            let remainAmount = Double(budget.amount-sum)
-        //            let amount = Double(budget.amount)
-        //            let progressPercentage = remainAmount/amount*100
-        //            cell.circleView.startProgress(to: CGFloat(progressPercentage), duration: 1.5)
-        //        }
-        //        loadRecordAmount(day1: budgetArray, day2: <#T##String#>, category: <#T##String#>, completion: <#T##(Int) -> Void#>)
+
     }
     override func viewDidAppear(_ animated: Bool) {}
     var budgetArray = [Budget]()
-    //        {
-    //            didSet {
-    //                getDate()
-    //                amountArray = []
-    //                for budget in budgetArray {
-    //                    loadRecordAmount(day1: budget.date, day2: today, category: budget.category) { [weak self] (sum) in
-    //                        self?.sum = sum
-    //
-    //                        let remainAmount = Double(budget.amount-sum)
-    //                        let amount = Double(budget.amount)
-    //                        let progressPercentage = remainAmount/amount*100
-    //
-    //                    }
-    //                }
-    //                self.budgetTableView.reloadData()
-    //            }
-    //        }
+
 
     func loadData() {
         loadBudgetCategory { [weak self] (newRecords) in

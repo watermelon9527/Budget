@@ -15,14 +15,25 @@ class ChartViewController: UIViewController {
     @IBOutlet weak var pieChartView: PieChartView!
     let userID = Auth.auth().currentUser?.uid
 
-    var weekArray = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
-
-    var temperatureArray: [Double] = [ 20, 21, 22, 23, 24, 25, 26]
     var axisFormatDelgate: IAxisValueFormatter?
+    let date = Date()
+    var today: String!
+    func getDate() {
+        let timeStamp = date.timeIntervalSince1970
+        let timeInterval = TimeInterval(timeStamp)
 
+        let date = Date(timeIntervalSince1970: timeInterval)
+
+        let dateFormatter = DateFormatter()
+
+        dateFormatter.dateFormat = "MM/dd"
+
+        today = dateFormatter.string(from: date)
+//        weekArray.append(today)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        getDate()
         updateBarChartsData()
         updatePieChartData()
         barChartView.backgroundColor = .systemGray6
@@ -32,14 +43,14 @@ class ChartViewController: UIViewController {
     func updatePieChartData() {
 
         let chart = pieChartView!
-        let track1 = ["食物", "飲品", "娛樂", "交通", "消費", "家用", "醫藥", "其他"]
-        let money1 = [650, 456.13, 78.67, 856.52, 200, 300, 400, 200]
+        let categoey = ["食物", "飲品", "娛樂", "交通", "消費", "家用", "醫藥", "其他"]
+        let pieAmount = [650, 456.13, 78.67, 856.52, 200, 300, 400, 200]
         var entries = [PieChartDataEntry]()
         
-        for (index, value) in money1.enumerated() {
+        for (index, value) in pieAmount.enumerated() {
             let entry = PieChartDataEntry()
             entry.y = value
-            entry.label = track1[index]
+            entry.label = categoey[index]
             entries.append( entry)
         }
 
@@ -78,13 +89,18 @@ class ChartViewController: UIViewController {
         chart.transparentCircleColor = UIColor.clear
     }
     func updateBarChartsData() {
+        //    var dayArray: [String] = []
+        let dayArray = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+        //    var amountArray: [Double] = [20]
+        let amountArray: [Double] = [ 800, 900, 1000, 2000, 300, 4000, 500]
+
         //生成一個存放資料的陣列，型別是BarChartDataEntry.
         var dataEntries: [BarChartDataEntry] = []
 
         //實作一個迴圈，來存入每筆顯示的資料內容
-        for iii in 0..<weekArray.count {
+        for iii in 0..<dayArray.count {
             //需設定x, y座標分別需顯示什麼東西
-            let dataEntry = BarChartDataEntry(x: Double(iii), y: temperatureArray[iii])
+            let dataEntry = BarChartDataEntry(x: Double(iii), y: amountArray[iii])
             //最後把每次生成的dataEntry存入到dataEntries當中
             dataEntries.append(dataEntry)
         }
@@ -94,7 +110,7 @@ class ChartViewController: UIViewController {
         let charData = BarChartData(dataSet: chartDataSet)
         //最後在指定剛剛連結的myView要顯示的資料為charData
         barChartView.data = charData
-        barChartView.xAxis.valueFormatter = IndexAxisValueFormatter(values: weekArray)
+        barChartView.xAxis.valueFormatter = IndexAxisValueFormatter(values: dayArray)
         barChartView.xAxis.granularity = 1
 
         barChartView.xAxis.labelPosition = .bottom
