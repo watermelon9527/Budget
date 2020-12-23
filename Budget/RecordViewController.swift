@@ -59,6 +59,7 @@ class RecordViewController: UIViewController {
     }
     @IBOutlet weak var foodButton: UIButton! {
         didSet {
+            foodButton.layer.borderWidth = 2
             foodButton.imageView?.contentMode = .scaleAspectFill
             foodButton.setTitleColor(.black, for: .normal)
             guard let title = foodButton.currentTitle else { return }
@@ -124,9 +125,11 @@ class RecordViewController: UIViewController {
         for button in categoryButtons {
             if button.tag == tag {
                 button.layer.borderColor = UIColor.black.cgColor
+                button.layer.borderWidth = 2
                 button.setTitleColor(.black, for: .normal)
             } else {
                 button.layer.borderColor = UIColor.gray.cgColor
+                button.layer.borderWidth = 1
                 button.setTitleColor(.gray, for: .normal)
                 button.backgroundColor = .white
             }
@@ -140,7 +143,8 @@ class RecordViewController: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         self.tabBarController?.tabBar.isHidden = false
-
+        amountTextField.text = ""
+        commentTextField.text = ""
     }
     func listen() {
         db.collection("User").document("\(userID ?? "user1")").collection("record")

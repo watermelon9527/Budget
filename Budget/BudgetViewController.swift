@@ -74,20 +74,15 @@ class BudgetViewController: UIViewController, UITableViewDelegate {
         loadBudgetCategory { [weak self] (newRecords) in
             self?.getDate()
             self?.budgetArray = newRecords
-
-        }
+         }
     }
 
     func getDate() {
         let timeStamp = date.timeIntervalSince1970
         let timeInterval = TimeInterval(timeStamp)
-
         let date = Date(timeIntervalSince1970: timeInterval)
-
         let dateFormatter = DateFormatter()
-
         dateFormatter.dateFormat = "yyyy/MM/dd HH:mm"
-
         today = dateFormatter.string(from: date)
     }
 
@@ -96,9 +91,7 @@ class BudgetViewController: UIViewController, UITableViewDelegate {
             if let error = error {
                 print("\(error.localizedDescription)")
             } else {
-
                 var budgetArray = [Budget]()
-
                 for document in snapshot!.documents {
                     let data = document.data()
                     let amount = data["amount"] as? Int ?? 0
@@ -107,7 +100,6 @@ class BudgetViewController: UIViewController, UITableViewDelegate {
                     let period = data["period"] as? String ?? ""
                     let date = data["date"] as? String ?? ""
                     let newRecord = Budget(amount: amount, category: category, timeStamp: timeStamp, date: date, period: period)
-
                     budgetArray.append(newRecord)
 //                    print(budgetArray)
                 }

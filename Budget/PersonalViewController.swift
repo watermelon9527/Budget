@@ -15,7 +15,7 @@ class PersonalViewController: UIViewController {
     let picker0 = UIPickerView()
     let picker1 = UIPickerView()
     let time = ["月", "週", "日"]
-    let category = ["食物", "飲品", "娛樂", "交通", "消費", "家用", "醫藥", "收入", "其他"]
+    let category = ["食物", "飲品", "娛樂", "交通", "消費", "家用", "醫藥", "其他"]
     @IBOutlet weak var timeTextField: UITextField!
     @IBOutlet weak var budgetTextField: UITextField!
     @IBOutlet weak var categoryTextField: UITextField!
