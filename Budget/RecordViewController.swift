@@ -14,11 +14,17 @@ import FirebaseAuth
 class RecordViewController: UIViewController {
 
     let db = Firestore.firestore()
-    var ref: DocumentReference?
+    let userID = Auth.auth().currentUser?.uid
     let date = Date()
     var today: String!
+    var ref: DocumentReference?
     var selectedCategory = ""
-    let userID = Auth.auth().currentUser?.uid
+    fileprivate lazy var dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy/MM/dd"
+        return formatter
+    }()
+
     @IBOutlet weak var commentTextField: UITextField!
     @IBOutlet weak var amountTextField: UITextField!
     @IBAction func foodBTN(_ sender: UIButton) {
@@ -59,7 +65,8 @@ class RecordViewController: UIViewController {
     }
     @IBOutlet weak var foodButton: UIButton! {
         didSet {
-            foodButton.layer.borderWidth = 2
+            foodButton.layer.borderColor = UIColor.black.cgColor
+            foodButton.layer.borderWidth = 3
             foodButton.imageView?.contentMode = .scaleAspectFill
             foodButton.setTitleColor(.black, for: .normal)
             guard let title = foodButton.currentTitle else { return }
@@ -139,12 +146,54 @@ class RecordViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = true
-
     }
+
     override func viewWillAppear(_ animated: Bool) {
+        recordWillAppear()
+    }
+    func recordWillAppear() {
         self.tabBarController?.tabBar.isHidden = false
         amountTextField.text = ""
         commentTextField.text = ""
+
+        foodButton.layer.borderColor = UIColor.black.cgColor
+        foodButton.layer.borderWidth = 2
+        foodButton.setTitleColor(.black, for: .normal)
+
+        guard let title = foodButton.currentTitle else { return }
+        selectedCategory = title
+
+        drinkButton.layer.borderWidth = 1
+        drinkButton.layer.borderColor = UIColor.gray.cgColor
+        drinkButton.setTitleColor(.gray, for: .normal)
+
+        entertainButton.layer.borderWidth = 1
+        entertainButton.layer.borderColor = UIColor.gray.cgColor
+        entertainButton.setTitleColor(.gray, for: .normal)
+
+        trafficButton.layer.borderWidth = 1
+        trafficButton.layer.borderColor = UIColor.gray.cgColor
+        trafficButton.setTitleColor(.gray, for: .normal)
+
+        consumeButton.layer.borderWidth = 1
+        consumeButton.layer.borderColor = UIColor.gray.cgColor
+        consumeButton.setTitleColor(.gray, for: .normal)
+
+        houseHoldButton.layer.borderWidth = 1
+        houseHoldButton.layer.borderColor = UIColor.gray.cgColor
+        houseHoldButton.setTitleColor(.gray, for: .normal)
+
+        medicalButton.layer.borderWidth = 1
+        medicalButton.layer.borderColor = UIColor.gray.cgColor
+        medicalButton.setTitleColor(.gray, for: .normal)
+
+        othersButton.layer.borderWidth = 1
+        othersButton.layer.borderColor = UIColor.gray.cgColor
+        othersButton.setTitleColor(.gray, for: .normal)
+
+        incomeButton.layer.borderWidth = 1
+        incomeButton.layer.borderColor = UIColor.gray.cgColor
+        incomeButton.setTitleColor(.gray, for: .normal)
     }
     func listen() {
         db.collection("User").document("\(userID ?? "user1")").collection("record")
@@ -156,11 +205,6 @@ class RecordViewController: UIViewController {
                 _ = document.documentChanges.map {print($0.document.data())}
             }
     }
-    fileprivate lazy var dateFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy/MM/dd"
-        return formatter
-    }()
     func addData(today: String) {
         let dateString = self.dateFormatter.string(from: Date())
         ref = db.collection("User").document("\(userID ?? "user1")").collection("record").addDocument(data: [
@@ -177,7 +221,6 @@ class RecordViewController: UIViewController {
             }
         }
     }
-
     func getDate() {
         let timeStamp = date.timeIntervalSince1970
         let timeInterval = TimeInterval(timeStamp)
