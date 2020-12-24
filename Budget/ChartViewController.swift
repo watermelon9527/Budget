@@ -34,9 +34,11 @@ class ChartViewController: UIViewController {
         super.viewDidLoad()
         barChartView.backgroundColor = .systemGray6
         pieChartView.backgroundColor = .systemGray6
-        sevenDay()
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        sevenDay()
+
+    }
     func updateBarChartsData() {
         //生成一個存放資料的陣列，型別是BarChartDataEntry.
         var dataEntries: [BarChartDataEntry] = []
@@ -117,8 +119,8 @@ class ChartViewController: UIViewController {
                                 let doubleAmount = Double(amount)
                                 self.amountArray.append(doubleAmount)
                                 self.sum = self.amountArray.reduce(0, +)
-                                print(date1)
-                                print(self.sum)
+//                                print(date1)
+//                                print(self.sum)
                                 self.dic[date1]! += self.sum
 
                             }
@@ -129,8 +131,8 @@ class ChartViewController: UIViewController {
                         return firstDictionary.0 < secondDictionary.0 // 由小到大排序
                     }
                     for (key, value) in sortDic {
-                        print("key: \(key)")
-                        print("value: \(value)")
+//                        print("key: \(key)")
+//                        print("value: \(value)")
                         self.barAmountArray.append(Double(value))
                         print("bararray: \(self.barAmountArray)")
                     }
@@ -140,6 +142,8 @@ class ChartViewController: UIViewController {
             }
     }
     func sevenDay() {
+        barDayArray.removeAll()
+        barAmountArray.removeAll()
         let date = Date()
         let today = date2String(date, dateFormat: "YYYY/MM/dd")
         let sevenToday = date2String(date, dateFormat: "MM/dd")
@@ -175,7 +179,7 @@ class ChartViewController: UIViewController {
         let day6 = date2String(dateminus6, dateFormat: "YYYY/MM/dd")
         let sevenSix = date2String(dateminus6, dateFormat: "MM/dd")
         barDayArray.append(sevenSix)
-        
+
         dic[today] = 0
         dic[day1] = 0
         dic[day2] = 0
@@ -183,7 +187,7 @@ class ChartViewController: UIViewController {
         dic[day4] = 0
         dic[day5] = 0
         dic[day6] = 0
-        print(dic)
+//        print(dic)
         barDayArray.reverse()
         loadRecordAmount(today: today, day6: day6)
     }
