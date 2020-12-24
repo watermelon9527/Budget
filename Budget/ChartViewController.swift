@@ -147,6 +147,8 @@ class ChartViewController: UIViewController {
             }
     }
     func sevenDay() {
+        pieCategoryArray.removeAll()
+        pieAmountArray.removeAll()
         barDayArray.removeAll()
         barAmountArray.removeAll()
         let date = Date()
