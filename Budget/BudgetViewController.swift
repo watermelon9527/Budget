@@ -44,9 +44,7 @@ class BudgetViewController: UIViewController, UITableViewDelegate {
     override func viewDidAppear(_ animated: Bool) {}
     var budgetArray = [Budget]()
 
-
-    func loadData() {
-        loadBudgetCategory { [weak self] (newRecords) in
+    func loadData() { loadBudgetCategory { [weak self] (newRecords) in
             self?.getDate()
             self?.budgetArray = newRecords
          }
