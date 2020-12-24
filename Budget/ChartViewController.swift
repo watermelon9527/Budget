@@ -22,11 +22,21 @@ class ChartViewController: UIViewController {
     var axisFormatDelgate: IAxisValueFormatter?
     let userID = Auth.auth().currentUser?.uid
     let db = Firestore.firestore()
-    var sum: Double = 0
+    var barSum: Double = 0
+    var pieSum: Double = 0
 
+    var barDic = [String: Double]()
+    var pieDic = [String: Double]()
     var barDayArray: [String] = []
     var amountArray: [Double] = []
     var barAmountArray: [Double] = []
+
+    var amountArray1: [Double] = []
+//    let pieCategoryArray = ["食物", "飲品", "娛樂", "交通", "消費", "家用", "醫藥", "其他"]
+    var pieCategoryArray: [String] = []
+//    let pieAmount = [650, 456.13, 78.67, 856.52, 200, 300, 400, 200]
+    var pieAmountArray: [Double] = []
+
     let date = Date()
     var today: String!
     var day6: String!
@@ -37,7 +47,6 @@ class ChartViewController: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         sevenDay()
-
     }
     func updateBarChartsData() {
         //生成一個存放資料的陣列，型別是BarChartDataEntry.
@@ -92,7 +101,6 @@ class ChartViewController: UIViewController {
         //            myView.rightAxis.addLimitLine(limit)
         //
     }
-    var dic = [String: Double]()
     func loadRecordAmount(today: String, day6: String) {
         db.collection("User").document("\(userID ?? "user1")").collection("record")
             .whereField("date", isGreaterThanOrEqualTo: day6 )
@@ -109,7 +117,7 @@ class ChartViewController: UIViewController {
 
                                 let date1 = dayrecord.date
                                 self.amountArray = []
-                                self.sum = 0
+                                self.barSum = 0
                                 let data = document.data()
                                 let amount = data["amount"] as? Int ?? 0
                                 let category = data["category"] as? String ?? ""
@@ -118,26 +126,23 @@ class ChartViewController: UIViewController {
                                 _ = BartAmount(amount: amount, category: category, timeStamp: timeStamp, date: date)
                                 let doubleAmount = Double(amount)
                                 self.amountArray.append(doubleAmount)
-                                self.sum = self.amountArray.reduce(0, +)
-//                                print(date1)
-//                                print(self.sum)
-                                self.dic[date1]! += self.sum
+                                self.barSum = self.amountArray.reduce(0, +)
+                                self.barDic[date1]! += self.barSum
 
                             }
                         } catch {
                             print("decode catch")                        }
                     }
-                    let sortDic = self.dic.sorted { firstDictionary, secondDictionary in
+                    let sortDic = self.barDic.sorted { firstDictionary, secondDictionary in
                         return firstDictionary.0 < secondDictionary.0 // 由小到大排序
                     }
-                    for (key, value) in sortDic {
-//                        print("key: \(key)")
-//                        print("value: \(value)")
+                    for (_, value) in sortDic {
+
                         self.barAmountArray.append(Double(value))
-                        print("bararray: \(self.barAmountArray)")
+                       // print("bararray: \(self.barAmountArray)")
                     }
                     self.updateBarChartsData()
-                    self.updatePieChartData()
+//                    self.updatePieChartData()
                 }
             }
     }
@@ -180,23 +185,88 @@ class ChartViewController: UIViewController {
         let sevenSix = date2String(dateminus6, dateFormat: "MM/dd")
         barDayArray.append(sevenSix)
 
-        dic[today] = 0
-        dic[day1] = 0
-        dic[day2] = 0
-        dic[day3] = 0
-        dic[day4] = 0
-        dic[day5] = 0
-        dic[day6] = 0
+        barDic[today] = 0
+        barDic[day1] = 0
+        barDic[day2] = 0
+        barDic[day3] = 0
+        barDic[day4] = 0
+        barDic[day5] = 0
+        barDic[day6] = 0
+        pieDic["食物"] = 0
+        pieDic["飲品"] = 0
+        pieDic["娛樂"] = 0
+        pieDic["交通"] = 0
+        pieDic["消費"] = 0
+        pieDic["家用"] = 0
+        pieDic["醫藥"] = 0
+        pieDic["其他"] = 0
+
 //        print(dic)
         barDayArray.reverse()
+        loadPieAmount(today: today, day6: day6)
         loadRecordAmount(today: today, day6: day6)
     }
+    func loadPieAmount(today: String, day6: String) {
+        db.collection("User").document("\(userID ?? "user1")").collection("record")
+            .whereField("date", isGreaterThanOrEqualTo: day6 )
+            .whereField("date", isLessThanOrEqualTo: today )
+            .order(by: "date", descending: true)
+            .getDocuments { snapshot, error in
+                if let error = error {
+                    print("\(error.localizedDescription)")
+                } else {
+                    _ = [BartAmount]()
+                    for document in snapshot!.documents {
+                        do {
+                            if let dayrecord = try document.data(as: BartAmount.self, decoder: Firestore.Decoder()) {
+                                let category1 = dayrecord.category
+                                self.amountArray1 = []
+                                self.pieSum = 0
+                                let data = document.data()
+                                let amount = data["amount"] as? Int ?? 0
+                                let category = data["category"] as? String ?? ""
+                                let timeStamp = data["timeStamp"] as? String ?? ""
+                                let date = data["date"] as? String ?? ""
+                                _ = BartAmount(amount: amount, category: category, timeStamp: timeStamp, date: date)
+                                let doubleAmount = Double(amount)
+                                self.amountArray1.append(doubleAmount)
+                                self.pieSum = self.amountArray1.reduce(0, +)
+//
+//                                if let pieDic = self.pieDic[category1] {
+//
+//                                    pieDic += self.pieSum
+//                                }
+
+                                self.pieDic[category1]? += self.pieSum
+                                print(date)
+                                print(category)
+                                print(self.pieSum)
+                            }
+                        } catch {
+                            print("decode catch")                        }
+                    }
+                    print(self.pieDic)
+
+                    for (key, value) in self.pieDic {
+                        if value != 0 {
+                        print("key: \(key)")
+                        self.pieCategoryArray.append(key)
+                        print("pieCategory: \(self.pieCategoryArray)")
+
+                        print("value: \(value)")
+                        self.pieAmountArray.append(Double(value))
+                        print("pieAmount: \(self.pieAmountArray)")
+                        }
+                    }
+                    self.updatePieChartData()
+                }
+            }
+    }
+
     func updatePieChartData() {
-        let pieCategoryArray = ["食物", "飲品", "娛樂", "交通", "消費", "家用", "醫藥", "其他"]
-        let pieAmount = [650, 456.13, 78.67, 856.52, 200, 300, 400, 200]
         let chart = pieChartView!
         var entries = [PieChartDataEntry]()
-        for (index, value) in pieAmount.enumerated() {
+        for (index, value) in pieAmountArray.enumerated() {
             let entry = PieChartDataEntry()
             entry.y = value
             entry.label = pieCategoryArray[index]
