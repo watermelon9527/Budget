@@ -92,7 +92,6 @@ class BudgetViewController: UIViewController, UITableViewDelegate {
                 } else {
                     for document in snapshot!.documents {
                         let data = document.data()
-//                        print(data)
                         let amount = data["amount"] as? Int ?? 0
                         self.amountArray.append(amount)
                         let sum = self.amountArray.reduce(0, +)

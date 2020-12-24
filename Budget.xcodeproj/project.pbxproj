@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2F04B8FB20FEC04086E9838F /* Pods_Budget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCD2C2601282BDE8AD025276 /* Pods_Budget.framework */; };
 		B90C0D97257F138E001C657B /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90C0D96257F138E001C657B /* Record.swift */; };
+		B9481578259449CE00F5A28A /* BartAmount.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9481577259449CE00F5A28A /* BartAmount.swift */; };
 		B956EDB02574E5060010CD46 /* BudgetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B956EDAF2574E5060010CD46 /* BudgetTableViewCell.swift */; };
 		B96093D22578BD770043851C /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96093D12578BD770043851C /* CardView.swift */; };
 		B983079C25748BDC00C90464 /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B983079B25748BDC00C90464 /* ListTableViewCell.swift */; };
@@ -34,6 +35,7 @@
 		3B689C68D08EF506026A921A /* Pods-Budget.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Budget.release.xcconfig"; path = "Target Support Files/Pods-Budget/Pods-Budget.release.xcconfig"; sourceTree = "<group>"; };
 		491934241D6E65E10F53DA47 /* Pods-Budget.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Budget.debug.xcconfig"; path = "Target Support Files/Pods-Budget/Pods-Budget.debug.xcconfig"; sourceTree = "<group>"; };
 		B90C0D96257F138E001C657B /* Record.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
+		B9481577259449CE00F5A28A /* BartAmount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BartAmount.swift; sourceTree = "<group>"; };
 		B956EDAF2574E5060010CD46 /* BudgetTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetTableViewCell.swift; sourceTree = "<group>"; };
 		B96093D12578BD770043851C /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		B983079B25748BDC00C90464 /* ListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
@@ -74,6 +76,7 @@
 		B90C0D94257F136D001C657B /* Firebase */ = {
 			isa = PBXGroup;
 			children = (
+				B9481577259449CE00F5A28A /* BartAmount.swift */,
 				B90C0D96257F138E001C657B /* Record.swift */,
 				B9B40DCD258CADAF00573A46 /* Budget.swift */,
 			);
@@ -300,6 +303,7 @@
 				B9AD55B8257788BE00B50B15 /* TabBarViewController.swift in Sources */,
 				B983079C25748BDC00C90464 /* ListTableViewCell.swift in Sources */,
 				B99606F12574B88E00A18EBA /* LoginViewController.swift in Sources */,
+				B9481578259449CE00F5A28A /* BartAmount.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

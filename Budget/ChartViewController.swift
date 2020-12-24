@@ -12,7 +12,7 @@ import FirebaseCore
 import FirebaseFirestoreSwift
 import FirebaseFirestore
 class ChartViewController: UIViewController {
-     var dateFormatter1: DateFormatter = {
+    var dateFormatter1: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "MM/dd"
         return formatter
@@ -22,22 +22,21 @@ class ChartViewController: UIViewController {
     var axisFormatDelgate: IAxisValueFormatter?
     let userID = Auth.auth().currentUser?.uid
     let db = Firestore.firestore()
-    var sum: Int = 0
+    var sum: Double = 0
 
     var barDayArray: [String] = []
-    //        let barAmountArray: [Double] = []
-    let barAmountArray: [Double] = [ 150, 900, 1000, 2000, 300, 4000, 500]
+    var amountArray: [Double] = []
+//    var barAmountArray: [Double] = [50, 900, 1000, 2000, 300, 4000, 500]
+    var barAmountArray: [Double] = []
     //    var pieCategoryArray = [String]()
     let date = Date()
     var today: String!
-
+    var day6: String!
     override func viewDidLoad() {
         super.viewDidLoad()
-        sevenDay()
-        updateBarChartsData()
-        updatePieChartData()
         barChartView.backgroundColor = .systemGray6
         pieChartView.backgroundColor = .systemGray6
+        sevenDay()
     }
     
     func updateBarChartsData() {
@@ -93,6 +92,94 @@ class ChartViewController: UIViewController {
         //            myView.rightAxis.addLimitLine(limit)
         //
     }
+    var dic = [String: Double]()
+    func loadRecordAmount(today: String, day6: String) {
+        db.collection("User").document("\(userID ?? "user1")").collection("record")
+            .whereField("date", isGreaterThanOrEqualTo: day6 )
+            .whereField("date", isLessThanOrEqualTo: today )
+            .order(by: "date", descending: true)
+            .getDocuments { snapshot, error in
+                if let error = error {
+                    print("\(error.localizedDescription)")
+                } else {
+                    _ = [BartAmount]()
+                    for document in snapshot!.documents {
+                        do {
+                            if let dayrecord = try document.data(as: BartAmount.self, decoder: Firestore.Decoder()) {
+
+                                let date1 = dayrecord.date
+                                self.amountArray = []
+                                self.sum = 0
+                                let data = document.data()
+                                let amount = data["amount"] as? Int ?? 0
+                                let category = data["category"] as? String ?? ""
+                                let timeStamp = data["timeStamp"] as? String ?? ""
+                                let date = data["date"] as? String ?? ""
+                                _ = BartAmount(amount: amount, category: category, timeStamp: timeStamp, date: date)
+                                let doubleAmount = Double(amount)
+                                self.amountArray.append(doubleAmount)
+                                self.sum = self.amountArray.reduce(0, +)
+                                print(date1)
+                                print(self.sum)
+                                self.dic[date1]! += self.sum
+
+                            }
+                        } catch {
+                            print("decode catch")                        }
+                    }
+                    let sortDic = self.dic.sorted { firstDictionary, secondDictionary in
+                        return firstDictionary.0 < secondDictionary.0 // 由小到大排序
+                    }
+                    for (key, value) in sortDic {
+                        print("key: \(key)")
+                        print("value: \(value)")
+                        self.barAmountArray.append(Double(value))
+                        print("bararray: \(self.barAmountArray)")
+                    }
+                    self.updateBarChartsData()
+                    self.updatePieChartData()
+                }
+            }
+    }
+    func sevenDay() {
+        let date = Date()
+        let today = date2String(date, dateFormat: "YYYY/MM/dd")
+        barDayArray.append(today)
+
+        let dateminus1 = Date.yesterday
+        let day1 = date2String(dateminus1, dateFormat: "YYYY/MM/dd")
+        barDayArray.append(day1)
+
+        let dateminus2 = dateminus1.dayBefore
+        let day2 = date2String(dateminus2, dateFormat: "YYYY/MM/dd")
+        barDayArray.append(day2)
+
+        let dateminus3 = dateminus2.dayBefore
+        let day3 = date2String(dateminus3, dateFormat: "YYYY/MM/dd")
+        barDayArray.append(day3)
+
+        let dateminus4 = dateminus3.dayBefore
+        let day4 = date2String(dateminus4, dateFormat: "YYYY/MM/dd")
+        barDayArray.append(day4)
+
+        let dateminus5 = dateminus4.dayBefore
+        let day5 = date2String(dateminus5, dateFormat: "YYYY/MM/dd")
+        barDayArray.append(day5)
+
+        let dateminus6 = dateminus5.dayBefore
+        let day6 = date2String(dateminus6, dateFormat: "YYYY/MM/dd")
+        barDayArray.append(day6)
+        dic[today] = 0
+        dic[day1] = 0
+        dic[day2] = 0
+        dic[day3] = 0
+        dic[day4] = 0
+        dic[day5] = 0
+        dic[day6] = 0
+        print(dic)
+        barDayArray.reverse()
+        loadRecordAmount(today: today, day6: day6)
+    }
     func updatePieChartData() {
         let pieCategoryArray = ["食物", "飲品", "娛樂", "交通", "消費", "家用", "醫藥", "其他"]
         let pieAmount = [650, 456.13, 78.67, 856.52, 200, 300, 400, 200]
@@ -138,54 +225,6 @@ class ChartViewController: UIViewController {
         chart.holeRadiusPercent = 0.3
         chart.transparentCircleColor = UIColor.clear
     }
-
-    func loadRecordAmount(day1: String,day2: String) {
-        db.collection("User").document("\(userID ?? "user1")").collection("record")
-            .whereField("date", isGreaterThanOrEqualTo: day1 )
-            .whereField("date", isLessThanOrEqualTo: day2)
-            .getDocuments { snapshot, error in
-                if let error = error {
-                    print("\(error.localizedDescription)")
-                } else {
-                    for document in snapshot!.documents {
-                        let data = document.data()
-                        let amount = data["amount"] as? Int ?? 0
-                        let category = data["category"] as? String ?? ""
-                        //                        self.pieCategoryArray = []
-                        //                        self.barAmountArray = []
-                        //                        self.pieCategoryArray.append(category)
-                        //                        self.barAmountArray.append(amount)
-                        //                        let sum = self.barAmountArray.reduce(0, +)
-                        //                        print(sum)
-                        //                        self.sum = sum
-                    }
-                }
-            }
-    }
-    func sevenDay() {
-        let date = Date()
-        let today = date2String(date, dateFormat: "MM-dd")
-        barDayArray.append(today)
-        let dateminus1 = Date.yesterday
-        let day1 = date2String(dateminus1, dateFormat: "MM-dd")
-        barDayArray.append(day1)
-        let dateminus2 = dateminus1.dayBefore
-        let day2 = date2String(dateminus2, dateFormat: "MM-dd")
-        barDayArray.append(day2)
-        let dateminus3 = dateminus2.dayBefore
-        let day3 = date2String(dateminus3, dateFormat: "MM-dd")
-        barDayArray.append(day3)
-        let dateminus4 = dateminus3.dayBefore
-        let day4 = date2String(dateminus4, dateFormat: "MM-dd")
-        barDayArray.append(day4)
-        let dateminus5 = dateminus4.dayBefore
-        let day5 = date2String(dateminus5, dateFormat: "MM-dd")
-        barDayArray.append(day5)
-        let dateminus6 = dateminus5.dayBefore
-        let day6 = date2String(dateminus6, dateFormat: "MM-dd")
-        barDayArray.append(day6)
-        barDayArray.reverse()
-    }
     func date2String(_ date: Date, dateFormat: String = "MM-dd") -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = dateFormat
@@ -208,7 +247,7 @@ class ChartViewController: UIViewController {
 }
 extension Date {
     static var yesterday: Date { return Date().dayBefore }
-    static var tomorrow:  Date { return Date().dayAfter }
+    static var tomorrow: Date { return Date().dayAfter }
     var dayBefore: Date {
         return Calendar.current.date(byAdding: .day, value: -1, to: noon)!
     }
@@ -219,7 +258,7 @@ extension Date {
         return Calendar.current.date(bySettingHour: 12, minute: 0, second: 0, of: self)!
     }
     var month: Int {
-        return Calendar.current.component(.month,  from: self)
+        return Calendar.current.component(.month, from: self)
     }
     var isLastDayOfMonth: Bool {
         return dayAfter.month != month
