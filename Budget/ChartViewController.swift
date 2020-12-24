@@ -68,8 +68,8 @@ class ChartViewController: UIViewController {
         barChartView.xAxis.granularity = 1
 
         barChartView.xAxis.labelPosition = .bottom
-        barChartView.animate(xAxisDuration: 2.0, yAxisDuration: 2.0)
-        barChartView.animate(xAxisDuration: 2.0, yAxisDuration: 2.0, easingOption: .easeInBounce)
+//        barChartView.animate(xAxisDuration: 2.0, yAxisDuration: 2.0)
+        barChartView.animate(xAxisDuration: 2.0, yAxisDuration: 2.0, easingOption: .easeInOutBounce)
 
         let limit = ChartLimitLine(limit: 800, label: "Budget $800")
         limit.lineColor = .black
@@ -245,8 +245,7 @@ class ChartViewController: UIViewController {
                     }
                     print(self.pieDic)
 
-                    for (key, value) in self.pieDic {
-                        if value != 0 {
+                    for (key, value) in self.pieDic  where  value != 0 {
                         print("key: \(key)")
                         self.pieCategoryArray.append(key)
                         print("pieCategory: \(self.pieCategoryArray)")
@@ -254,7 +253,7 @@ class ChartViewController: UIViewController {
                         print("value: \(value)")
                         self.pieAmountArray.append(Double(value))
                         print("pieAmount: \(self.pieAmountArray)")
-                        }
+
                     }
                     self.updatePieChartData()
                 }
