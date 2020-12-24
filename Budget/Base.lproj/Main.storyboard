@@ -197,10 +197,10 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cUU-th-e9Z">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="90"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="統計圖表" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f3V-gH-TiT">
-                                        <rect key="frame" x="134.5" y="52" width="145" height="27"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="近七天消費情形" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f3V-gH-TiT">
+                                        <rect key="frame" x="86" y="52" width="242" height="27"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="145" id="XDR-nq-HMl"/>
+                                            <constraint firstAttribute="width" constant="242" id="XDR-nq-HMl"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -425,7 +425,7 @@
                                                 <rect key="frame" x="0.0" y="116" width="385.5" height="103"/>
                                                 <subviews>
                                                     <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="a2w-Dp-jMO">
-                                                        <rect key="frame" x="0.0" y="0.0" width="90.5" height="103"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="120" height="103"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <inset key="titleEdgeInsets" minX="-42" minY="50" maxX="0.0" maxY="0.0"/>
@@ -503,7 +503,7 @@
                                                 <rect key="frame" x="0.0" y="232" width="385.5" height="103"/>
                                                 <subviews>
                                                     <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="sAU-er-opM">
-                                                        <rect key="frame" x="0.0" y="0.0" width="90.5" height="103"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="120" height="103"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -529,7 +529,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="784-mj-Pjg">
-                                                        <rect key="frame" x="103.5" y="0.0" width="91" height="103"/>
+                                                        <rect key="frame" x="133" y="0.0" width="119.5" height="103"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <inset key="titleEdgeInsets" minX="-42" minY="50" maxX="0.0" maxY="0.0"/>
@@ -554,7 +554,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" tag="8" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="AcJ-oZ-oc9">
-                                                        <rect key="frame" x="207.5" y="0.0" width="90.5" height="103"/>
+                                                        <rect key="frame" x="265.5" y="0.0" width="120" height="103"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <inset key="titleEdgeInsets" minX="-42" minY="50" maxX="0.0" maxY="0.0"/>

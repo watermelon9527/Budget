@@ -27,14 +27,13 @@ class ChartViewController: UIViewController {
 
     var barDic = [String: Double]()
     var pieDic = [String: Double]()
+
     var barDayArray: [String] = []
     var amountArray: [Double] = []
     var barAmountArray: [Double] = []
 
     var amountArray1: [Double] = []
-//    let pieCategoryArray = ["食物", "飲品", "娛樂", "交通", "消費", "家用", "醫藥", "其他"]
     var pieCategoryArray: [String] = []
-//    let pieAmount = [650, 456.13, 78.67, 856.52, 200, 300, 400, 200]
     var pieAmountArray: [Double] = []
 
     let date = Date()
@@ -75,7 +74,7 @@ class ChartViewController: UIViewController {
         let limit = ChartLimitLine(limit: 800, label: "Budget $800")
         limit.lineColor = .black
         limit.valueTextColor = .black
-        barChartView.rightAxis.addLimitLine(limit)
+  //      barChartView.rightAxis.addLimitLine(limit)
         chartDataSet.colors = [UIColor(red: 0/255, green: 74/255, blue: 173/255, alpha: 1)]
 
         //            //改變chartDataSet的顏色，此為橘色
@@ -139,10 +138,8 @@ class ChartViewController: UIViewController {
                     for (_, value) in sortDic {
 
                         self.barAmountArray.append(Double(value))
-                       // print("bararray: \(self.barAmountArray)")
                     }
                     self.updateBarChartsData()
-//                    self.updatePieChartData()
                 }
             }
     }
@@ -203,7 +200,6 @@ class ChartViewController: UIViewController {
         pieDic["醫藥"] = 0
         pieDic["其他"] = 0
 
-//        print(dic)
         barDayArray.reverse()
         loadPieAmount(today: today, day6: day6)
         loadRecordAmount(today: today, day6: day6)
