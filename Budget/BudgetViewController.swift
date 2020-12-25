@@ -72,7 +72,10 @@ class BudgetViewController: UIViewController, UITableViewDelegate {
                     let timeStamp = data["timeStamp"] as? String ?? ""
                     let period = data["period"] as? String ?? ""
                     let date = data["date"] as? String ?? ""
-                    let newRecord = Budget(amount: amount, category: category, timeStamp: timeStamp, date: date, period: period)
+                    let documentID = data["documentID"] as? String ?? ""
+
+                    let newRecord =
+                        Budget(amount: amount, category: category, timeStamp: timeStamp, date: date, period: period, documentID: documentID)
                     budgetArray.append(newRecord)
 //                    print(budgetArray)
                 }
@@ -105,7 +108,27 @@ class BudgetViewController: UIViewController, UITableViewDelegate {
 }
 
 extension BudgetViewController: UITabBarDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let documentID = budgetArray[indexPath.row].documentID
+            let userID = Auth.auth().currentUser?.uid
 
+            let collectionReference = db.collection("User").document("\(userID ?? "user1")").collection("category")
+            let query: Query = collectionReference.whereField("documentID", isEqualTo: documentID)
+            query.getDocuments(completion: { (snapshot, error) in
+                                if let error = error {
+                                    print(error.localizedDescription)
+                                } else {
+                                    for document in snapshot!.documents {
+
+                                        self.db.collection("User").document("\(userID ?? "user1")").collection("category")
+                                            .document("\(document.documentID)").delete()
+                                    }
+                                }})
+            budgetArray.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
+    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return budgetArray.count
     }

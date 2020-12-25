@@ -57,19 +57,37 @@ class PersonalViewController: UIViewController {
         timeTextField.inputView = picker0
         categoryTextField.inputView = picker1
     }
+//    func addBudget(today: String) {
+//        let dateString = self.dateFormatter.string(from: Date())
+//        ref = db.collection("User").document("\(userID ?? "user1")").collection("category").addDocument(data: [
+//            "amount": Int(budgetTextField.text ?? "0") ?? 0   ,
+//            "category": "\(categoryTextField.text ?? "bad category")",
+//            "period": "\(timeTextField.text ?? "bad time")",
+//            "timeStamp": today,
+//            "date": dateString
+//        ]) { err in
+//            if let err = err {
+//                print("Error adding document: \(err)")
+//            } else {
+//                print("Document added with ID: \(self.ref?.documentID ?? "9999")")
+//            }
+//        }
+//    }
     func addBudget(today: String) {
         let dateString = self.dateFormatter.string(from: Date())
-        ref = db.collection("User").document("\(userID ?? "user1")").collection("category").addDocument(data: [
+        let doc = db.collection("User").document("\(userID ?? "user1")").collection("category")
+        let id = doc.document().documentID
+        doc.document(id).setData([
             "amount": Int(budgetTextField.text ?? "0") ?? 0   ,
             "category": "\(categoryTextField.text ?? "bad category")",
             "period": "\(timeTextField.text ?? "bad time")",
             "timeStamp": today,
-            "date": dateString
+            "date": dateString,
+            "documentID": id
         ]) { err in
             if let err = err {
                 print("Error adding document: \(err)")
             } else {
-                print("Document added with ID: \(self.ref?.documentID ?? "9999")")
             }
         }
     }
