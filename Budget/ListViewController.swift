@@ -165,8 +165,9 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
 
         if editingStyle == .delete {
-
             let documentID = recordArray[indexPath.row].documentID
+            let userID = Auth.auth().currentUser?.uid
+
             let collectionReference = db.collection("User").document("\(userID ?? "user1")").collection("record")
             let query: Query = collectionReference.whereField("documentID", isEqualTo: documentID)
             query.getDocuments(completion: { (snapshot, error) in
@@ -175,13 +176,31 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
                         } else {
                             for document in snapshot!.documents {
 
-                                self.db.collection("User").document("\(self.userID ?? "user1")").collection("record")
+                                self.db.collection("User").document("\(userID ?? "user1")").collection("record")
                                 .document("\(document.documentID)").delete()
                             }
                         }})
                             recordArray.remove(at: indexPath.row)
                             tableView.deleteRows(at: [indexPath], with: .fade)
         }
+//            let amount = recordArray[indexPath.row].amount
+//            let userID = Auth.auth().currentUser?.uid
+//
+//            let collectionReference = db.collection("User").document("\(userID ?? "user1")").collection("record")
+//            let query: Query = collectionReference.whereField("amount", isEqualTo: amount)
+//            query.getDocuments(completion: { (snapshot, error) in
+//                        if let error = error {
+//                            print(error.localizedDescription)
+//                        } else {
+//                            for document in snapshot!.documents {
+//
+//                                self.db.collection("User").document("\(userID ?? "user1")").collection("record")
+//                                .document("\(document.documentID)").delete()
+//                            }
+//                        }})
+//                            recordArray.remove(at: indexPath.row)
+//                            tableView.deleteRows(at: [indexPath], with: .fade)
+//        }
 
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

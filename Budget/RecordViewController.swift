@@ -223,7 +223,7 @@ class RecordViewController: UIViewController {
             "comments": "\(commentTextField.text ?? "bad")",
             "timeStamp": today,
             "date": dateString,
-            "doucumentID": id
+            "documentID": id
         ]) { err in
             if let err = err {
                 print("Error adding document: \(err)")
