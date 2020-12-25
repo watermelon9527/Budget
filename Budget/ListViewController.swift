@@ -163,7 +163,6 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
         return recordArray.count
     }
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-
         if editingStyle == .delete {
             let documentID = recordArray[indexPath.row].documentID
             let userID = Auth.auth().currentUser?.uid
@@ -179,28 +178,12 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
                                 self.db.collection("User").document("\(userID ?? "user1")").collection("record")
                                 .document("\(document.documentID)").delete()
                             }
+                            self.FSCalendar.reloadData()
+
                         }})
                             recordArray.remove(at: indexPath.row)
                             tableView.deleteRows(at: [indexPath], with: .fade)
         }
-//            let amount = recordArray[indexPath.row].amount
-//            let userID = Auth.auth().currentUser?.uid
-//
-//            let collectionReference = db.collection("User").document("\(userID ?? "user1")").collection("record")
-//            let query: Query = collectionReference.whereField("amount", isEqualTo: amount)
-//            query.getDocuments(completion: { (snapshot, error) in
-//                        if let error = error {
-//                            print(error.localizedDescription)
-//                        } else {
-//                            for document in snapshot!.documents {
-//
-//                                self.db.collection("User").document("\(userID ?? "user1")").collection("record")
-//                                .document("\(document.documentID)").delete()
-//                            }
-//                        }})
-//                            recordArray.remove(at: indexPath.row)
-//                            tableView.deleteRows(at: [indexPath], with: .fade)
-//        }
 
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -253,7 +236,7 @@ extension ListViewController: FSCalendarDelegate, FSCalendarDataSource, UIGestur
         let dateString = self.dateFormatter.string(from: date)
         if allRecordArray.map({ $0.date }).contains(dateString) {
             return UIImage(systemName: "circle.fill")!.resized(to: CGSize(width: 6, height: 6))
-        }
+        } 
         return nil
     }
 

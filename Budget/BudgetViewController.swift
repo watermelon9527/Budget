@@ -105,7 +105,50 @@ class BudgetViewController: UIViewController, UITableViewDelegate {
                 }
             }
     }
-}
+    func date2String(_ date: Date, dateFormat: String = "MM-dd") -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = dateFormat
+        let date = formatter.string(from: date)
+        return date
+    }
+     func dateStringToDate(_ dateStr: String) -> Date {
+
+        let dateFormatter = DateFormatter()
+          dateFormatter.dateFormat = "YYYY/MM/dd"
+          let date = dateFormatter.date(from: dateStr)
+          return date ?? Date()
+        }
+    var weekArray = [String]()
+    func sevenDay(firstday: String) {
+        let date1 = dateStringToDate(firstday)
+        let day1 = date2String(date1, dateFormat: "MM/dd")
+        weekArray.append(day1)
+
+        let date2 = date1.dayAfter
+        let day2 = date2String(date2, dateFormat: "MM/dd")
+        weekArray.append(day2)
+
+        let date3 = date2.dayAfter
+        let day3 = date2String(date3, dateFormat: "MM/dd")
+
+        weekArray.append(day3)
+
+        let date4 = date3.dayAfter
+        let day4 = date2String(date4, dateFormat: "MM/dd")
+        weekArray.append(day4)
+
+        let date5 = date4.dayAfter
+        let day5 = date2String(date5, dateFormat: "MM/dd")
+        weekArray.append(day5)
+
+        let date6 = date5.dayAfter
+        let day6 = date2String(date6, dateFormat: "MM/dd")
+        weekArray.append(day6)
+
+        let date7 = date6.dayAfter
+        let day7 = date2String(date7, dateFormat: "MM/dd")
+        weekArray.append(day7)
+    }}
 
 extension BudgetViewController: UITabBarDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
@@ -139,17 +182,28 @@ extension BudgetViewController: UITabBarDelegate, UITableViewDataSource {
         getDate()
         amountArray = []
         loadRecordAmount(day1: budget.date, day2: today, category: budget.category) { [ weak self ] (sum) in
-            cell.remainderAmount.text = "$\(budget.amount-sum)"
+            cell.remainderAmountLabel.text = "$\(budget.amount-sum)"
             let remainAmount = Double(budget.amount-sum)
             let amount = Double(budget.amount)
             let progressPercentage = remainAmount/amount*100
             cell.circleView.startProgress(to: CGFloat(progressPercentage), duration: 1.5)
             self?.amountArray.removeAll()
         }
-        
-        cell.amountLabel.text = "$\(budget.amount)"
-        cell.remainderCategory.text = "剩餘金額"
+        cell.remainderCategoryLabel.text = "剩餘金額"
         cell.categoryLabel.text = "本\(budget.period)\(budget.category)預算"
+
+        sevenDay(firstday: budget.date)
+        let lastDay = String(weekArray.last ?? "111")
+        if budget.period == "月" {
+            cell.remianingTimeLabel.text = "\(budget.date)"
+        } else if budget.period == "週" {
+            cell.remianingTimeLabel.text = "\(budget.date)～\(lastDay) "
+        } else if budget.period == "日" {
+            cell.remianingTimeLabel.text = "\(budget.date)"
+        }
+
+
+
 
         if budget.category == "食物" {
             cell.categoryImage.image = UIImage(named: "ic_Food" )

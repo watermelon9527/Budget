@@ -44,7 +44,7 @@ class PersonalViewController: UIViewController {
     var today: String!
     fileprivate lazy var dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy/MM/dd"
+        formatter.dateFormat = "MM/dd"
         return formatter
     }()
     override func viewDidLoad() {
