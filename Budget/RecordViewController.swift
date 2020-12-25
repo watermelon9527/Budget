@@ -212,26 +212,61 @@ class RecordViewController: UIViewController {
     }
     func addData(today: String) {
         let dateString = self.dateFormatter.string(from: Date())
-        ref = db.collection("User").document("\(userID ?? "user1")").collection("record").addDocument(data: [
+
+        let doc = db.collection("User").document("\(userID ?? "user1")").collection("record")
+
+        let id = doc.document().documentID
+
+        doc.document(id).setData([
             "amount": Int(amountTextField.text ?? "0") ?? 0   ,
             "category": selectedCategory,
             "comments": "\(commentTextField.text ?? "bad")",
             "timeStamp": today,
-            "date": dateString
+            "date": dateString,
+            "doucumentID": id
         ]) { err in
             if let err = err {
                 print("Error adding document: \(err)")
             } else {
-                print("Document added with ID: \(self.ref?.documentID ?? "9999")")
             }
         }
+//        ref = db
+//            .collection("User")
+//            .document("\(userID ?? "user1")")
+//            .collection("record")
+//            .document(id)
+//            .setData([
+//                "amount": Int(amountTextField.text ?? "0") ?? 0   ,
+//                "category": selectedCategory,
+//                "comments": "\(commentTextField.text ?? "bad")",
+//                "timeStamp": today,
+//                "date": dateString,
+//                "doucumentID": ""
+//            ]) { err in
+//            if let err = err {
+//                print("Error adding document: \(err)")
+//            } else {
+//                self.update()
+//                print("Document added with ID: \(self.ref?.documentID ?? "9999")")
+//            }
+//        }
     }
+//    func update() {
+//        db.collection("User").document("\(userID ?? "user1")").collection("record").getDocuments { (querySnapshot, error) in
+//            if let querySnapshot = querySnapshot {
+//                let document = querySnapshot.documents.first
+//                document?.reference.updateData(["doucumentID": self.ref?.documentID ?? 0 ], completion: { (error) in
+//                })
+//            }
+//        }
+//    }
+
     func getDate() {
         let timeStamp = date.timeIntervalSince1970
         let timeInterval = TimeInterval(timeStamp)
         
         let date = Date(timeIntervalSince1970: timeInterval)
-        
+
         let dateFormatter = DateFormatter()
         
         dateFormatter.dateFormat = "yyyy/MM/dd HH:mm"

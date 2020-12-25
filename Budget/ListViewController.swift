@@ -72,6 +72,7 @@ class ListViewController: UIViewController {
     func listen(time: String) {
         let dateString = self.dateFormatter.string(from: selectedDate)
         db.collection("User").document("\(userID ?? "user1")").collection("record").order(by: "timeStamp", descending: true)
+            .order(by: "date", descending: true)
             .addSnapshotListener { documentSnapshot, error in
                 guard let document = documentSnapshot else {
                     print("Error fetching document: \(error!)")
@@ -86,7 +87,9 @@ class ListViewController: UIViewController {
                     let timeStamp = data["timeStamp"] as? String ?? ""
                     let comments = data["comments"] as? String ?? ""
                     let date = data["date"] as? String ?? ""
-                    let newRecord = Record(amount: amount, category: category, timeStamp: timeStamp, comments: comments, date: date)
+                    let documentID = data["documentID"] as? String ?? ""
+                    let newRecord = Record(amount: amount, category: category, timeStamp: timeStamp, comments: comments, date: date
+                                           , documentID: documentID)
                     self.allRecordArray.append(newRecord)
                 }
                 self.fetchDate(dateString)
@@ -105,15 +108,41 @@ class ListViewController: UIViewController {
                 let timeStamp = data["timeStamp"] as? String ?? ""
                 let comments = data["comments"] as? String ?? ""
                 let date = data["date"] as? String ?? ""
-                let newRecord = Record(amount: amount, category: category, timeStamp: timeStamp, comments: comments, date: date)
+                let documentID = data["documentID"] as? String ?? ""
+                let newRecord = Record(amount: amount, category: category, timeStamp: timeStamp, comments: comments, date: date
+                                       , documentID: documentID)
                 self.recordArray.append(newRecord)
                 self.datesWithEvent.append(newRecord)
             }
             self.listTableView.reloadData()
         }
     }
-
     }
+//    func deleteRecord() {
+//        db.collection("User").document("\(userID ?? "user1")").collection("record").whereField("date", isEqualTo: time).getDocuments { snapshot, error in
+//            if let error = error {
+//                print("\(error.localizedDescription)")
+//            } else {
+//                for document in snapshot!.documents {
+//                    let documentID = document.documentID
+//                    print(documentID)
+//                    self.db.collection("User").document("\(self.userID ?? "user1")").collection("record").document(documentID).delete()
+//                    //                    let data = document.data()
+//                    //                    let amount = data["amount"] as? Int ?? 0
+//                    //                    let category = data["category"] as? String ?? ""
+//                    //                    let timeStamp = data["timeStamp"] as? String ?? ""
+//                    //                    let comments = data["comments"] as? String ?? ""
+//                    //                    let date = data["date"] as? String ?? ""
+//                    //                    let newRecord = Record(amount: amount, category: category, timeStamp: timeStamp, comments: comments, date: date)
+//                    //                    self.recordArray.append(newRecord)
+//                    //                    self.datesWithEvent.append(newRecord)
+//                }
+//                self.listTableView.reloadData()
+//            }
+//        }
+//
+//}
+
     //計算天數差
     func dateDifference(_ dateA: Date, from dateB: Date) -> Double {
             let interval = dateA.timeIntervalSince(dateB)
@@ -133,7 +162,28 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return recordArray.count
     }
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
 
+        if editingStyle == .delete {
+
+            let documentID = recordArray[indexPath.row].documentID
+            let collectionReference = db.collection("User").document("\(userID ?? "user1")").collection("record")
+            let query: Query = collectionReference.whereField("documentID", isEqualTo: documentID)
+            query.getDocuments(completion: { (snapshot, error) in
+                        if let error = error {
+                            print(error.localizedDescription)
+                        } else {
+                            for document in snapshot!.documents {
+
+                                self.db.collection("User").document("\(self.userID ?? "user1")").collection("record")
+                                .document("\(document.documentID)").delete()
+                            }
+                        }})
+                            recordArray.remove(at: indexPath.row)
+                            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
+
+    }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = listTableView.dequeueReusableCell(withIdentifier: "ListTableViewCell", for: indexPath) as! ListTableViewCell
         let record = recordArray[indexPath.row]

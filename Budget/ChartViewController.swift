@@ -69,7 +69,7 @@ class ChartViewController: UIViewController {
 
         barChartView.xAxis.labelPosition = .bottom
 //        barChartView.animate(xAxisDuration: 2.0, yAxisDuration: 2.0)
-        barChartView.animate(xAxisDuration: 2.0, yAxisDuration: 2.0, easingOption: .easeInOutBounce)
+        barChartView.animate(xAxisDuration: 1.5, yAxisDuration: 1.5, easingOption: .easeInOutBounce)
 
         let limit = ChartLimitLine(limit: 800, label: "Budget $800")
         limit.lineColor = .black
@@ -99,6 +99,52 @@ class ChartViewController: UIViewController {
         //            let limit = ChartLimitLine(limit: 10.0, label: "Target")
         //            myView.rightAxis.addLimitLine(limit)
         //
+    }
+
+    func updatePieChartData() {
+        let chart = pieChartView!
+        var entries = [PieChartDataEntry]()
+        for (index, value) in pieAmountArray.enumerated() {
+            let entry = PieChartDataEntry()
+            entry.y = value
+            entry.label = pieCategoryArray[index]
+            entries.append( entry)
+        }
+        let set = PieChartDataSet( entries: entries, label: "項目佔比")
+        let colors1: [UIColor] = [UIColor(red: 147/255, green: 158/255, blue: 174/255,
+                                          alpha: 1)
+                                  //#4a7fd3 淺藍
+                                  ,UIColor(red: 74/255, green: 127/255, blue: 211/255, alpha: 1)
+                                  //#939eae 淺灰
+                                  ,UIColor(red: 107/255, green: 111/255, blue: 139/255, alpha: 1)
+                                  //#6b6f8b 灰紫2
+                                  ,UIColor(red: 206/255, green: 166/255, blue: 41/255, alpha: 1)
+                                  //#cea629 芥末
+                                  ,UIColor(red: 135/255, green: 105/255, blue: 94/255, alpha: 1)
+                                  //#87695e 棕色
+                                  ,UIColor(red: 103/255, green: 122/255, blue: 113/255, alpha: 1)
+                                  //#677a71 深白綠
+                                  ,UIColor(red: 147/255, green: 174/255, blue: 161/255, alpha: 1)
+                                  //#93aea1 淡綠
+                                  ,UIColor(red: 150/255, green: 151/255, blue: 174/255, alpha: 1)
+                                  //#9697ae 淡紫
+        ]
+
+        set.colors = colors1
+        let data = PieChartData(dataSet: set)
+        chart.data = data
+        chart.noDataText = "No data available"
+        // user interaction
+        chart.isUserInteractionEnabled = true
+
+        let description = Description()
+        //        description.text = "項目佔比"
+        chart.chartDescription = description
+        //        chart.centerText = "Pie Chart"
+        chart.animate(xAxisDuration: 1.5, yAxisDuration: 1.5, easingOption: .easeInCirc)
+        chart.holeRadiusPercent = 0.3
+        chart.transparentCircleColor = UIColor.clear
+
     }
     func loadRecordAmount(today: String, day6: String) {
         db.collection("User").document("\(userID ?? "user1")").collection("record")
@@ -236,72 +282,27 @@ class ChartViewController: UIViewController {
 //                                }
 
                                 self.pieDic[category1]? += self.pieSum
-                                print(date)
-                                print(category)
-                                print(self.pieSum)
+//                                print(date)
+//                                print(category)
+//                                print(self.pieSum)
                             }
                         } catch {
                             print("decode catch")                        }
                     }
-                    print(self.pieDic)
+//                    print(self.pieDic)
 
                     for (key, value) in self.pieDic  where  value != 0 {
-                        print("key: \(key)")
+//                        print("key: \(key)")
                         self.pieCategoryArray.append(key)
-                        print("pieCategory: \(self.pieCategoryArray)")
+//                        print("pieCategory: \(self.pieCategoryArray)")
 
-                        print("value: \(value)")
+//                        print("value: \(value)")
                         self.pieAmountArray.append(Double(value))
-                        print("pieAmount: \(self.pieAmountArray)")
-
+//                        print("pieAmount: \(self.pieAmountArray)")
                     }
                     self.updatePieChartData()
                 }
             }
-    }
-
-    func updatePieChartData() {
-        let chart = pieChartView!
-        var entries = [PieChartDataEntry]()
-        for (index, value) in pieAmountArray.enumerated() {
-            let entry = PieChartDataEntry()
-            entry.y = value
-            entry.label = pieCategoryArray[index]
-            entries.append( entry)
-        }
-        let set = PieChartDataSet( entries: entries, label: "項目佔比")
-        let colors1: [UIColor] = [UIColor(red: 147/255, green: 158/255, blue: 174/255,
-                                          alpha: 1)
-                                  //#4a7fd3 淺藍
-                                  ,UIColor(red: 74/255, green: 127/255, blue: 211/255, alpha: 1)
-                                  //#939eae 淺灰
-                                  ,UIColor(red: 107/255, green: 111/255, blue: 139/255, alpha: 1)
-                                  //#6b6f8b 灰紫2
-                                  ,UIColor(red: 206/255, green: 166/255, blue: 41/255, alpha: 1)
-                                  //#cea629 芥末
-                                  ,UIColor(red: 135/255, green: 105/255, blue: 94/255, alpha: 1)
-                                  //#87695e 棕色
-                                  ,UIColor(red: 103/255, green: 122/255, blue: 113/255, alpha: 1)
-                                  //#677a71 深白綠
-                                  ,UIColor(red: 147/255, green: 174/255, blue: 161/255, alpha: 1)
-                                  //#93aea1 淡綠
-                                  ,UIColor(red: 150/255, green: 151/255, blue: 174/255, alpha: 1)
-                                  //#9697ae 淡紫
-        ]
-
-        set.colors = colors1
-        let data = PieChartData(dataSet: set)
-        chart.data = data
-        chart.noDataText = "No data available"
-        // user interaction
-        chart.isUserInteractionEnabled = true
-
-        let description = Description()
-        //        description.text = "項目佔比"
-        chart.chartDescription = description
-        //        chart.centerText = "Pie Chart"
-        chart.holeRadiusPercent = 0.3
-        chart.transparentCircleColor = UIColor.clear
     }
     func date2String(_ date: Date, dateFormat: String = "MM-dd") -> String {
         let formatter = DateFormatter()
