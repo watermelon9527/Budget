@@ -148,8 +148,31 @@ class BudgetViewController: UIViewController, UITableViewDelegate {
         let date7 = date6.dayAfter
         let day7 = date2String(date7, dateFormat: "MM/dd")
         weekArray.append(day7)
-    }}
+    }
+    var monthArray = [String]()
 
+    func fetchDays(count: Int, firstday: String) {
+
+        var date = dateStringToDate(firstday)
+        for _ in 1...count {
+
+            let dayString = date2String(date, dateFormat: "MM/dd")
+            monthArray.append(dayString)
+            date = date.dayAfter
+        }
+        print(monthArray)
+    }
+
+    func thirtyDay(firstday: String) {
+        var date = dateStringToDate(firstday)
+        for _ in 1...30 {
+            let dayString = date2String(date, dateFormat: "MM/dd")
+            monthArray.append(dayString)
+            date = date.dayAfter
+        }
+        print(monthArray)
+    }
+}
 extension BudgetViewController: UITabBarDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
@@ -183,6 +206,13 @@ extension BudgetViewController: UITabBarDelegate, UITableViewDataSource {
         amountArray = []
         loadRecordAmount(day1: budget.date, day2: today, category: budget.category) { [ weak self ] (sum) in
             cell.remainderAmountLabel.text = "$\(budget.amount-sum)"
+            let remain = budget.amount-sum
+            if remain <= 0 {
+                cell.remainderAmountLabel.textColor = .red
+            } else {
+                cell.remainderAmountLabel.textColor = .black
+            }
+
             let remainAmount = Double(budget.amount-sum)
             let amount = Double(budget.amount)
             let progressPercentage = remainAmount/amount*100
@@ -191,19 +221,20 @@ extension BudgetViewController: UITabBarDelegate, UITableViewDataSource {
         }
         cell.remainderCategoryLabel.text = "剩餘金額"
         cell.categoryLabel.text = "本\(budget.period)\(budget.category)預算"
+        cell.amountLabel.text = "$\(budget.amount)"
 
         sevenDay(firstday: budget.date)
-        let lastDay = String(weekArray.last ?? "111")
+        thirtyDay(firstday: budget.date)
+
+        let monthLastDay = String(monthArray.last ?? "111")
+        let weekLastDay = String(weekArray.last ?? "111")
         if budget.period == "月" {
-            cell.remianingTimeLabel.text = "\(budget.date)"
+            cell.remianingTimeLabel.text = "\(budget.date)～\(monthLastDay)"
         } else if budget.period == "週" {
-            cell.remianingTimeLabel.text = "\(budget.date)～\(lastDay) "
+            cell.remianingTimeLabel.text = "\(budget.date)～\(weekLastDay) "
         } else if budget.period == "日" {
             cell.remianingTimeLabel.text = "\(budget.date)"
         }
-
-
-
 
         if budget.category == "食物" {
             cell.categoryImage.image = UIImage(named: "ic_Food" )
