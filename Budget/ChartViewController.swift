@@ -198,39 +198,40 @@ class ChartViewController: UIViewController {
         pieAmountArray.removeAll()
         barDayArray.removeAll()
         barAmountArray.removeAll()
+
         let date = Date()
-        let today = date2String(date, dateFormat: "YYYY/MM/dd")
+        let today = date2String(date, dateFormat: "yyyy/MM/dd")
         let sevenToday = date2String(date, dateFormat: "MM/dd")
         barDayArray.append(sevenToday)
 
         let dateminus1 = Date.yesterday
-        let day1 = date2String(dateminus1, dateFormat: "YYYY/MM/dd")
+        let day1 = date2String(dateminus1, dateFormat: "yyyy/MM/dd")
         let sevenOne = date2String(dateminus1, dateFormat: "MM/dd")
         barDayArray.append(sevenOne)
 
         let dateminus2 = dateminus1.dayBefore
-        let day2 = date2String(dateminus2, dateFormat: "YYYY/MM/dd")
+        let day2 = date2String(dateminus2, dateFormat: "yyyy/MM/dd")
         let sevenTwo = date2String(dateminus2, dateFormat: "MM/dd")
 
         barDayArray.append(sevenTwo)
 
         let dateminus3 = dateminus2.dayBefore
-        let day3 = date2String(dateminus3, dateFormat: "YYYY/MM/dd")
+        let day3 = date2String(dateminus3, dateFormat: "yyyy/MM/dd")
         let sevenThree = date2String(dateminus3, dateFormat: "MM/dd")
         barDayArray.append(sevenThree)
 
         let dateminus4 = dateminus3.dayBefore
-        let day4 = date2String(dateminus4, dateFormat: "YYYY/MM/dd")
+        let day4 = date2String(dateminus4, dateFormat: "yyyy/MM/dd")
         let sevenFour = date2String(dateminus4, dateFormat: "MM/dd")
         barDayArray.append(sevenFour)
 
         let dateminus5 = dateminus4.dayBefore
-        let day5 = date2String(dateminus5, dateFormat: "YYYY/MM/dd")
+        let day5 = date2String(dateminus5, dateFormat: "yyyy/MM/dd")
         let sevenFive = date2String(dateminus5, dateFormat: "MM/dd")
         barDayArray.append(sevenFive)
 
         let dateminus6 = dateminus5.dayBefore
-        let day6 = date2String(dateminus6, dateFormat: "YYYY/MM/dd")
+        let day6 = date2String(dateminus6, dateFormat: "yyyy/MM/dd")
         let sevenSix = date2String(dateminus6, dateFormat: "MM/dd")
         barDayArray.append(sevenSix)
 
@@ -326,7 +327,7 @@ class ChartViewController: UIViewController {
         let dateFormatter = DateFormatter()
 
         dateFormatter.dateFormat = "MM/dd"
-
+        dateFormatter.dateFormat = "MM/dd"
         today = dateFormatter.string(from: date)
         //        weekArray.append(today)
     }
