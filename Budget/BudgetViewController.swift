@@ -73,7 +73,6 @@ class BudgetViewController: UIViewController, UITableViewDelegate {
                     let period = data["period"] as? String ?? ""
                     let date = data["date"] as? String ?? ""
                     let documentID = data["documentID"] as? String ?? ""
-
                     let newRecord =
                         Budget(amount: amount, category: category, timeStamp: timeStamp, date: date, period: period, documentID: documentID)
                     budgetArray.append(newRecord)
@@ -178,7 +177,6 @@ extension BudgetViewController: UITabBarDelegate, UITableViewDataSource {
         if editingStyle == .delete {
             let documentID = budgetArray[indexPath.row].documentID
             let userID = Auth.auth().currentUser?.uid
-
             let collectionReference = db.collection("User").document("\(userID ?? "user1")").collection("category")
             let query: Query = collectionReference.whereField("documentID", isEqualTo: documentID)
             query.getDocuments(completion: { (snapshot, error) in
@@ -206,14 +204,13 @@ extension BudgetViewController: UITabBarDelegate, UITableViewDataSource {
         amountArray = []
         loadRecordAmount(day1: budget.date, day2: today, category: budget.category) { [ weak self ] (sum) in
             cell.remainderAmountLabel.text = "$\(budget.amount-sum)"
-//            let remain = budget.amount-sum
-//            if remain <= 0 {
-//                cell.remainderAmountLabel.textColor = .red
-//            } else {
-//                cell.remainderAmountLabel.textColor = .black
-//            }
 
             let remainAmount = Double(budget.amount-sum)
+            if remainAmount <= 0 {
+                cell.remainderAmountLabel.textColor = .red
+            } else {
+                cell.remainderAmountLabel.textColor = .black
+            }
             let amount = Double(budget.amount)
             let progressPercentage = remainAmount/amount*100
             cell.circleView.startProgress(to: CGFloat(progressPercentage), duration: 1.5)

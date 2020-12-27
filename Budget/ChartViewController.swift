@@ -169,13 +169,14 @@ class ChartViewController: UIViewController {
                                 let date = data["date"] as? String ?? ""
                                 let comments = data["comments"] as? String ?? ""
                                 let documentID = data["documentID"] as? String ?? ""
-                                _ = BartAmount(amount: amount, category: category,
+                                let record = BartAmount(amount: amount, category: category,
                                                timeStamp: timeStamp, date: date, comments: comments, documentID: documentID)
+                                print(record)
                                 let doubleAmount = Double(amount)
                                 self.amountArray.append(doubleAmount)
                                 self.barSum = self.amountArray.reduce(0, +)
                                 self.barDic[date1]? += self.barSum
-
+                                print(self.barDic[date1] ?? ["bad": 123])
                             }
                         } catch {
                             print("decode catch")                        }
@@ -276,7 +277,8 @@ class ChartViewController: UIViewController {
                                 let date = data["date"] as? String ?? ""
                                 let comments = data["comments"] as? String ?? ""
                                 let documentID = data["documentID"] as? String ?? ""
-                                _ = BartAmount(amount: amount, category: category, timeStamp: timeStamp, date: date, comments: comments, documentID: documentID)
+                                _ = BartAmount(amount: amount, category: category, timeStamp: timeStamp,
+                                               date: date, comments: comments, documentID: documentID)
                                 let doubleAmount = Double(amount)
                                 self.amountArray1.append(doubleAmount)
                                 self.pieSum = self.amountArray1.reduce(0, +)

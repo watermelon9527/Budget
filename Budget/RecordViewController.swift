@@ -10,9 +10,20 @@ import FirebaseCore
 import FirebaseFirestoreSwift
 import FirebaseFirestore
 import FirebaseAuth
+extension RecordViewController: QRScannerDelegate {
+    func QRScanner(category: String, price: String) {
+        amountTextField.text = price
+        commentTextField.text = category
+    }
 
+}
 class RecordViewController: UIViewController {
-
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "scanSegue" {
+            let scanController = segue.destination as! QRScannerController
+            scanController.delegate = self
+        }
+    }
     let db = Firestore.firestore()
     let userID = Auth.auth().currentUser?.uid
     let date = Date()
@@ -125,10 +136,14 @@ class RecordViewController: UIViewController {
             controller1.addAction(okAction)
             present(controller1, animated: true, completion: nil)
         } else {
-                    getDate()
-                    addData(today: today)
-                    amountTextField.text = ""
-                    commentTextField.text = ""
+            getDate()
+            addData(today: today)
+            let controller2 = UIAlertController(title: "完成記帳", message: "", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+            controller2.addAction(okAction)
+            present(controller2, animated: true, completion: nil)
+            amountTextField.text = ""
+            commentTextField.text = ""
         }
     }
     @IBOutlet var categoryButtons: [UIButton]!

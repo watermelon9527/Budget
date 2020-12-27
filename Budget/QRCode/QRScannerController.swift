@@ -7,7 +7,12 @@
 
 import UIKit
 import AVFoundation
+protocol QRScannerDelegate {
+    func QRScanner( category: String, price: String)
+}
 class QRScannerController: UIViewController {
+
+     var delegate: QRScannerDelegate?
 
     @IBOutlet weak var bar: UIView!
     @IBOutlet weak var label: UILabel!
@@ -127,26 +132,31 @@ extension QRScannerController: AVCaptureMetadataOutputObjectsDelegate {
                     label.text = metadataObj.stringValue
                     if metadataObj.stringValue!.count != 2 {
                     let receipt = metadataObj.stringValue
-//                    guard let start = receipt?.index(receipt!.startIndex, offsetBy: 95) else { return  }
-//                    guard let end = receipt?.index(receipt!.endIndex, offsetBy: 0) else { return  }
-//                    let range = start..<end
-//                    let myReceipt = receipt![range]
-//                    print(myReceipt)
+                    guard let start = receipt?.index(receipt!.startIndex, offsetBy: 95) else { return  }
+                    guard let end = receipt?.index(receipt!.endIndex, offsetBy: -6) else { return  }
+                    let range = start..<end
+                    let myReceipt = receipt![range]
+                   print(myReceipt)
 
-                        guard let start = receipt?.lastIndex(of: "*") else { return }
-                        guard let end = receipt?.index(receipt!.endIndex, offsetBy: 0) else { return  }
-
-                        let range = start..<end
-                        let myReceipt = receipt![range]
-                        let deRange = receipt!.range(of: "*")
-                        let backNumber = receipt!.suffix(from: deRange!.upperBound)
-
-                        print(backNumber)
+                        guard let priceStart = receipt?.index(receipt!.startIndex, offsetBy: 110) else { return  }
+                        guard let priceEnd = receipt?.index(receipt!.endIndex, offsetBy: -1) else { return  }
+                        let priceRange = priceStart..<priceEnd
+                        let priceReceipt = receipt![priceRange]
+                        print(priceReceipt)
+                        delegate?.QRScanner(category: "\(myReceipt)", price: "\(priceReceipt)")
+//                        guard let start = receipt?.lastIndex(of: "*") else { return }
+//                        guard let end = receipt?.index(receipt!.endIndex, offsetBy: 0) else { return  }
+//
+//                        let range = start..<end
+//                        let myReceipt = receipt![range]
+//                        let deRange = receipt!.range(of: "*")
+//                        let backNumber = receipt!.suffix(from: deRange!.upperBound)
+//                        print(backNumber)
                     } else {return}
 
                 }
            //
-                launchApp(decodedURL: metadataObj.stringValue!)
+    //            launchApp(decodedURL: metadataObj.stringValue!)
                 self.navigationController?.popViewController(animated: true)
             }
         } else {return}

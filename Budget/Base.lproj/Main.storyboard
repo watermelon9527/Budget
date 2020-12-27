@@ -300,7 +300,7 @@
                                         </constraints>
                                         <state key="normal" image="focus"/>
                                         <connections>
-                                            <segue destination="8yE-LP-GBR" kind="show" id="nUb-9s-3LA"/>
+                                            <segue destination="8yE-LP-GBR" kind="show" identifier="scanSegue" id="nUb-9s-3LA"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="新紀錄" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yxt-YB-BNF">
