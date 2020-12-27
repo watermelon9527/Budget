@@ -45,7 +45,7 @@ class ChartViewController: UIViewController {
         pieChartView.backgroundColor = .systemGray6
     }
     override func viewWillAppear(_ animated: Bool) {
-        sevenDay()
+        sevenDayChart()
     }
     func updateBarChartsData() {
         //生成一個存放資料的陣列，型別是BarChartDataEntry.
@@ -159,7 +159,6 @@ class ChartViewController: UIViewController {
                     for document in snapshot!.documents {
                         do {
                             if let dayrecord = try document.data(as: BartAmount.self, decoder: Firestore.Decoder()) {
-
                                 let date1 = dayrecord.date
                                 self.amountArray = []
                                 self.barSum = 0
@@ -168,11 +167,14 @@ class ChartViewController: UIViewController {
                                 let category = data["category"] as? String ?? ""
                                 let timeStamp = data["timeStamp"] as? String ?? ""
                                 let date = data["date"] as? String ?? ""
-                                _ = BartAmount(amount: amount, category: category, timeStamp: timeStamp, date: date)
+                                let comments = data["comments"] as? String ?? ""
+                                let documentID = data["documentID"] as? String ?? ""
+                                _ = BartAmount(amount: amount, category: category,
+                                               timeStamp: timeStamp, date: date, comments: comments, documentID: documentID)
                                 let doubleAmount = Double(amount)
                                 self.amountArray.append(doubleAmount)
                                 self.barSum = self.amountArray.reduce(0, +)
-                                self.barDic[date1]! += self.barSum
+                                self.barDic[date1]? += self.barSum
 
                             }
                         } catch {
@@ -185,11 +187,12 @@ class ChartViewController: UIViewController {
 
                         self.barAmountArray.append(Double(value))
                     }
+                    print(sortDic)
                     self.updateBarChartsData()
                 }
             }
     }
-    func sevenDay() {
+    func sevenDayChart() {
         pieCategoryArray.removeAll()
         pieAmountArray.removeAll()
         barDayArray.removeAll()
@@ -271,7 +274,9 @@ class ChartViewController: UIViewController {
                                 let category = data["category"] as? String ?? ""
                                 let timeStamp = data["timeStamp"] as? String ?? ""
                                 let date = data["date"] as? String ?? ""
-                                _ = BartAmount(amount: amount, category: category, timeStamp: timeStamp, date: date)
+                                let comments = data["comments"] as? String ?? ""
+                                let documentID = data["documentID"] as? String ?? ""
+                                _ = BartAmount(amount: amount, category: category, timeStamp: timeStamp, date: date, comments: comments, documentID: documentID)
                                 let doubleAmount = Double(amount)
                                 self.amountArray1.append(doubleAmount)
                                 self.pieSum = self.amountArray1.reduce(0, +)

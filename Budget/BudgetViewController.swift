@@ -206,12 +206,12 @@ extension BudgetViewController: UITabBarDelegate, UITableViewDataSource {
         amountArray = []
         loadRecordAmount(day1: budget.date, day2: today, category: budget.category) { [ weak self ] (sum) in
             cell.remainderAmountLabel.text = "$\(budget.amount-sum)"
-            let remain = budget.amount-sum
-            if remain <= 0 {
-                cell.remainderAmountLabel.textColor = .red
-            } else {
-                cell.remainderAmountLabel.textColor = .black
-            }
+//            let remain = budget.amount-sum
+//            if remain <= 0 {
+//                cell.remainderAmountLabel.textColor = .red
+//            } else {
+//                cell.remainderAmountLabel.textColor = .black
+//            }
 
             let remainAmount = Double(budget.amount-sum)
             let amount = Double(budget.amount)
