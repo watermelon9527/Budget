@@ -11,6 +11,8 @@ class ListTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+
+        
     }
 
     @IBOutlet weak var commitLabel: UILabel!
