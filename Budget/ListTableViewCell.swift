@@ -13,7 +13,7 @@ class ListTableViewCell: UITableViewCell {
         super.awakeFromNib()
     }
 
-    @IBOutlet weak var commitLabel: UILabel!
+    @IBOutlet weak var commentLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var categoryLabel: UILabel!
     @IBOutlet weak var amountLabel: UILabel!

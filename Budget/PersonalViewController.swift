@@ -11,11 +11,24 @@ import FirebaseFirestoreSwift
 import FirebaseFirestore
 import FirebaseAuth
 class PersonalViewController: UIViewController {
-    let userID = Auth.auth().currentUser?.uid
+    // pickerview
     let picker0 = UIPickerView()
     let picker1 = UIPickerView()
-    let time = ["月", "週", "日"]
+    let period = ["月", "週", "日"]
     let category = ["食物", "飲品", "娛樂", "交通", "消費", "家用", "醫藥", "其他"]
+    // firebase
+    let userID = Auth.auth().currentUser?.uid
+    let db = Firestore.firestore()
+    var ref: DocumentReference?
+    // date
+    let date = Date()
+    var today: String!
+    fileprivate lazy var dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MM/dd"
+        return formatter
+    }()
+
     @IBOutlet weak var timeTextField: UITextField!
     @IBOutlet weak var budgetTextField: UITextField!
     @IBOutlet weak var categoryTextField: UITextField!
@@ -26,29 +39,23 @@ class PersonalViewController: UIViewController {
             timeTextField.text = ""
             budgetTextField.text = ""
             categoryTextField.text = ""
-            let controller2 = UIAlertController(title: "完成!", message: "完成輸入預算", preferredStyle: .alert)
+            let completionController = UIAlertController(title: "完成!", message: "完成輸入預算", preferredStyle: .alert)
             let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-            controller2.addAction(okAction)
-            present(controller2, animated: true, completion: nil)
+            completionController.addAction(okAction)
+            present(completionController, animated: true, completion: nil)
         } else {
-            let controller = UIAlertController(title: "輸入預算!", message: "請輸入您的預算金額", preferredStyle: .alert)
+            let remindController = UIAlertController(title: "輸入預算!", message: "請輸入您的預算金額", preferredStyle: .alert)
             let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-            controller.addAction(okAction)
-            present(controller, animated: true, completion: nil)
+            remindController.addAction(okAction)
+            present(remindController, animated: true, completion: nil)
         }
     }
 
-    let db = Firestore.firestore()
-    var ref: DocumentReference?
-    let date = Date()
-    var today: String!
-    fileprivate lazy var dateFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "MM/dd"
-        return formatter
-    }()
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupPickerView()
+    }
+    func setupPickerView() {
         picker0.delegate = self
         picker0.tag = 0
         picker1.delegate = self
@@ -57,22 +64,6 @@ class PersonalViewController: UIViewController {
         timeTextField.inputView = picker0
         categoryTextField.inputView = picker1
     }
-//    func addBudget(today: String) {
-//        let dateString = self.dateFormatter.string(from: Date())
-//        ref = db.collection("User").document("\(userID ?? "user1")").collection("category").addDocument(data: [
-//            "amount": Int(budgetTextField.text ?? "0") ?? 0   ,
-//            "category": "\(categoryTextField.text ?? "bad category")",
-//            "period": "\(timeTextField.text ?? "bad time")",
-//            "timeStamp": today,
-//            "date": dateString
-//        ]) { err in
-//            if let err = err {
-//                print("Error adding document: \(err)")
-//            } else {
-//                print("Document added with ID: \(self.ref?.documentID ?? "9999")")
-//            }
-//        }
-//    }
     func addBudget(today: String) {
         let dateString = self.dateFormatter.string(from: Date())
         let doc = db.collection("User").document("\(userID ?? "user1")").collection("category")
@@ -94,25 +85,19 @@ class PersonalViewController: UIViewController {
     func getDate() {
         let timeStamp = date.timeIntervalSince1970
         let timeInterval = TimeInterval(timeStamp)
-
         let date = Date(timeIntervalSince1970: timeInterval)
-
         let dateFormatter = DateFormatter()
-
         dateFormatter.dateFormat = "yyyy/MM/dd HH:mm"
-
         today = dateFormatter.string(from: date)
     }
-
 }
 extension PersonalViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
-
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if pickerView.tag == 0 {
-            return time.count
+            return period.count
         } else if pickerView.tag == 1 {
             return category.count
         }
@@ -120,7 +105,7 @@ extension PersonalViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     }
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if pickerView.tag == 0 {
-            return time[row]
+            return period[row]
         } else if pickerView.tag == 1 {
             return category[row]
         }
@@ -129,7 +114,7 @@ extension PersonalViewController: UIPickerViewDelegate, UIPickerViewDataSource {
 
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if pickerView.tag == 0 {
-            timeTextField.text = time[row]
+            timeTextField.text = period[row]
         } else if pickerView.tag == 1 {
             categoryTextField.text = category[row]
         }

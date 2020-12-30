@@ -14,16 +14,19 @@ import FirebaseAuth
 
 class ListViewController: UIViewController {
 
-    @IBOutlet weak var FSCalendar: FSCalendar!
+    @IBOutlet weak var fSCalendar: FSCalendar!
     @IBOutlet weak var listTableView: UITableView!
-    
+    // firebase
     let userID = Auth.auth().currentUser?.uid
     var db: Firestore!
+    // data array
     var allRecordArray = [Record]()
-    var recordArray = [Record]()
+    var theDateRecordArray = [Record]()
     var datesWithEvent = [Record]()
+    // date
     var selectedDate = Date()
     var weekRange = Date()
+    let calendarImage = UIImage(systemName: "circle.fill")
     fileprivate lazy var dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy/MM/dd"
@@ -33,43 +36,36 @@ class ListViewController: UIViewController {
     override func viewDidDisappear(_ animated: Bool) {
         datesWithEvent = []
     }
-
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupListTableViewAtviewDidLoad()
+        setupfSCalendarAtViewDidload()
+        db = Firestore.firestore()
+
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        fSCalendar.backgroundColor = .systemGray6
+        let dateString = self.dateFormatter.string(from: selectedDate)
+        listenRecord(time: dateString)
+        self.theDateRecordArray = []
+        listTableView.reloadData()
+        self.fSCalendar.reloadData()
+    }
+    func setupfSCalendarAtViewDidload() {
+        fSCalendar.firstWeekday = 2
+        fSCalendar.clipsToBounds = true
+        fSCalendar.delegate = self
+        fSCalendar.dataSource = self
+    }
+    func setupListTableViewAtviewDidLoad() {
         listTableView.backgroundColor = .systemGray5
         listTableView.dataSource = self
         listTableView.delegate = self
-
-        FSCalendar.firstWeekday = 2
-        FSCalendar.clipsToBounds = true
-
-        FSCalendar.delegate = self
-        FSCalendar.dataSource = self
-        db = Firestore.firestore()
-
-//        let dateString = self.dateFormatter.string(from: Date())
-//        listen(time: dateString)
-
         listTableView.reloadData()
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        FSCalendar.backgroundColor = .systemGray6
-        let dateString = self.dateFormatter.string(from: selectedDate)
-        listen(time: dateString)
-        self.recordArray = []
-        listTableView.reloadData()
-        self.FSCalendar.reloadData()
-    }
-
-    fileprivate func fetchDate(_ dateString: String) {
-        for record in allRecordArray
-        where record.date == dateString {
-            recordArray.append(record)
-        }
-    }
-    func listen(time: String) {
+    func listenRecord(time: String) {
         let dateString = self.dateFormatter.string(from: selectedDate)
         db.collection("User").document("\(userID ?? "user1")").collection("record").order(by: "timeStamp", descending: true)
             .order(by: "date", descending: true)
@@ -80,7 +76,6 @@ class ListViewController: UIViewController {
                 }
                 self.allRecordArray.removeAll()
                 _ = document.documentChanges.map {
-                   // print($0.document.data())
                     let data = $0.document.data()
                     let amount = data["amount"] as? Int ?? 0
                     let category = data["category"] as? String ?? ""
@@ -88,13 +83,13 @@ class ListViewController: UIViewController {
                     let comments = data["comments"] as? String ?? ""
                     let date = data["date"] as? String ?? ""
                     let documentID = data["documentID"] as? String ?? ""
-                    let newRecord = Record(amount: amount, category: category, timeStamp: timeStamp, comments: comments, date: date
-                                           , documentID: documentID)
+                    let newRecord = Record(amount: amount, category: category, timeStamp: timeStamp, comments: comments, date: date,
+                                           documentID: documentID)
                     self.allRecordArray.append(newRecord)
                 }
-                self.fetchDate(dateString)
+                self.fetchTheDate(dateString)
                 self.listTableView.reloadData()
-                self.FSCalendar.reloadData()
+                self.fSCalendar.reloadData()
             }
     }
     func loadRecord(time: String) {db.collection("User").document("\(userID ?? "user1")").collection("record").whereField("date", isEqualTo: time).getDocuments { snapshot, error in
@@ -109,90 +104,56 @@ class ListViewController: UIViewController {
                 let comments = data["comments"] as? String ?? ""
                 let date = data["date"] as? String ?? ""
                 let documentID = data["documentID"] as? String ?? ""
-                let newRecord = Record(amount: amount, category: category, timeStamp: timeStamp, comments: comments, date: date
-                                       , documentID: documentID)
-                self.recordArray.append(newRecord)
+                let newRecord = Record(amount: amount, category: category, timeStamp: timeStamp, comments: comments, date: date,
+                                       documentID: documentID)
+                self.theDateRecordArray.append(newRecord)
                 self.datesWithEvent.append(newRecord)
             }
             self.listTableView.reloadData()
         }
     }
     }
-//    func deleteRecord() {
-//        db.collection("User").document("\(userID ?? "user1")").collection("record").whereField("date", isEqualTo: time).getDocuments { snapshot, error in
-//            if let error = error {
-//                print("\(error.localizedDescription)")
-//            } else {
-//                for document in snapshot!.documents {
-//                    let documentID = document.documentID
-//                    print(documentID)
-//                    self.db.collection("User").document("\(self.userID ?? "user1")").collection("record").document(documentID).delete()
-//                    //                    let data = document.data()
-//                    //                    let amount = data["amount"] as? Int ?? 0
-//                    //                    let category = data["category"] as? String ?? ""
-//                    //                    let timeStamp = data["timeStamp"] as? String ?? ""
-//                    //                    let comments = data["comments"] as? String ?? ""
-//                    //                    let date = data["date"] as? String ?? ""
-//                    //                    let newRecord = Record(amount: amount, category: category, timeStamp: timeStamp, comments: comments, date: date)
-//                    //                    self.recordArray.append(newRecord)
-//                    //                    self.datesWithEvent.append(newRecord)
-//                }
-//                self.listTableView.reloadData()
-//            }
-//        }
-//
-//}
-
-    //計算天數差
-    func dateDifference(_ dateA: Date, from dateB: Date) -> Double {
-            let interval = dateA.timeIntervalSince(dateB)
-            return interval/86400
+    fileprivate func fetchTheDate(_ dateString: String) {
+        for record in allRecordArray
+        where record.date == dateString {
+            theDateRecordArray.append(record)
         }
-    func dateStringToDate(_ dateStr: String) -> Date {
-            let dateFormatter = DateFormatter()
-            dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
-            dateFormatter.dateFormat = "yyyy/MM/dd"
-            let date
-                = dateFormatter.date(from: dateStr)
-            return date!
-        }
+    }
 }
 extension ListViewController: UITableViewDelegate, UITableViewDataSource {
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return recordArray.count
+        return theDateRecordArray.count
     }
+
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            let documentID = recordArray[indexPath.row].documentID
+            let documentID = theDateRecordArray[indexPath.row].documentID
             let userID = Auth.auth().currentUser?.uid
-
             let collectionReference = db.collection("User").document("\(userID ?? "user1")").collection("record")
             let query: Query = collectionReference.whereField("documentID", isEqualTo: documentID)
             query.getDocuments(completion: { (snapshot, error) in
-                        if let error = error {
-                            print(error.localizedDescription)
-                        } else {
-                            for document in snapshot!.documents {
+                                if let error = error {
+                                    print(error.localizedDescription)
+                                } else {
+                                    for document in snapshot!.documents {
 
-                                self.db.collection("User").document("\(userID ?? "user1")").collection("record")
-                                .document("\(document.documentID)").delete()
-                            }
-                            self.FSCalendar.reloadData()
+                                        self.db.collection("User").document("\(userID ?? "user1")").collection("record")
+                                            .document("\(document.documentID)").delete()
+                                    }
+                                    self.fSCalendar.reloadData()
 
-                        }})
-                            recordArray.remove(at: indexPath.row)
-                            tableView.deleteRows(at: [indexPath], with: .fade)
+                                }})
+            theDateRecordArray.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
         }
 
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = listTableView.dequeueReusableCell(withIdentifier: "ListTableViewCell", for: indexPath) as! ListTableViewCell
-        let record = recordArray[indexPath.row]
-
+        let record = theDateRecordArray[indexPath.row]
         cell.amountLabel.text = "$\(record.amount)"
         cell.categoryLabel.text = "\(record.category)"
-        cell.commitLabel.text = "\(record.comments)"
+        cell.commentLabel.text = "\(record.comments)"
         cell.timeLabel.text = "\(record.timeStamp)"
         if record.category == "食物" {
             cell.categoryImageView.image = UIImage(named: "ic_Food" )
@@ -223,7 +184,7 @@ extension ListViewController: FSCalendarDelegate, FSCalendarDataSource, UIGestur
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         selectedDate = date
         let dateString = self.dateFormatter.string(from: date)
-        self.recordArray = []
+        self.theDateRecordArray = []
         loadRecord(time: dateString)
         let selectedDates = calendar.selectedDates.map({self.dateFormatter.string(from: $0)})
         print("selected dates is \(selectedDates)")
@@ -235,11 +196,10 @@ extension ListViewController: FSCalendarDelegate, FSCalendarDataSource, UIGestur
     func calendar(_ calendar: FSCalendar, imageFor date: Date) -> UIImage? {
         let dateString = self.dateFormatter.string(from: date)
         if allRecordArray.map({ $0.date }).contains(dateString) {
-            return UIImage(systemName: "circle.fill")!.resized(to: CGSize(width: 6, height: 6))
+            return calendarImage!.resized(to: CGSize(width: 6, height: 6))
         } 
         return nil
     }
-
 }
 extension UIImage {
     func resized(to size: CGSize) -> UIImage {
