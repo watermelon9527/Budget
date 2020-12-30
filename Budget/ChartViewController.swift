@@ -113,21 +113,21 @@ class ChartViewController: UIViewController {
         let set = PieChartDataSet( entries: entries, label: "項目佔比")
         let colors1: [UIColor] = [UIColor(red: 147/255, green: 158/255, blue: 174/255,
                                           alpha: 1)
-                                  //#4a7fd3 淺藍
+                                  // #4a7fd3 淺藍
                                   ,UIColor(red: 74/255, green: 127/255, blue: 211/255, alpha: 1)
-                                  //#939eae 淺灰
+                                  // #939eae 淺灰
                                   ,UIColor(red: 107/255, green: 111/255, blue: 139/255, alpha: 1)
-                                  //#6b6f8b 灰紫2
+                                  // #6b6f8b 灰紫2
                                   ,UIColor(red: 206/255, green: 166/255, blue: 41/255, alpha: 1)
-                                  //#cea629 芥末
+                                  // #cea629 芥末
                                   ,UIColor(red: 135/255, green: 105/255, blue: 94/255, alpha: 1)
-                                  //#87695e 棕色
+                                  // #87695e 棕色
                                   ,UIColor(red: 103/255, green: 122/255, blue: 113/255, alpha: 1)
-                                  //#677a71 深白綠
+                                  // #677a71 深白綠
                                   ,UIColor(red: 147/255, green: 174/255, blue: 161/255, alpha: 1)
-                                  //#93aea1 淡綠
+                                  // #93aea1 淡綠
                                   ,UIColor(red: 150/255, green: 151/255, blue: 174/255, alpha: 1)
-                                  //#9697ae 淡紫
+                                  // #9697ae 淡紫
         ]
 
         set.colors = colors1
@@ -176,6 +176,8 @@ class ChartViewController: UIViewController {
                                 self.amountArray.append(doubleAmount)
                                 self.barSum = self.amountArray.reduce(0, +)
                                 self.barDic[date1]? += self.barSum
+                              //  self.barDic[date1]! += self.barSum
+
                                 print(self.barDic[date1] ?? ["bad": 123])
                             }
                         } catch {

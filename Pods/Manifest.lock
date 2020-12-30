@@ -345,8 +345,8 @@ PODS:
     - nanopb/encode (= 1.30906.0)
   - nanopb/decode (1.30906.0)
   - nanopb/encode (1.30906.0)
-  - PromisesObjC (1.2.11)
-  - SwiftLint (0.41.0)
+  - PromisesObjC (1.2.12)
+  - SwiftLint (0.42.0)
   - UICircularProgressRing (7.0.0)
 
 DEPENDENCIES:
@@ -412,8 +412,8 @@ SPEC CHECKSUMS:
   IQKeyboardManager: 2a6e97afdafc7becf0cb17a9a8d795e3a980717f
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
   nanopb: 59317e09cf1f1a0af72f12af412d54edf52603fc
-  PromisesObjC: 8c196f5a328c2cba3e74624585467a557dcb482f
-  SwiftLint: c585ebd615d9520d7fbdbe151f527977b0534f1e
+  PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
+  SwiftLint: 4fa9579c63416865179bc416f0a92d55f009600d
   UICircularProgressRing: 738b48db0ec1fbbd8482d727979392bb8c272e8d
 
 PODFILE CHECKSUM: 27b28e498fb73005a43da7a8f0788193054e6467

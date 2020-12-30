@@ -13,7 +13,6 @@
 		B956EDB02574E5060010CD46 /* BudgetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B956EDAF2574E5060010CD46 /* BudgetTableViewCell.swift */; };
 		B96093D22578BD770043851C /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96093D12578BD770043851C /* CardView.swift */; };
 		B983079C25748BDC00C90464 /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B983079B25748BDC00C90464 /* ListTableViewCell.swift */; };
-		B984E092257A072400D9B352 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B984E091257A072400D9B352 /* GoogleService-Info.plist */; };
 		B989049D2570AA2E0031A517 /* ChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B989049C2570AA2E0031A517 /* ChartViewController.swift */; };
 		B98904A12570AA680031A517 /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98904A02570AA680031A517 /* RecordViewController.swift */; };
 		B98904A52570AA810031A517 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98904A42570AA810031A517 /* ListViewController.swift */; };
@@ -28,6 +27,7 @@
 		B9DAD4F1256E36D800D02EA2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9DAD4EF256E36D800D02EA2 /* LaunchScreen.storyboard */; };
 		B9DAD502256E4C3F00D02EA2 /* QRCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DAD501256E4C3F00D02EA2 /* QRCodeViewController.swift */; };
 		B9DAD506256E4E3B00D02EA2 /* QRScannerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DAD505256E4E3B00D02EA2 /* QRScannerController.swift */; };
+		B9F287CD259C220500FECED4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B9F287CB259C220500FECED4 /* GoogleService-Info.plist */; };
 		B9FD6567257632180032BB13 /* PersonalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FD6566257632180032BB13 /* PersonalViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -39,7 +39,6 @@
 		B956EDAF2574E5060010CD46 /* BudgetTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetTableViewCell.swift; sourceTree = "<group>"; };
 		B96093D12578BD770043851C /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		B983079B25748BDC00C90464 /* ListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
-		B984E091257A072400D9B352 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B989049C2570AA2E0031A517 /* ChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewController.swift; sourceTree = "<group>"; };
 		B98904A02570AA680031A517 /* RecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
 		B98904A42570AA810031A517 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
@@ -57,6 +56,7 @@
 		B9DAD4F2256E36D800D02EA2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B9DAD501256E4C3F00D02EA2 /* QRCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeViewController.swift; sourceTree = "<group>"; };
 		B9DAD505256E4E3B00D02EA2 /* QRScannerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRScannerController.swift; sourceTree = "<group>"; };
+		B9F287CB259C220500FECED4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		B9FD6566257632180032BB13 /* PersonalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalViewController.swift; sourceTree = "<group>"; };
 		DCD2C2601282BDE8AD025276 /* Pods_Budget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Budget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -130,7 +130,7 @@
 				B989049F2570AA390031A517 /* QRCode */,
 				B96093D12578BD770043851C /* CardView.swift */,
 				B9DAD4ED256E36D800D02EA2 /* Assets.xcassets */,
-				B984E091257A072400D9B352 /* GoogleService-Info.plist */,
+				B9F287CB259C220500FECED4 /* GoogleService-Info.plist */,
 				B9DAD4EF256E36D800D02EA2 /* LaunchScreen.storyboard */,
 				B9DAD4F2256E36D800D02EA2 /* Info.plist */,
 			);
@@ -167,7 +167,7 @@
 				B9DAD4DF256E36D500D02EA2 /* Resources */,
 				B9DAD4FB256E375500D02EA2 /* ShellScript */,
 				06C913E5943308AAE2121F2C /* [CP] Embed Pods Frameworks */,
-				B99E422A259B091200F51916 /* ShellScript */,
+				B9DADDB8259C1EEC001EC774 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -216,7 +216,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B9DAD4F1256E36D800D02EA2 /* LaunchScreen.storyboard in Resources */,
-				B984E092257A072400D9B352 /* GoogleService-Info.plist in Resources */,
+				B9F287CD259C220500FECED4 /* GoogleService-Info.plist in Resources */,
 				B9DAD4EE256E36D800D02EA2 /* Assets.xcassets in Resources */,
 				B9DAD4EC256E36D500D02EA2 /* Main.storyboard in Resources */,
 			);
@@ -264,23 +264,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		B99E422A259B091200F51916 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/FirebaseCrashlytics/run\"\n";
-		};
 		B9DAD4FB256E375500D02EA2 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 12;
@@ -297,6 +280,25 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n${PODS_ROOT}/SwiftLint/swiftlint\n";
+		};
+		B9DADDB8259C1EEC001EC774 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}",
+				"$(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/FirebaseCrashlytics/run\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -381,7 +383,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -471,6 +473,8 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Budget/Budget.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 9H772B9TV8;
 				INFOPLIST_FILE = Budget/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -492,6 +496,8 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Budget/Budget.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 9H772B9TV8;
 				INFOPLIST_FILE = Budget/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
