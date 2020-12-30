@@ -10,25 +10,15 @@ import FirebaseCore
 import FirebaseFirestoreSwift
 import FirebaseFirestore
 import FirebaseAuth
-extension RecordViewController: QRScannerDelegate {
-    func QRScanner(category: String, price: String) {
-        amountTextField.text = price
-        commentTextField.text = category
-    }
 
-}
 class RecordViewController: UIViewController {
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "scanSegue" {
-            let scanController = segue.destination as! QRScannerController
-            scanController.delegate = self
-        }
-    }
+    // Firebase
     let db = Firestore.firestore()
     let userID = Auth.auth().currentUser?.uid
+    var ref: DocumentReference?
+    // date
     let date = Date()
     var today: String!
-    var ref: DocumentReference?
     var selectedCategory = ""
     fileprivate lazy var dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -38,39 +28,39 @@ class RecordViewController: UIViewController {
 
     @IBOutlet weak var commentTextField: UITextField!
     @IBOutlet weak var amountTextField: UITextField!
-    @IBAction func foodBTN(_ sender: UIButton) {
+    @IBAction func foodButton(_ sender: UIButton) {
         guard let title = sender.currentTitle else { return }
         selectedCategory = title
     }
-    @IBAction func drinkBTN(_ sender: UIButton) {
+    @IBAction func drinkButton(_ sender: UIButton) {
         guard let title = sender.currentTitle else { return }
         selectedCategory = title
     }
-    @IBAction func entertainBTN(_ sender: UIButton) {
+    @IBAction func entertainButton(_ sender: UIButton) {
         guard let title = sender.currentTitle else { return }
         selectedCategory = title
     }
-    @IBAction func trafficBTN(_ sender: UIButton) {
+    @IBAction func trafficButton(_ sender: UIButton) {
         guard let title = sender.currentTitle else { return }
         selectedCategory = title
     }
-    @IBAction func consumeBTN(_ sender: UIButton) {
+    @IBAction func consumeButton(_ sender: UIButton) {
         guard let title = sender.currentTitle else { return }
         selectedCategory = title
     }
-    @IBAction func houseHoldBTN(_ sender: UIButton) {
+    @IBAction func houseHoldButton(_ sender: UIButton) {
         guard let title = sender.currentTitle else { return }
         selectedCategory = title
     }
-    @IBAction func medicalBTN(_ sender: UIButton) {
+    @IBAction func medicalButton(_ sender: UIButton) {
         guard let title = sender.currentTitle else { return }
         selectedCategory = title
     }
-    @IBAction func incomeBTN(_ sender: UIButton) {
+    @IBAction func incomeButton(_ sender: UIButton) {
         guard let title = sender.currentTitle else { return }
         selectedCategory = title
     }
-    @IBAction func othersBTN(_ sender: UIButton) {
+    @IBAction func othersButton(_ sender: UIButton) {
         guard let title = sender.currentTitle else { return }
         selectedCategory = title
     }
@@ -126,22 +116,22 @@ class RecordViewController: UIViewController {
     }
     @IBAction func confimButton(_ sender: Any) {
         if amountTextField.text?.isEmpty == true {
-                        let controller = UIAlertController(title: "輸入金額!", message: "請輸入您的支出金額", preferredStyle: .alert)
-                        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-                        controller.addAction(okAction)
-                        present(controller, animated: true, completion: nil)
-        } else if amountTextField.text == "0" {
-            let controller1 = UIAlertController(title: "金額不可為0!", message: "請輸入您的支出金額", preferredStyle: .alert)
+            let remindAmountController = UIAlertController(title: "輸入金額!", message: "請輸入您的支出金額", preferredStyle: .alert)
             let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-            controller1.addAction(okAction)
-            present(controller1, animated: true, completion: nil)
+            remindAmountController.addAction(okAction)
+            present(remindAmountController, animated: true, completion: nil)
+        } else if amountTextField.text == "0" {
+            let remindAmountEqualToZeroController = UIAlertController(title: "金額不可為0!", message: "請輸入您的支出金額", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+            remindAmountEqualToZeroController.addAction(okAction)
+            present(remindAmountEqualToZeroController, animated: true, completion: nil)
         } else {
             getDate()
-            addData(today: today)
-            let controller2 = UIAlertController(title: "完成記帳", message: "", preferredStyle: .alert)
+            addRecord(today: today)
+            let compeltionController = UIAlertController(title: "完成記帳", message: "", preferredStyle: .alert)
             let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-            controller2.addAction(okAction)
-            present(controller2, animated: true, completion: nil)
+            compeltionController.addAction(okAction)
+            present(compeltionController, animated: true, completion: nil)
             amountTextField.text = ""
             commentTextField.text = ""
         }
@@ -162,12 +152,17 @@ class RecordViewController: UIViewController {
             }
         }
     }
-
+    // scan receipt segue
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "scanSegue" {
+            let scanController = segue.destination as! QRScannerController
+            scanController.delegate = self
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = true
     }
-
     override func viewWillAppear(_ animated: Bool) {
         recordWillAppear()
     }
@@ -215,23 +210,10 @@ class RecordViewController: UIViewController {
         incomeButton.layer.borderColor = UIColor.gray.cgColor
         incomeButton.setTitleColor(.gray, for: .normal)
     }
-    func listen() {
-        db.collection("User").document("\(userID ?? "user1")").collection("record")
-            .addSnapshotListener { documentSnapshot, error in
-                guard let document = documentSnapshot else {
-                    print("Error fetching document: \(error!)")
-                    return
-                }
-                _ = document.documentChanges.map {print($0.document.data())}
-            }
-    }
-    func addData(today: String) {
+    func addRecord(today: String) {
         let dateString = self.dateFormatter.string(from: Date())
-
         let doc = db.collection("User").document("\(userID ?? "user1")").collection("record")
-
         let id = doc.document().documentID
-
         doc.document(id).setData([
             "amount": Int(amountTextField.text ?? "0") ?? 0   ,
             "category": selectedCategory,
@@ -245,53 +227,23 @@ class RecordViewController: UIViewController {
             } else {
             }
         }
-//        ref = db
-//            .collection("User")
-//            .document("\(userID ?? "user1")")
-//            .collection("record")
-//            .document(id)
-//            .setData([
-//                "amount": Int(amountTextField.text ?? "0") ?? 0   ,
-//                "category": selectedCategory,
-//                "comments": "\(commentTextField.text ?? "bad")",
-//                "timeStamp": today,
-//                "date": dateString,
-//                "doucumentID": ""
-//            ]) { err in
-//            if let err = err {
-//                print("Error adding document: \(err)")
-//            } else {
-//                self.update()
-//                print("Document added with ID: \(self.ref?.documentID ?? "9999")")
-//            }
-//        }
     }
-//    func update() {
-//        db.collection("User").document("\(userID ?? "user1")").collection("record").getDocuments { (querySnapshot, error) in
-//            if let querySnapshot = querySnapshot {
-//                let document = querySnapshot.documents.first
-//                document?.reference.updateData(["doucumentID": self.ref?.documentID ?? 0 ], completion: { (error) in
-//                })
-//            }
-//        }
-//    }
-
     func getDate() {
         let timeStamp = date.timeIntervalSince1970
         let timeInterval = TimeInterval(timeStamp)
-        
         let date = Date(timeIntervalSince1970: timeInterval)
-
         let dateFormatter = DateFormatter()
-        
         dateFormatter.dateFormat = "yyyy/MM/dd HH:mm"
-        
         today = dateFormatter.string(from: date)
     }
 }
-
+extension RecordViewController: QRScannerDelegate {
+    func QRScanner(category: String, price: String) {
+        amountTextField.text = price
+        commentTextField.text = category
+    }
+}
 extension UIView {
-    
     @IBInspectable var cornerRadius: CGFloat {
         get {
             return layer.cornerRadius
@@ -300,7 +252,6 @@ extension UIView {
             layer.cornerRadius = newValue
             layer.masksToBounds = newValue > 0
         }}
-    
     @IBInspectable var borderWidth: CGFloat {
         get {
             return layer.borderWidth
@@ -308,7 +259,6 @@ extension UIView {
         set {
             layer.borderWidth = newValue
         }}
-    
     @IBInspectable var borderColor: UIColor? {
         get {
             return UIColor(cgColor: layer.borderColor!)
@@ -316,5 +266,4 @@ extension UIView {
         set {
             layer.borderColor = newValue?.cgColor
         }}
-    
-}
+    }
