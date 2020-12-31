@@ -8,13 +8,13 @@
 import UIKit
 
 class TabBarViewController: UITabBarController {
+    let customButton = UIButton()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        settingButton()
+        setupButton()
         tabBar.barTintColor = .systemGray6
     }
-    let customButton = UIButton()
 
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         if item.title == "新紀錄" {
@@ -23,8 +23,7 @@ class TabBarViewController: UITabBarController {
             customButton.backgroundColor = .white
         }
     }
-
-    func settingButton() {
+    func setupButton() {
         let image = UIImage(named: "Navigation_Add")
         customButton.setImage(image, for: .normal)
         customButton.frame.size = CGSize(width: 70, height: 70)

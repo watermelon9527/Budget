@@ -11,11 +11,7 @@ import FirebaseFirestoreSwift
 import FirebaseFirestore
 import FSCalendar
 import FirebaseAuth
-
 class ListViewController: UIViewController {
-
-    @IBOutlet weak var fSCalendar: FSCalendar!
-    @IBOutlet weak var listTableView: UITableView!
     // firebase
     let userID = Auth.auth().currentUser?.uid
     var db: Firestore!
@@ -33,15 +29,17 @@ class ListViewController: UIViewController {
         return formatter
     }()
 
+    @IBOutlet weak var fSCalendar: FSCalendar!
+    @IBOutlet weak var listTableView: UITableView!
     override func viewDidDisappear(_ animated: Bool) {
         datesWithEvent = []
     }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupListTableViewAtviewDidLoad()
         setupfSCalendarAtViewDidload()
         db = Firestore.firestore()
-
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -192,19 +190,11 @@ extension ListViewController: FSCalendarDelegate, FSCalendarDataSource, UIGestur
             calendar.setCurrentPage(date, animated: true)
         }
     }
-
     func calendar(_ calendar: FSCalendar, imageFor date: Date) -> UIImage? {
         let dateString = self.dateFormatter.string(from: date)
         if allRecordArray.map({ $0.date }).contains(dateString) {
             return calendarImage!.resized(to: CGSize(width: 6, height: 6))
         } 
         return nil
-    }
-}
-extension UIImage {
-    func resized(to size: CGSize) -> UIImage {
-        return UIGraphicsImageRenderer(size: size).image { _ in
-            draw(in: CGRect(origin: .zero, size: size))
-        }
     }
 }

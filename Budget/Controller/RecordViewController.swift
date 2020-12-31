@@ -4,13 +4,11 @@
 //
 //  Created by nono chan  on 2020/11/27.
 //
-
 import UIKit
 import FirebaseCore
 import FirebaseFirestoreSwift
 import FirebaseFirestore
 import FirebaseAuth
-
 class RecordViewController: UIViewController {
     // Firebase
     let db = Firestore.firestore()
@@ -126,7 +124,7 @@ class RecordViewController: UIViewController {
             remindAmountEqualToZeroController.addAction(okAction)
             present(remindAmountEqualToZeroController, animated: true, completion: nil)
         } else {
-            getDate()
+            getToday()
             addRecord(today: today)
             let compeltionController = UIAlertController(title: "完成記帳", message: "", preferredStyle: .alert)
             let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
@@ -228,7 +226,7 @@ class RecordViewController: UIViewController {
             }
         }
     }
-    func getDate() {
+    func getToday() {
         let timeStamp = date.timeIntervalSince1970
         let timeInterval = TimeInterval(timeStamp)
         let date = Date(timeIntervalSince1970: timeInterval)
@@ -243,27 +241,3 @@ extension RecordViewController: QRScannerDelegate {
         commentTextField.text = category
     }
 }
-extension UIView {
-    @IBInspectable var cornerRadius: CGFloat {
-        get {
-            return layer.cornerRadius
-        }
-        set {
-            layer.cornerRadius = newValue
-            layer.masksToBounds = newValue > 0
-        }}
-    @IBInspectable var borderWidth: CGFloat {
-        get {
-            return layer.borderWidth
-        }
-        set {
-            layer.borderWidth = newValue
-        }}
-    @IBInspectable var borderColor: UIColor? {
-        get {
-            return UIColor(cgColor: layer.borderColor!)
-        }
-        set {
-            layer.borderColor = newValue?.cgColor
-        }}
-    }

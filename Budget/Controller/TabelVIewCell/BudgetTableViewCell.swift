@@ -8,17 +8,15 @@
 import UIKit
 import UICircularProgressRing
 class BudgetTableViewCell: UITableViewCell {
-
     override func awakeFromNib() {
         super.awakeFromNib()
     }
-    
-    @IBOutlet weak var circleView: UICircularProgressRing! {
+    @IBOutlet weak var porgressView: UICircularProgressRing! {
         didSet {
-            circleView.outerRingColor = .systemGray
-            circleView.outerRingWidth = 10
-            circleView.innerRingColor = .systemIndigo
-            circleView.innerRingWidth = 10
+            porgressView.outerRingColor = .systemGray
+            porgressView.outerRingWidth = 10
+            porgressView.innerRingColor = .systemIndigo
+            porgressView.innerRingWidth = 10
         }
     }
     @IBOutlet weak var categoryImage: UIImageView!
@@ -26,12 +24,9 @@ class BudgetTableViewCell: UITableViewCell {
     @IBOutlet weak var background: UIView!
     @IBOutlet weak var categoryLabel: UILabel!
     @IBOutlet weak var amountLabel: UILabel!
-    @IBOutlet weak var remainderAmountLabel: UILabel!
-    @IBOutlet weak var remainderCategoryLabel: UILabel!
+    @IBOutlet weak var remainingAmountLabel: UILabel!
+    @IBOutlet weak var remainingCategoryLabel: UILabel!
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-//        circleView.startProgress(to: 60, duration: 2)
-
     }
-
 }

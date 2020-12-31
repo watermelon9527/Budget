@@ -12,11 +12,15 @@
 		B9481578259449CE00F5A28A /* BartAmount.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9481577259449CE00F5A28A /* BartAmount.swift */; };
 		B956EDB02574E5060010CD46 /* BudgetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B956EDAF2574E5060010CD46 /* BudgetTableViewCell.swift */; };
 		B96093D22578BD770043851C /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96093D12578BD770043851C /* CardView.swift */; };
+		B972E3E5259DA08F009CC627 /* BudgetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B972E3E4259DA08F009CC627 /* BudgetTests.swift */; };
+		B972E3F3259DA611009CC627 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B972E3F2259DA611009CC627 /* DateExtension.swift */; };
+		B972E3F7259DB220009CC627 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B972E3F6259DB220009CC627 /* UIImageExtension.swift */; };
+		B972E3FB259DB2B0009CC627 /* CornerRadiusExtesion.swift in Sources */ = {isa = PBXBuildFile; fileRef = B972E3FA259DB2B0009CC627 /* CornerRadiusExtesion.swift */; };
 		B983079C25748BDC00C90464 /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B983079B25748BDC00C90464 /* ListTableViewCell.swift */; };
 		B989049D2570AA2E0031A517 /* ChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B989049C2570AA2E0031A517 /* ChartViewController.swift */; };
 		B98904A12570AA680031A517 /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98904A02570AA680031A517 /* RecordViewController.swift */; };
 		B98904A52570AA810031A517 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98904A42570AA810031A517 /* ListViewController.swift */; };
-		B99606F12574B88E00A18EBA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99606F02574B88E00A18EBA /* LoginViewController.swift */; };
+		B99606F12574B88E00A18EBA /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99606F02574B88E00A18EBA /* SignInViewController.swift */; };
 		B9AD55B8257788BE00B50B15 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD55B7257788BE00B50B15 /* TabBarViewController.swift */; };
 		B9B40DCE258CADAF00573A46 /* Budget.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B40DCD258CADAF00573A46 /* Budget.swift */; };
 		B9DAD4E5256E36D500D02EA2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DAD4E4256E36D500D02EA2 /* AppDelegate.swift */; };
@@ -31,6 +35,16 @@
 		B9FD6567257632180032BB13 /* PersonalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FD6566257632180032BB13 /* PersonalViewController.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		B972E3E7259DA08F009CC627 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B9DAD4D9256E36D500D02EA2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B9DAD4E0256E36D500D02EA2;
+			remoteInfo = Budget;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		3B689C68D08EF506026A921A /* Pods-Budget.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Budget.release.xcconfig"; path = "Target Support Files/Pods-Budget/Pods-Budget.release.xcconfig"; sourceTree = "<group>"; };
 		491934241D6E65E10F53DA47 /* Pods-Budget.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Budget.debug.xcconfig"; path = "Target Support Files/Pods-Budget/Pods-Budget.debug.xcconfig"; sourceTree = "<group>"; };
@@ -38,11 +52,17 @@
 		B9481577259449CE00F5A28A /* BartAmount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BartAmount.swift; sourceTree = "<group>"; };
 		B956EDAF2574E5060010CD46 /* BudgetTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetTableViewCell.swift; sourceTree = "<group>"; };
 		B96093D12578BD770043851C /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		B972E3E2259DA08F009CC627 /* BudgetTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BudgetTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B972E3E4259DA08F009CC627 /* BudgetTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetTests.swift; sourceTree = "<group>"; };
+		B972E3E6259DA08F009CC627 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B972E3F2259DA611009CC627 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
+		B972E3F6259DB220009CC627 /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
+		B972E3FA259DB2B0009CC627 /* CornerRadiusExtesion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CornerRadiusExtesion.swift; sourceTree = "<group>"; };
 		B983079B25748BDC00C90464 /* ListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
 		B989049C2570AA2E0031A517 /* ChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewController.swift; sourceTree = "<group>"; };
 		B98904A02570AA680031A517 /* RecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
 		B98904A42570AA810031A517 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
-		B99606F02574B88E00A18EBA /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		B99606F02574B88E00A18EBA /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		B9AD55B7257788BE00B50B15 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		B9B40DCD258CADAF00573A46 /* Budget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Budget.swift; sourceTree = "<group>"; };
 		B9CD02D1257E707E00E53AA2 /* Budget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Budget.entitlements; sourceTree = "<group>"; };
@@ -62,6 +82,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		B972E3DF259DA08F009CC627 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B9DAD4DE256E36D500D02EA2 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -83,6 +110,50 @@
 			path = Firebase;
 			sourceTree = "<group>";
 		};
+		B972E3E3259DA08F009CC627 /* BudgetTests */ = {
+			isa = PBXGroup;
+			children = (
+				B972E3E4259DA08F009CC627 /* BudgetTests.swift */,
+				B972E3E6259DA08F009CC627 /* Info.plist */,
+			);
+			path = BudgetTests;
+			sourceTree = "<group>";
+		};
+		B972E3FE259DB307009CC627 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				B96093D12578BD770043851C /* CardView.swift */,
+				B972E3F2259DA611009CC627 /* DateExtension.swift */,
+				B972E3F6259DB220009CC627 /* UIImageExtension.swift */,
+				B972E3FA259DB2B0009CC627 /* CornerRadiusExtesion.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		B972E403259DB383009CC627 /* TabelVIewCell */ = {
+			isa = PBXGroup;
+			children = (
+				B983079B25748BDC00C90464 /* ListTableViewCell.swift */,
+				B956EDAF2574E5060010CD46 /* BudgetTableViewCell.swift */,
+			);
+			path = TabelVIewCell;
+			sourceTree = "<group>";
+		};
+		B972E404259DB3A1009CC627 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				B99606F02574B88E00A18EBA /* SignInViewController.swift */,
+				B9AD55B7257788BE00B50B15 /* TabBarViewController.swift */,
+				B9DAD4E8256E36D500D02EA2 /* BudgetViewController.swift */,
+				B989049C2570AA2E0031A517 /* ChartViewController.swift */,
+				B98904A02570AA680031A517 /* RecordViewController.swift */,
+				B98904A42570AA810031A517 /* ListViewController.swift */,
+				B9FD6566257632180032BB13 /* PersonalViewController.swift */,
+				B972E403259DB383009CC627 /* TabelVIewCell */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		B989049F2570AA390031A517 /* QRCode */ = {
 			isa = PBXGroup;
 			children = (
@@ -96,6 +167,7 @@
 			isa = PBXGroup;
 			children = (
 				B9DAD4E3256E36D500D02EA2 /* Budget */,
+				B972E3E3259DA08F009CC627 /* BudgetTests */,
 				B9DAD4E2256E36D500D02EA2 /* Products */,
 				DE8CC5403859CFA058B91073 /* Pods */,
 				C671EA5FFBF1281E853432BB /* Frameworks */,
@@ -106,6 +178,7 @@
 			isa = PBXGroup;
 			children = (
 				B9DAD4E1256E36D500D02EA2 /* Budget.app */,
+				B972E3E2259DA08F009CC627 /* BudgetTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -117,18 +190,10 @@
 				B9DAD4E4256E36D500D02EA2 /* AppDelegate.swift */,
 				B9DAD4E6256E36D500D02EA2 /* SceneDelegate.swift */,
 				B9DAD4EA256E36D500D02EA2 /* Main.storyboard */,
-				B99606F02574B88E00A18EBA /* LoginViewController.swift */,
-				B9AD55B7257788BE00B50B15 /* TabBarViewController.swift */,
-				B9DAD4E8256E36D500D02EA2 /* BudgetViewController.swift */,
-				B956EDAF2574E5060010CD46 /* BudgetTableViewCell.swift */,
-				B989049C2570AA2E0031A517 /* ChartViewController.swift */,
-				B98904A02570AA680031A517 /* RecordViewController.swift */,
-				B98904A42570AA810031A517 /* ListViewController.swift */,
-				B983079B25748BDC00C90464 /* ListTableViewCell.swift */,
-				B9FD6566257632180032BB13 /* PersonalViewController.swift */,
+				B972E404259DB3A1009CC627 /* Controller */,
 				B90C0D94257F136D001C657B /* Firebase */,
 				B989049F2570AA390031A517 /* QRCode */,
-				B96093D12578BD770043851C /* CardView.swift */,
+				B972E3FE259DB307009CC627 /* Extension */,
 				B9DAD4ED256E36D800D02EA2 /* Assets.xcassets */,
 				B9F287CB259C220500FECED4 /* GoogleService-Info.plist */,
 				B9DAD4EF256E36D800D02EA2 /* LaunchScreen.storyboard */,
@@ -157,6 +222,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		B972E3E1259DA08F009CC627 /* BudgetTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B972E3EB259DA08F009CC627 /* Build configuration list for PBXNativeTarget "BudgetTests" */;
+			buildPhases = (
+				B972E3DE259DA08F009CC627 /* Sources */,
+				B972E3DF259DA08F009CC627 /* Frameworks */,
+				B972E3E0259DA08F009CC627 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B972E3E8259DA08F009CC627 /* PBXTargetDependency */,
+			);
+			name = BudgetTests;
+			productName = BudgetTests;
+			productReference = B972E3E2259DA08F009CC627 /* BudgetTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		B9DAD4E0256E36D500D02EA2 /* Budget */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = B9DAD4F5256E36D800D02EA2 /* Build configuration list for PBXNativeTarget "Budget" */;
@@ -184,9 +267,13 @@
 		B9DAD4D9256E36D500D02EA2 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1220;
+				LastSwiftUpdateCheck = 1230;
 				LastUpgradeCheck = 1220;
 				TargetAttributes = {
+					B972E3E1259DA08F009CC627 = {
+						CreatedOnToolsVersion = 12.3;
+						TestTargetID = B9DAD4E0256E36D500D02EA2;
+					};
 					B9DAD4E0256E36D500D02EA2 = {
 						CreatedOnToolsVersion = 12.2;
 					};
@@ -206,11 +293,19 @@
 			projectRoot = "";
 			targets = (
 				B9DAD4E0256E36D500D02EA2 /* Budget */,
+				B972E3E1259DA08F009CC627 /* BudgetTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		B972E3E0259DA08F009CC627 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B9DAD4DF256E36D500D02EA2 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -303,6 +398,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		B972E3DE259DA08F009CC627 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B972E3E5259DA08F009CC627 /* BudgetTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B9DAD4DD256E36D500D02EA2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -312,6 +415,7 @@
 				B9DAD4E9256E36D500D02EA2 /* BudgetViewController.swift in Sources */,
 				B989049D2570AA2E0031A517 /* ChartViewController.swift in Sources */,
 				B956EDB02574E5060010CD46 /* BudgetTableViewCell.swift in Sources */,
+				B972E3FB259DB2B0009CC627 /* CornerRadiusExtesion.swift in Sources */,
 				B98904A12570AA680031A517 /* RecordViewController.swift in Sources */,
 				B9DAD4E5256E36D500D02EA2 /* AppDelegate.swift in Sources */,
 				B98904A52570AA810031A517 /* ListViewController.swift in Sources */,
@@ -320,14 +424,24 @@
 				B9DAD4E7256E36D500D02EA2 /* SceneDelegate.swift in Sources */,
 				B9B40DCE258CADAF00573A46 /* Budget.swift in Sources */,
 				B9FD6567257632180032BB13 /* PersonalViewController.swift in Sources */,
+				B972E3F7259DB220009CC627 /* UIImageExtension.swift in Sources */,
+				B972E3F3259DA611009CC627 /* DateExtension.swift in Sources */,
 				B9AD55B8257788BE00B50B15 /* TabBarViewController.swift in Sources */,
 				B983079C25748BDC00C90464 /* ListTableViewCell.swift in Sources */,
-				B99606F12574B88E00A18EBA /* LoginViewController.swift in Sources */,
+				B99606F12574B88E00A18EBA /* SignInViewController.swift in Sources */,
 				B9481578259449CE00F5A28A /* BartAmount.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B972E3E8259DA08F009CC627 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B9DAD4E0256E36D500D02EA2 /* Budget */;
+			targetProxy = B972E3E7259DA08F009CC627 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		B9DAD4EA256E36D500D02EA2 /* Main.storyboard */ = {
@@ -349,6 +463,48 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		B972E3E9259DA08F009CC627 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				"HEADER_SEARCH_PATHS[arch=*]" = "\"${SRCROOT}/Pods/Firebase/CoreOnly/Sources\"";
+				INFOPLIST_FILE = BudgetTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Chi-jung.BudgetTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Budget.app/Budget";
+			};
+			name = Debug;
+		};
+		B972E3EA259DA08F009CC627 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = BudgetTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Chi-jung.BudgetTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Budget.app/Budget";
+			};
+			name = Release;
+		};
 		B9DAD4F3256E36D800D02EA2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -514,6 +670,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		B972E3EB259DA08F009CC627 /* Build configuration list for PBXNativeTarget "BudgetTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B972E3E9259DA08F009CC627 /* Debug */,
+				B972E3EA259DA08F009CC627 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		B9DAD4DC256E36D500D02EA2 /* Build configuration list for PBXProject "Budget" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

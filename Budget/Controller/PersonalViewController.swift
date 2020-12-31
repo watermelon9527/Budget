@@ -34,7 +34,7 @@ class PersonalViewController: UIViewController {
     @IBOutlet weak var categoryTextField: UITextField!
     @IBAction func sendButton(_ sender: UIButton) {
         if timeTextField.text?.isEmpty != true {
-            getDate()
+            getToday()
             addBudget(today: today)
             timeTextField.text = ""
             budgetTextField.text = ""
@@ -55,6 +55,7 @@ class PersonalViewController: UIViewController {
         super.viewDidLoad()
         setupPickerView()
     }
+
     func setupPickerView() {
         picker0.delegate = self
         picker0.tag = 0
@@ -82,7 +83,7 @@ class PersonalViewController: UIViewController {
             }
         }
     }
-    func getDate() {
+    func getToday() {
         let timeStamp = date.timeIntervalSince1970
         let timeInterval = TimeInterval(timeStamp)
         let date = Date(timeIntervalSince1970: timeInterval)

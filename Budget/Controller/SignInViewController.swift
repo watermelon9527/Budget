@@ -10,14 +10,17 @@ import AuthenticationServices
 import FirebaseAuth
 import CryptoKit
 
-class LoginViewController: UIViewController {
-
+class SignInViewController: UIViewController {
     @IBOutlet weak var loginView: UIStackView!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupProviderLoginView()
     }
-    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.navigationController?.navigationBar.isHidden = true
+    }
     func setupProviderLoginView() {
         let button = ASAuthorizationAppleIDButton()
         button.addTarget(self, action: #selector(handleAuthorizationAppleIDButtonPress), for: .touchUpInside)
@@ -47,10 +50,6 @@ class LoginViewController: UIViewController {
         return request
     }
 
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        self.navigationController?.navigationBar.isHidden = true
-    }
     // Adapted from https://auth0.com/docs/api-auth/tutorials/nonce#generate-a-cryptographically-random-nonce
     private func randomNonceString(length: Int = 32) -> String {
         precondition(length > 0)
@@ -112,7 +111,7 @@ class LoginViewController: UIViewController {
     }
 
 }
-extension LoginViewController: ASAuthorizationControllerDelegate {
+extension SignInViewController: ASAuthorizationControllerDelegate {
     func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
         if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
             guard let nonce = currentNonce else {
@@ -143,7 +142,7 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
         print("Sign in with Apple errored: \(error)")
     }
 }
-extension LoginViewController: ASAuthorizationControllerPresentationContextProviding {
+extension SignInViewController: ASAuthorizationControllerPresentationContextProviding {
     func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
         return self.view.window!
     }
