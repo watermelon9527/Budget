@@ -113,32 +113,32 @@ class BudgetViewController: UIViewController, UITableViewDelegate {
     }
     func sevenDay(firstday: String) {
         let date1 = dateStringToDate(firstday)
-        let day1 = dateToString(date1, dateFormat: "MM/dd")
+        let day1 = dateToString(date1, dateFormat: "yyyy/MM/dd")
         weekArray.append(day1)
 
         let date2 = date1.dayAfter
-        let day2 = dateToString(date2, dateFormat: "MM/dd")
+        let day2 = dateToString(date2, dateFormat: "yyyy/MM/dd")
         weekArray.append(day2)
 
         let date3 = date2.dayAfter
-        let day3 = dateToString(date3, dateFormat: "MM/dd")
+        let day3 = dateToString(date3, dateFormat: "yyyy/MM/dd")
 
         weekArray.append(day3)
 
         let date4 = date3.dayAfter
-        let day4 = dateToString(date4, dateFormat: "MM/dd")
+        let day4 = dateToString(date4, dateFormat: "yyyy/MM/dd")
         weekArray.append(day4)
 
         let date5 = date4.dayAfter
-        let day5 = dateToString(date5, dateFormat: "MM/dd")
+        let day5 = dateToString(date5, dateFormat: "yyyy/MM/dd")
         weekArray.append(day5)
 
         let date6 = date5.dayAfter
-        let day6 = dateToString(date6, dateFormat: "MM/dd")
+        let day6 = dateToString(date6, dateFormat: "yyyy/MM/dd")
         weekArray.append(day6)
 
         let date7 = date6.dayAfter
-        let day7 = dateToString(date7, dateFormat: "MM/dd")
+        let day7 = dateToString(date7, dateFormat: "yyyy/MM/dd")
         weekArray.append(day7)
     }
     func getToday() {
@@ -156,16 +156,27 @@ class BudgetViewController: UIViewController, UITableViewDelegate {
             monthArray.append(dayString)
             date = date.dayAfter
         }
-        print(monthArray)
+//        print(monthArray)
     }
     func thirtyDay(firstday: String) {
         var date = dateStringToDate(firstday)
         for _ in 1...30 {
-            let dayString = dateToString(date, dateFormat: "MM/dd")
+            let dayString = dateToString(date, dateFormat: "yyyy/MM/dd")
             monthArray.append(dayString)
             date = date.dayAfter
         }
-        print(monthArray)
+        // print(monthArray)
+    }
+    func findLastDay(firstday: String, lastday: Int) -> String {
+        var date = dateStringToDate(firstday)
+        for _ in 1...lastday {
+//            let dayString = dateToString(date, dateFormat: "MM/dd")
+//            monthArray.append(dayString)
+            date = date.dayAfter
+        }
+        let dayString = dateToString(date, dateFormat: "yyyy/MM/dd")
+        return dayString
+
     }
 }
 extension BudgetViewController: UITabBarDelegate, UITableViewDataSource {
@@ -195,22 +206,22 @@ extension BudgetViewController: UITabBarDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = budgetTableView.dequeueReusableCell(withIdentifier: "BudgetTableViewCell", for: indexPath) as! BudgetTableViewCell
         let budget = budgetArray[indexPath.row]
-        getToday()
-        amountArray = []
-        loadRecordAmount(day1: budget.date, day2: today, category: budget.category) { [ weak self ] (sum) in
-            cell.remainingAmountLabel.text = "$\(budget.amount-sum)"
-
-            let remainAmount = Double(budget.amount-sum)
-            if remainAmount <= 0 {
-                cell.remainingAmountLabel.textColor = .red
-            } else {
-                cell.remainingAmountLabel.textColor = .black
-            }
-            let amount = Double(budget.amount)
-            let progressPercentage = remainAmount/amount*100
-            cell.porgressView.startProgress(to: CGFloat(progressPercentage), duration: 1.5)
-            self?.amountArray.removeAll()
-        }
+//        getToday()
+//        amountArray = []
+//        loadRecordAmount(day1: budget.date, day2: today, category: budget.category) { [ weak self ] (sum) in
+//            cell.remainingAmountLabel.text = "$\(budget.amount-sum)"
+//
+//            let remainAmount = Double(budget.amount-sum)
+//            if remainAmount <= 0 {
+//                cell.remainingAmountLabel.textColor = .red
+//            } else {
+//                cell.remainingAmountLabel.textColor = .black
+//            }
+//            let amount = Double(budget.amount)
+//            let progressPercentage = remainAmount/amount*100
+//            cell.porgressView.startProgress(to: CGFloat(progressPercentage), duration: 1.5)
+//            self?.amountArray.removeAll()
+//        }
         cell.remainingCategoryLabel.text = "剩餘金額"
         cell.categoryLabel.text = "本\(budget.period)\(budget.category)預算"
         cell.amountLabel.text = "$\(budget.amount)"
@@ -222,11 +233,64 @@ extension BudgetViewController: UITabBarDelegate, UITableViewDataSource {
 
         let monthLastDay = String(monthArray.last ?? "111")
         let weekLastDay = String(weekArray.last ?? "111")
+
         if budget.period == "月" {
+            amountArray = []
+
+            let lastDay = findLastDay(firstday: budget.date, lastday: 30)
+            loadRecordAmount(day1: budget.date, day2: lastDay, category: budget.category) { [ weak self ] (sum) in
+                cell.remainingAmountLabel.text = "$\(budget.amount-sum)"
+
+                let remainAmount = Double(budget.amount-sum)
+                if remainAmount <= 0 {
+                    cell.remainingAmountLabel.textColor = .red
+                } else {
+                    cell.remainingAmountLabel.textColor = .black
+                }
+                let amount = Double(budget.amount)
+                let progressPercentage = remainAmount/amount*100
+                cell.porgressView.startProgress(to: CGFloat(progressPercentage), duration: 1.5)
+                self?.amountArray.removeAll()
+            }
+
             cell.remianingTimeLabel.text = "\(budget.date)～\(monthLastDay)"
         } else if budget.period == "週" {
+            amountArray = []
+            let lastDay = findLastDay(firstday: budget.date, lastday: 6)
+              loadRecordAmount(day1: budget.date, day2: lastDay, category: budget.category) { [ weak self ] (sum) in
+                  cell.remainingAmountLabel.text = "$\(budget.amount-sum)"
+
+                  let remainAmount = Double(budget.amount-sum)
+                  if remainAmount <= 0 {
+                      cell.remainingAmountLabel.textColor = .red
+                  } else {
+                      cell.remainingAmountLabel.textColor = .black
+                  }
+                  let amount = Double(budget.amount)
+                  let progressPercentage = remainAmount/amount*100
+                  cell.porgressView.startProgress(to: CGFloat(progressPercentage), duration: 1.5)
+                  self?.amountArray.removeAll()
+              }
+
             cell.remianingTimeLabel.text = "\(budget.date)～\(weekLastDay) "
         } else if budget.period == "日" {
+            amountArray = []
+//            let lastDay = findLastDay(firstday: budget.date, lastday: 1)
+            loadRecordAmount(day1: budget.date, day2: budget.date, category: budget.category) { [ weak self ] (sum) in
+                  cell.remainingAmountLabel.text = "$\(budget.amount-sum)"
+
+                  let remainAmount = Double(budget.amount-sum)
+                  if remainAmount <= 0 {
+                      cell.remainingAmountLabel.textColor = .red
+                  } else {
+                      cell.remainingAmountLabel.textColor = .black
+                  }
+                  let amount = Double(budget.amount)
+                  let progressPercentage = remainAmount/amount*100
+                  cell.porgressView.startProgress(to: CGFloat(progressPercentage), duration: 1.5)
+                  self?.amountArray.removeAll()
+              }
+
             cell.remianingTimeLabel.text = "\(budget.date)"
         }
 
