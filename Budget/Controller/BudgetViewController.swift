@@ -80,6 +80,9 @@ class BudgetViewController: UIViewController, UITableViewDelegate {
         }
     }
     func loadRecordAmount(day1: String, day2: String, category: String, completion: @escaping(Int) -> Void) {
+
+        sum = 0
+
        let doc =  db.collection("User").document("\(userID ?? "user1")").collection("record")
             .whereField("date", isLessThanOrEqualTo: day2)
             .whereField("date", isGreaterThanOrEqualTo: day1 )
