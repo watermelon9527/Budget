@@ -51,55 +51,57 @@ class BudgetViewController: UIViewController, UITableViewDelegate {
         budgetTableView.delegate = self
         budgetTableView.backgroundColor = .systemGray5
     }
-    func loadData() { loadBudgetCategory { [weak self] (newRecords) in
+    func loadData() { FirestoreManger.shared.loadBudgetCategory { [weak self] (newRecords) in
         self?.getToday()
         self?.budgetArray = newRecords
+        self?.budgetTableView.reloadData()
+
     }
     }
-    func loadBudgetCategory(completion: @escaping ([Budget]) -> Void) { let doc = db.collection("User").document("\(userID ?? "user1")").collection("category")
-        doc.getDocuments { snapshot, error in
-            if let error = error {
-                print("\(error.localizedDescription)")
-            } else {
-                var budgetArray = [Budget]()
-                for document in snapshot!.documents {
-                    let data = document.data()
-                    let amount = data["amount"] as? Int ?? 0
-                    let category = data["category"] as? String ?? ""
-                    let timeStamp = data["timeStamp"] as? String ?? ""
-                    let period = data["period"] as? String ?? ""
-                    let date = data["date"] as? String ?? ""
-                    let documentID = data["documentID"] as? String ?? ""
-                    let newRecord =
-                        Budget(amount: amount, category: category, timeStamp: timeStamp, date: date, period: period, documentID: documentID)
-                    budgetArray.append(newRecord)
-                }
-                completion(budgetArray)
-                self.budgetTableView.reloadData()
-            }
-        }
-    }
-    func loadRecordAmount(day1: String, day2: String, category: String, completion: @escaping(Int) -> Void) {
-        sum = 0
-        let doc =  db.collection("User").document("\(userID ?? "user1")").collection("record")
-            .whereField("date", isLessThanOrEqualTo: day2)
-            .whereField("date", isGreaterThanOrEqualTo: day1 )
-            .whereField("category", isEqualTo: category)
-        doc.getDocuments { snapshot, error in
-            if let error = error {
-                print("\(error.localizedDescription)")
-            } else {
-                for document in snapshot!.documents {
-                    let data = document.data()
-                    let amount = data["amount"] as? Int ?? 0
-                    self.amountArray.append(amount)
-                    let sum = self.amountArray.reduce(0, +)
-                    self.sum = sum
-                }
-                completion(self.sum)
-            }
-        }
-    }
+//    func loadBudgetCategory(completion: @escaping ([Budget]) -> Void) { let doc = db.collection("User").document("\(userID ?? "user1")").collection("category")
+//        doc.getDocuments { snapshot, error in
+//            if let error = error {
+//                print("\(error.localizedDescription)")
+//            } else {
+//                var budgetArray = [Budget]()
+//                for document in snapshot!.documents {
+//                    let data = document.data()
+//                    let amount = data["amount"] as? Int ?? 0
+//                    let category = data["category"] as? String ?? ""
+//                    let timeStamp = data["timeStamp"] as? String ?? ""
+//                    let period = data["period"] as? String ?? ""
+//                    let date = data["date"] as? String ?? ""
+//                    let documentID = data["documentID"] as? String ?? ""
+//                    let newRecord =
+//                        Budget(amount: amount, category: category, timeStamp: timeStamp, date: date, period: period, documentID: documentID)
+//                    budgetArray.append(newRecord)
+//                }
+//                completion(budgetArray)
+//                self.budgetTableView.reloadData()
+//            }
+//        }
+//    }
+//    func loadRecordAmount(day1: String, day2: String, category: String, completion: @escaping(Int) -> Void) {
+//        sum = 0
+//        let doc =  db.collection("User").document("\(userID ?? "user1")").collection("record")
+//            .whereField("date", isLessThanOrEqualTo: day2)
+//            .whereField("date", isGreaterThanOrEqualTo: day1 )
+//            .whereField("category", isEqualTo: category)
+//        doc.getDocuments { snapshot, error in
+//            if let error = error {
+//                print("\(error.localizedDescription)")
+//            } else {
+//                for document in snapshot!.documents {
+//                    let data = document.data()
+//                    let amount = data["amount"] as? Int ?? 0
+//                    self.amountArray.append(amount)
+//                    let sum = self.amountArray.reduce(0, +)
+//                    self.sum = sum
+//                }
+//                completion(self.sum)
+//            }
+//        }
+//    }
     func dateToString(_ date: Date, dateFormat: String = "MM-dd") -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = dateFormat
@@ -239,7 +241,7 @@ extension BudgetViewController: UITabBarDelegate, UITableViewDataSource {
             amountArray = []
 
             let lastDay = findLastDay(firstday: budget.date, lastday: 30)
-            loadRecordAmount(day1: budget.date, day2: lastDay, category: budget.category) { [ weak self ] (sum) in
+            FirestoreManger.shared.loadRecordAmount(day1: budget.date, day2: lastDay, category: budget.category) { [ weak self ] (sum) in
                 cell.remainingAmountLabel.text = "$\(budget.amount-sum)"
 
                 let remainAmount = Double(budget.amount-sum)
@@ -258,7 +260,7 @@ extension BudgetViewController: UITabBarDelegate, UITableViewDataSource {
         } else if budget.period == "週" {
             amountArray = []
             let lastDay = findLastDay(firstday: budget.date, lastday: 6)
-            loadRecordAmount(day1: budget.date, day2: lastDay, category: budget.category) { [ weak self ] (sum) in
+            FirestoreManger.shared.loadRecordAmount(day1: budget.date, day2: lastDay, category: budget.category) { [ weak self ] (sum) in
                 cell.remainingAmountLabel.text = "$\(budget.amount-sum)"
 
                 let remainAmount = Double(budget.amount-sum)
@@ -277,7 +279,7 @@ extension BudgetViewController: UITabBarDelegate, UITableViewDataSource {
         } else if budget.period == "日" {
             amountArray = []
             //            let lastDay = findLastDay(firstday: budget.date, lastday: 1)
-            loadRecordAmount(day1: budget.date, day2: budget.date, category: budget.category) { [ weak self ] (sum) in
+            FirestoreManger.shared.loadRecordAmount(day1: budget.date, day2: budget.date, category: budget.category) { [ weak self ] (sum) in
                 cell.remainingAmountLabel.text = "$\(budget.amount-sum)"
 
                 let remainAmount = Double(budget.amount-sum)
