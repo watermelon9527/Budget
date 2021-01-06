@@ -13,14 +13,10 @@ import FirebaseFirestore
 import FirebaseAuth
 class BudgetViewController: UIViewController, UITableViewDelegate {
     // Firebase
-    let userID = Auth.auth().currentUser?.uid
     var db = Firestore.firestore()
-    //  UI
-    var cell = BudgetTableViewCell()
-    var progressPercentage: Int = 0
     // Data
     var amountArray = [Int]()
-    var sum: Int = 0
+//    var sum: Int = 0
     var budgetArray = [Budget]()
     var weekArray = [String]()
     var monthArray = [String]()
@@ -55,53 +51,8 @@ class BudgetViewController: UIViewController, UITableViewDelegate {
         self?.getToday()
         self?.budgetArray = newRecords
         self?.budgetTableView.reloadData()
-
     }
     }
-//    func loadBudgetCategory(completion: @escaping ([Budget]) -> Void) { let doc = db.collection("User").document("\(userID ?? "user1")").collection("category")
-//        doc.getDocuments { snapshot, error in
-//            if let error = error {
-//                print("\(error.localizedDescription)")
-//            } else {
-//                var budgetArray = [Budget]()
-//                for document in snapshot!.documents {
-//                    let data = document.data()
-//                    let amount = data["amount"] as? Int ?? 0
-//                    let category = data["category"] as? String ?? ""
-//                    let timeStamp = data["timeStamp"] as? String ?? ""
-//                    let period = data["period"] as? String ?? ""
-//                    let date = data["date"] as? String ?? ""
-//                    let documentID = data["documentID"] as? String ?? ""
-//                    let newRecord =
-//                        Budget(amount: amount, category: category, timeStamp: timeStamp, date: date, period: period, documentID: documentID)
-//                    budgetArray.append(newRecord)
-//                }
-//                completion(budgetArray)
-//                self.budgetTableView.reloadData()
-//            }
-//        }
-//    }
-//    func loadRecordAmount(day1: String, day2: String, category: String, completion: @escaping(Int) -> Void) {
-//        sum = 0
-//        let doc =  db.collection("User").document("\(userID ?? "user1")").collection("record")
-//            .whereField("date", isLessThanOrEqualTo: day2)
-//            .whereField("date", isGreaterThanOrEqualTo: day1 )
-//            .whereField("category", isEqualTo: category)
-//        doc.getDocuments { snapshot, error in
-//            if let error = error {
-//                print("\(error.localizedDescription)")
-//            } else {
-//                for document in snapshot!.documents {
-//                    let data = document.data()
-//                    let amount = data["amount"] as? Int ?? 0
-//                    self.amountArray.append(amount)
-//                    let sum = self.amountArray.reduce(0, +)
-//                    self.sum = sum
-//                }
-//                completion(self.sum)
-//            }
-//        }
-//    }
     func dateToString(_ date: Date, dateFormat: String = "MM-dd") -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = dateFormat
@@ -159,7 +110,6 @@ class BudgetViewController: UIViewController, UITableViewDelegate {
             monthArray.append(dayString)
             date = date.dayAfter
         }
-        //        print(monthArray)
     }
     func thirtyDay(firstday: String) {
         var date = dateStringToDate(firstday)
@@ -168,13 +118,10 @@ class BudgetViewController: UIViewController, UITableViewDelegate {
             monthArray.append(dayString)
             date = date.dayAfter
         }
-        // print(monthArray)
     }
     func findLastDay(firstday: String, lastday: Int) -> String {
         var date = dateStringToDate(firstday)
         for _ in 1...lastday {
-            //            let dayString = dateToString(date, dateFormat: "MM/dd")
-            //            monthArray.append(dayString)
             date = date.dayAfter
         }
         let dayString = dateToString(date, dateFormat: "yyyy/MM/dd")
@@ -209,27 +156,9 @@ extension BudgetViewController: UITabBarDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = budgetTableView.dequeueReusableCell(withIdentifier: "BudgetTableViewCell", for: indexPath) as! BudgetTableViewCell
         let budget = budgetArray[indexPath.row]
-        //        getToday()
-        //        amountArray = []
-        //        loadRecordAmount(day1: budget.date, day2: today, category: budget.category) { [ weak self ] (sum) in
-        //            cell.remainingAmountLabel.text = "$\(budget.amount-sum)"
-        //
-        //            let remainAmount = Double(budget.amount-sum)
-        //            if remainAmount <= 0 {
-        //                cell.remainingAmountLabel.textColor = .red
-        //            } else {
-        //                cell.remainingAmountLabel.textColor = .black
-        //            }
-        //            let amount = Double(budget.amount)
-        //            let progressPercentage = remainAmount/amount*100
-        //            cell.porgressView.startProgress(to: CGFloat(progressPercentage), duration: 1.5)
-        //            self?.amountArray.removeAll()
-        //        }
         cell.remainingCategoryLabel.text = "剩餘金額"
         cell.categoryLabel.text = "本\(budget.period)\(budget.category)預算"
         cell.amountLabel.text = "$\(budget.amount)"
-        //        fetchDays(count: 7, firstday: budget.date)
-        //        fetchDays(count: 30, firstday: budget.date)
 
         sevenDay(firstday: budget.date)
         thirtyDay(firstday: budget.date)
@@ -239,7 +168,6 @@ extension BudgetViewController: UITabBarDelegate, UITableViewDataSource {
 
         if budget.period == "月" {
             amountArray = []
-
             let lastDay = findLastDay(firstday: budget.date, lastday: 30)
             FirestoreManger.shared.loadRecordAmount(day1: budget.date, day2: lastDay, category: budget.category) { [ weak self ] (sum) in
                 cell.remainingAmountLabel.text = "$\(budget.amount-sum)"
@@ -255,7 +183,6 @@ extension BudgetViewController: UITabBarDelegate, UITableViewDataSource {
                 cell.porgressView.startProgress(to: CGFloat(progressPercentage), duration: 1.5)
                 self?.amountArray.removeAll()
             }
-
             cell.remianingTimeLabel.text = "\(budget.date)～\(monthLastDay)"
         } else if budget.period == "週" {
             amountArray = []
@@ -274,11 +201,9 @@ extension BudgetViewController: UITabBarDelegate, UITableViewDataSource {
                 cell.porgressView.startProgress(to: CGFloat(progressPercentage), duration: 1.5)
                 self?.amountArray.removeAll()
             }
-
             cell.remianingTimeLabel.text = "\(budget.date)～\(weekLastDay) "
         } else if budget.period == "日" {
             amountArray = []
-            //            let lastDay = findLastDay(firstday: budget.date, lastday: 1)
             FirestoreManger.shared.loadRecordAmount(day1: budget.date, day2: budget.date, category: budget.category) { [ weak self ] (sum) in
                 cell.remainingAmountLabel.text = "$\(budget.amount-sum)"
 

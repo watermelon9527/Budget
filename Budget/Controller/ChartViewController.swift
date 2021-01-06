@@ -194,11 +194,17 @@ class ChartViewController: UIViewController {
         pieDic["其他"] = 0
 
         barDayArray.reverse()
-        loadPieAmount(today: today, day6: day6)
-        loadRecordAmount(today: today, day6: day6)
-    }
+        FirestoreManger.shared.loadPieAmount(today: today, day6: day6)
+        self.updatePieChartData()
+        //        FirestoreManger.shared.loadBarAmount(today: today, day6: day6)
+        //        self.updateBarChartsData()
 
-    func loadRecordAmount(today: String, day6: String) {
+              loadBarAmount(today: today, day6: day6)
+               loadPieAmount(today: today, day6: day6)
+
+
+    }
+    func loadBarAmount(today: String, day6: String) {
         db.collection("User").document("\(userID ?? "user1")").collection("record")
             .whereField("date", isGreaterThanOrEqualTo: day6 )
             .whereField("date", isLessThanOrEqualTo: today )
