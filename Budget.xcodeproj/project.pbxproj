@@ -10,6 +10,7 @@
 		2F04B8FB20FEC04086E9838F /* Pods_Budget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCD2C2601282BDE8AD025276 /* Pods_Budget.framework */; };
 		B90C0D97257F138E001C657B /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90C0D96257F138E001C657B /* Record.swift */; };
 		B942C26125A59104000DB2F3 /* FirestoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B942C26025A59104000DB2F3 /* FirestoreManager.swift */; };
+		B9454C1025A806CD0084283A /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = B9454C0F25A806CD0084283A /* README.md */; };
 		B9481578259449CE00F5A28A /* BartAmount.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9481577259449CE00F5A28A /* BartAmount.swift */; };
 		B956EDB02574E5060010CD46 /* BudgetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B956EDAF2574E5060010CD46 /* BudgetTableViewCell.swift */; };
 		B96093D22578BD770043851C /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96093D12578BD770043851C /* CardView.swift */; };
@@ -51,6 +52,7 @@
 		491934241D6E65E10F53DA47 /* Pods-Budget.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Budget.debug.xcconfig"; path = "Target Support Files/Pods-Budget/Pods-Budget.debug.xcconfig"; sourceTree = "<group>"; };
 		B90C0D96257F138E001C657B /* Record.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
 		B942C26025A59104000DB2F3 /* FirestoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreManager.swift; sourceTree = "<group>"; };
+		B9454C0F25A806CD0084283A /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		B9481577259449CE00F5A28A /* BartAmount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BartAmount.swift; sourceTree = "<group>"; };
 		B956EDAF2574E5060010CD46 /* BudgetTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetTableViewCell.swift; sourceTree = "<group>"; };
 		B96093D12578BD770043851C /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
@@ -169,6 +171,7 @@
 		B9DAD4D8256E36D500D02EA2 = {
 			isa = PBXGroup;
 			children = (
+				B9454C0F25A806CD0084283A /* README.md */,
 				B9DAD4E3256E36D500D02EA2 /* Budget */,
 				B972E3E3259DA08F009CC627 /* BudgetTests */,
 				B9DAD4E2256E36D500D02EA2 /* Products */,
@@ -315,6 +318,7 @@
 			files = (
 				B9DAD4F1256E36D800D02EA2 /* LaunchScreen.storyboard in Resources */,
 				B9F287CD259C220500FECED4 /* GoogleService-Info.plist in Resources */,
+				B9454C1025A806CD0084283A /* README.md in Resources */,
 				B9DAD4EE256E36D800D02EA2 /* Assets.xcassets in Resources */,
 				B9DAD4EC256E36D500D02EA2 /* Main.storyboard in Resources */,
 			);

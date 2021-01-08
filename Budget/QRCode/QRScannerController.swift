@@ -12,14 +12,14 @@ protocol QRScannerDelegate {
 }
 class QRScannerController: UIViewController {
 
-     var delegate: QRScannerDelegate?
+    var delegate: QRScannerDelegate?
 
     @IBOutlet weak var bar: UIView!
     @IBOutlet weak var label: UILabel!
 
     @IBAction func backButton(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
- 
+
     }
 
     var captureSession = AVCaptureSession()
@@ -43,17 +43,17 @@ class QRScannerController: UIViewController {
         super.viewDidLoad()
         self.tabBarController?.tabBar.isHidden = true
         self.navigationController?.isNavigationBarHidden = true
-        //取得後置鏡頭來擷取影片
+        // 取得後置鏡頭來擷取影片
         guard let captureDevice = AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .back) else {
             print("Fail to get the device")
             return
         }
         do {
-            //使用前一個裝置物件來取得AVCaptureDeviceInput類別的實例
+            // 使用前一個裝置物件來取得AVCaptureDeviceInput類別的實例
             let input = try AVCaptureDeviceInput(device: captureDevice )
             captureSession.addInput(input)
 
-            //初始化一個AVCaptureMetadataOutput物件並將其設定作為擷取session的輸出裝置
+            // 初始化一個AVCaptureMetadataOutput物件並將其設定作為擷取session的輸出裝置
             let captureMetadataOutput = AVCaptureMetadataOutput()
             captureSession.addOutput(captureMetadataOutput)
 
@@ -71,7 +71,7 @@ class QRScannerController: UIViewController {
         view.layer.addSublayer(videoPreviewLayer!)
         captureSession.startRunning()
 
-        //初始化 QR Code 框來凸顯QR Code
+        // 初始化 QR Code 框來凸顯QR Code
         // Move the label and bar to the front
         view.bringSubviewToFront(label)
         view.bringSubviewToFront(bar)
@@ -108,7 +108,7 @@ class QRScannerController: UIViewController {
     
 }
 extension QRScannerController: AVCaptureMetadataOutputObjectsDelegate {
-     func unwindToContainerVC(segue: UIStoryboardSegue) {
+    func unwindToContainerVC(segue: UIStoryboardSegue) {
         self.performSegue(withIdentifier: "unwindToHomeScreenWithSegue", sender: self)
 
     }
@@ -121,43 +121,36 @@ extension QRScannerController: AVCaptureMetadataOutputObjectsDelegate {
             label.text = "No QR Code is detected."
             return
         }
-        //取得元資料(metadata)物件
+        // 取得元資料(metadata)物件
         if let metadataObj = metadataObjects[0] as? AVMetadataMachineReadableCodeObject {
             if metadataObj.type == AVMetadataObject.ObjectType.qr {
                 // 若發現的元物件和QRCode的元物件相同，便更新狀態標籤的文字並設定邊界
                 let barCodeObject = videoPreviewLayer?.transformedMetadataObject(for: metadataObj)
                 qrCodeFrameView?.frame = barCodeObject!.bounds
                 if metadataObj.stringValue != nil {
-              print(metadataObj)
+                    print(metadataObj)
                     label.text = metadataObj.stringValue
                     if metadataObj.stringValue!.count != 2 {
-                    let receipt = metadataObj.stringValue
-                    guard let start = receipt?.index(receipt!.startIndex, offsetBy: 95) else { return  }
-                    guard let end = receipt?.index(receipt!.endIndex, offsetBy: -6) else { return  }
-                    let range = start..<end
-                    let myReceipt = receipt![range]
-                   print(myReceipt)
-
-                        guard let priceStart = receipt?.index(receipt!.startIndex, offsetBy: 110) else { return  }
-                        guard let priceEnd = receipt?.index(receipt!.endIndex, offsetBy: -1) else { return  }
-                        let priceRange = priceStart..<priceEnd
-                        let priceReceipt = receipt![priceRange]
-                        print(priceReceipt)
-                        delegate?.QRScanner(category: "\(myReceipt)", price: "\(priceReceipt)")
-//                        guard let start = receipt?.lastIndex(of: "*") else { return }
-//                        guard let end = receipt?.index(receipt!.endIndex, offsetBy: 0) else { return  }
-//
+                        let receipt = metadataObj.stringValue
+                        print(receipt ?? "no data")
+//                        guard let start = receipt?.index(receipt!.startIndex, offsetBy: 95) else { return  }
+//                        guard let end = receipt?.index(receipt!.endIndex, offsetBy: -6) else { return  }
 //                        let range = start..<end
 //                        let myReceipt = receipt![range]
-//                        let deRange = receipt!.range(of: "*")
-//                        let backNumber = receipt!.suffix(from: deRange!.upperBound)
-//                        print(backNumber)
+//                        print(myReceipt)
+//
+//                        guard let priceStart = receipt?.index(receipt!.startIndex, offsetBy: 110) else { return  }
+//                        guard let priceEnd = receipt?.index(receipt!.endIndex, offsetBy: -1) else { return  }
+//                        let priceRange = priceStart..<priceEnd
+//                        let priceReceipt = receipt![priceRange]
+//                        print(priceReceipt)
+//                        delegate?.QRScanner(category: "\(myReceipt)", price: "\(priceReceipt)")
+
                     } else {return}
 
                 }
-           //
-    //            launchApp(decodedURL: metadataObj.stringValue!)
-                self.navigationController?.popViewController(animated: true)
+                //            launchApp(decodedURL: metadataObj.stringValue!)
+               // self.navigationController?.popViewController(animated: true)
             }
         } else {return}
     }
