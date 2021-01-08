@@ -1,5 +1,8 @@
-#  BudgetKeeper
-A bookkeeping application for set up budget and accounting.
+#  BudgetKeeper 
+
+[<img src="https://raw.githubusercontent.com/Volorf/Badges/master/App%20Store/App%20Store%20Badge.png" width=120/>](https://apps.apple.com/tw/app/budgetkeeper/id1546584133 "") 
+
+  A bookkeeping application for set up budget and accounting.
 
 ## Features
 
@@ -20,7 +23,8 @@ A bookkeeping application for set up budget and accounting.
 
 ## ScreenShot
 
-<img src=“https://raw.githubusercontent.com/watermelon9527/Budget/developer/BudgetImage/1_iphone12black_portrait.png” width=400/>
+<img src="https://raw.githubusercontent.com/watermelon9527/Budget/developer/BudgetImage/1_iphone12black_portrait.png" width=400/> <img src="https://github.com/watermelon9527/Budget/blob/developer/BudgetImage/2_iphone12black_portrait.png" width=400/>
+<img src="https://raw.githubusercontent.com/watermelon9527/Budget/developer/BudgetImage/3_iphone12black_portrait.png" width=400/> <img src="https://raw.githubusercontent.com/watermelon9527/Budget/developer/BudgetImage/4_iphone12black_portrait.png" width=400/>
 
 
 
