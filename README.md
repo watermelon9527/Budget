@@ -20,7 +20,7 @@ A bookkeeping application for set up budget and accounting.
 
 ## ScreenShot
 
-
+<img src=“https://raw.githubusercontent.com/watermelon9527/Budget/developer/BudgetImage/1_iphone12black_portrait.png” width=400/>
 
 
 
