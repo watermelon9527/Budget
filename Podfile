@@ -16,4 +16,5 @@ target 'Budget' do
     pod 'Firebase/Auth'
     pod 'Firebase/Crashlytics'
     pod 'Firebase/Analytics'
+    pod 'Alamofire', '~> 5.2'
 end
