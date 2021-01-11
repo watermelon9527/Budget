@@ -1,16 +1,8 @@
-<<<<<<< HEAD
-#  BudgetKeepe
+#  BudgetKeeper
 
 [<img src="https://raw.githubusercontent.com/Volorf/Badges/master/App%20Store/App%20Store%20Badge.png" width=120/>](https://apps.apple.com/tw/app/budgetkeeper/id1546584133 "") 
 
 A bookkeeping application for set up budget and accounting.
-=======
-#  BudgetKeeper 
-
-[<img src="https://raw.githubusercontent.com/Volorf/Badges/master/App%20Store/App%20Store%20Badge.png" width=120/>](https://apps.apple.com/tw/app/budgetkeeper/id1546584133 "") 
-
-  A bookkeeping application for set up budget and accounting.
->>>>>>> 4b3524fdb02b0f700610c16e64fbfcd68b833679
 
 ## Features
 
