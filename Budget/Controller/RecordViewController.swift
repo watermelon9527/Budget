@@ -160,7 +160,7 @@ class RecordViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        qrcodeButton.isHidden = true
+     //   qrcodeButton.isHidden = true
         self.navigationController?.navigationBar.isHidden = true
     }
     override func viewWillAppear(_ animated: Bool) {

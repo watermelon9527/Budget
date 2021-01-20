@@ -118,24 +118,24 @@ extension QRScannerController: AVCaptureMetadataOutputObjectsDelegate {
                     if metadataObj.stringValue!.count != 2 {
                         let receipt = metadataObj.stringValue
                         print(receipt ?? "no data")
-                        //                        guard let start = receipt?.index(receipt!.startIndex, offsetBy: 95) else { return  }
-                        //                        guard let end = receipt?.index(receipt!.endIndex, offsetBy: -6) else { return  }
-                        //                        let range = start..<end
-                        //                        let myReceipt = receipt![range]
-                        //                        print(myReceipt)
-                        //
-                        //                        guard let priceStart = receipt?.index(receipt!.startIndex, offsetBy: 110) else { return  }
-                        //                        guard let priceEnd = receipt?.index(receipt!.endIndex, offsetBy: -1) else { return  }
-                        //                        let priceRange = priceStart..<priceEnd
-                        //                        let priceReceipt = receipt![priceRange]
-                        //                        print(priceReceipt)
-                        //                        delegate?.QRScanner(category: "\(myReceipt)", price: "\(priceReceipt)")
+                                                guard let start = receipt?.index(receipt!.startIndex, offsetBy: 95) else { return  }
+                                                guard let end = receipt?.index(receipt!.endIndex, offsetBy: -6) else { return  }
+                                                let range = start..<end
+                                                let myReceipt = receipt![range]
+                                                print(myReceipt)
+
+                                                guard let priceStart = receipt?.index(receipt!.startIndex, offsetBy: 110) else { return  }
+                                                guard let priceEnd = receipt?.index(receipt!.endIndex, offsetBy: -1) else { return  }
+                                                let priceRange = priceStart..<priceEnd
+                                                let priceReceipt = receipt![priceRange]
+                                                print(priceReceipt)
+                                                delegate?.QRScanner(category: "\(myReceipt)", price: "\(priceReceipt)")
 
                     } else {return}
 
                 }
-                //            launchApp(decodedURL: metadataObj.stringValue!)
-                // self.navigationController?.popViewController(animated: true)
+                    //        launchApp(decodedURL: metadataObj.stringValue!)
+                 self.navigationController?.popViewController(animated: true)
             }
         } else {return}
     }
