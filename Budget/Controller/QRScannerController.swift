@@ -11,9 +11,7 @@ protocol QRCodeScannerDelegate {
     func QRScanner( category: String, price: String)
 }
 class QRScannerController: UIViewController {
-
      var delegate: QRCodeScannerDelegate?
-
     @IBOutlet weak var bar: UIView!
     @IBOutlet weak var label: UILabel!
 
@@ -21,11 +19,9 @@ class QRScannerController: UIViewController {
         self.navigationController?.popViewController(animated: true)
 
     }
-
     var captureSession = AVCaptureSession()
     var videoPreviewLayer: AVCaptureVideoPreviewLayer?
     var qrCodeFrameView: UIView?
-
     private let supportedCodeTypes = [AVMetadataObject.ObjectType.upce,
                                       AVMetadataObject.ObjectType.code39,
                                       AVMetadataObject.ObjectType.code39Mod43,
@@ -77,7 +73,6 @@ class QRScannerController: UIViewController {
             view.bringSubviewToFront(qrCodeFrameView)
         }
     }
-
     func launchApp(decodedURL: String) {
         if presentedViewController != nil {
             return

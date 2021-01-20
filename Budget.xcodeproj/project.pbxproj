@@ -154,8 +154,8 @@
 				B98904A02570AA680031A517 /* RecordViewController.swift */,
 				B98904A42570AA810031A517 /* ListViewController.swift */,
 				B9FD6566257632180032BB13 /* PersonalViewController.swift */,
-				B9DAD501256E4C3F00D02EA2 /* QRCodeViewController.swift */,
 				B9DAD505256E4E3B00D02EA2 /* QRScannerController.swift */,
+				B9DAD501256E4C3F00D02EA2 /* QRCodeViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
