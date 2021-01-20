@@ -48,20 +48,13 @@ class ChartViewController: UIViewController {
         pieChartView.backgroundColor = .systemGray6
     }
     func updateBarChartsData() {
-        // 生成一個存放資料的陣列，型別是BarChartDataEntry.
         var dataEntries: [BarChartDataEntry] = []
-        // 實作一個迴圈，來存入每筆顯示的資料內容
         for iii in 0..<barDayArray.count {
-            // 需設定x, y座標分別需顯示什麼東西
             let dataEntry = BarChartDataEntry(x: Double(iii), y: barAmountArray[iii])
-            // 最後把每次生成的dataEntry存入到dataEntries當中
             dataEntries.append(dataEntry)
         }
-        // 透過BarChartDataSet設定我們要顯示的資料為何，以及圖表下方的label
         let chartDataSet = BarChartDataSet(entries: dataEntries, label: "日期")
-        // 把整個dataset轉換成可以顯示的BarChartData
         let charData = BarChartData(dataSet: chartDataSet)
-        // 最後在指定剛剛連結的myView要顯示的資料為charData
         barChartView.data = charData
         barChartView.xAxis.valueFormatter = IndexAxisValueFormatter(values: barDayArray)
         barChartView.xAxis.granularity = 1
@@ -70,27 +63,7 @@ class ChartViewController: UIViewController {
         barChartView.animate(xAxisDuration: 1.5, yAxisDuration: 1.5, easingOption: .easeInOutBounce)
         chartDataSet.colors = [UIColor(red: 0/255, green: 74/255, blue: 173/255, alpha: 1)]
 
-        //        let limit = ChartLimitLine(limit: 800, label: "Budget $800")
-        //        limit.lineColor = .black
-        //        limit.valueTextColor = .black
-        //        barChartView.rightAxis.addLimitLine(limit)
 
-        //            //改變chartDataSet的顏色，此為橘色
-        //            chartDataSet.colors = [UIColor(red: 230/255, green: 126/255, blue: 34/255, alpha: 1)]
-        //            //改變chartDataSet為彩色
-        //            chartDataSet.colors = ChartColorTemplates.colorful()
-        //            //標籤換到下方
-        //            myView.xAxis.labelPosition = .bottom
-        //            //改變barChartView的背景顏色
-        //            myView.backgroundColor = UIColor(red: 189/255, green: 195/255, blue: 199/255, alpha: 1)
-        //            //一個一個延遲顯現的特效
-        //            myView.animate(xAxisDuration: 2.0, yAxisDuration: 2.0)
-        //            //彈一下特效
-        //            myView.animate(xAxisDuration: 2.0, yAxisDuration: 2.0, easingOption: .easeInBounce)
-        //            //設立界線
-        //            let limit = ChartLimitLine(limit: 10.0, label: "Target")
-        //            myView.rightAxis.addLimitLine(limit)
-        //
     }
     func updatePieChartData() {
         let chart = pieChartView!
@@ -124,7 +97,6 @@ class ChartViewController: UIViewController {
         let data = PieChartData(dataSet: set)
         chart.data = data
         chart.noDataText = "No data available"
-        // 圖表縮放
         chart.isUserInteractionEnabled = false
 
         let description = Description()
@@ -240,7 +212,7 @@ class ChartViewController: UIViewController {
                             print("decode catch")                        }
                     }
                     let sortDic = self.barDic.sorted { firstDictionary, secondDictionary in
-                        return firstDictionary.0 < secondDictionary.0 // 由小到大排序
+                        return firstDictionary.0 < secondDictionary.0 
                     }
                     for (_, value) in sortDic {
                         self.barAmountArray.append(Double(value))
