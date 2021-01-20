@@ -52,6 +52,7 @@ class FirestoreManger {
     }
     func loadRecordAmount(day1: String, day2: String, category: String, completion: @escaping(Int) -> Void) {
         sum = 0
+        amountArray = []
         let doc =  db.collection("User").document("\(userID ?? "user1")").collection("record")
             .whereField("date", isLessThanOrEqualTo: day2)
             .whereField("date", isGreaterThanOrEqualTo: day1 )
@@ -60,6 +61,7 @@ class FirestoreManger {
             if let error = error {
                 print("\(error.localizedDescription)")
             } else {
+//                self.sum = 0
                 for document in snapshot!.documents {
                     let data = document.data()
                     let amount = data["amount"] as? Int ?? 0
