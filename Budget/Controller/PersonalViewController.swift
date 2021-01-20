@@ -33,7 +33,7 @@ class PersonalViewController: UIViewController {
     @IBOutlet weak var budgetTextField: UITextField!
     @IBOutlet weak var categoryTextField: UITextField!
     @IBAction func sendButton(_ sender: UIButton) {
-        if timeTextField.text?.isEmpty != true {
+        if timeTextField.text?.isEmpty == false && budgetTextField.text != "0"{
             getToday()
             addBudget(today: today)
             timeTextField.text = ""

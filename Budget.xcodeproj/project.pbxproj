@@ -154,18 +154,10 @@
 				B98904A02570AA680031A517 /* RecordViewController.swift */,
 				B98904A42570AA810031A517 /* ListViewController.swift */,
 				B9FD6566257632180032BB13 /* PersonalViewController.swift */,
-				B972E403259DB383009CC627 /* TabelVIewCell */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		B989049F2570AA390031A517 /* QRCode */ = {
-			isa = PBXGroup;
-			children = (
 				B9DAD501256E4C3F00D02EA2 /* QRCodeViewController.swift */,
 				B9DAD505256E4E3B00D02EA2 /* QRScannerController.swift */,
 			);
-			path = QRCode;
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		B9DAD4D8256E36D500D02EA2 = {
@@ -193,12 +185,12 @@
 			isa = PBXGroup;
 			children = (
 				B9CD02D1257E707E00E53AA2 /* Budget.entitlements */,
+				B9DAD4EA256E36D500D02EA2 /* Main.storyboard */,
 				B9DAD4E4256E36D500D02EA2 /* AppDelegate.swift */,
 				B9DAD4E6256E36D500D02EA2 /* SceneDelegate.swift */,
-				B9DAD4EA256E36D500D02EA2 /* Main.storyboard */,
 				B972E404259DB3A1009CC627 /* Controller */,
 				B90C0D94257F136D001C657B /* Firebase */,
-				B989049F2570AA390031A517 /* QRCode */,
+				B972E403259DB383009CC627 /* TabelVIewCell */,
 				B972E3FE259DB307009CC627 /* Extension */,
 				B9DAD4ED256E36D800D02EA2 /* Assets.xcassets */,
 				B9F287CB259C220500FECED4 /* GoogleService-Info.plist */,
@@ -637,7 +629,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Budget/Budget.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 9H772B9TV8;
 				INFOPLIST_FILE = Budget/Info.plist;
@@ -645,7 +637,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Chi-jung.Budget";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -661,7 +653,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Budget/Budget.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 9H772B9TV8;
 				INFOPLIST_FILE = Budget/Info.plist;
@@ -669,7 +661,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Chi-jung.Budget";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

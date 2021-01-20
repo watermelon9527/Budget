@@ -16,7 +16,7 @@ class BudgetViewController: UIViewController, UITableViewDelegate {
     var db = Firestore.firestore()
     // Data
     var amountArray = [Int]()
-//    var sum: Int = 0
+    //    var sum: Int = 0
     var budgetArray = [Budget]()
     var weekArray = [String]()
     var monthArray = [String]()

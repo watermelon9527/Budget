@@ -24,6 +24,7 @@ class RecordViewController: UIViewController {
         return formatter
     }()
 
+    @IBOutlet weak var qrcodeButton: UIButton!
     @IBOutlet weak var commentTextField: UITextField!
     @IBOutlet weak var amountTextField: UITextField!
     @IBAction func foodButton(_ sender: UIButton) {
@@ -159,6 +160,7 @@ class RecordViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        qrcodeButton.isHidden = true
         self.navigationController?.navigationBar.isHidden = true
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -235,7 +237,7 @@ class RecordViewController: UIViewController {
         today = dateFormatter.string(from: date)
     }
 }
-extension RecordViewController: QRScannerDelegate {
+extension RecordViewController: QRCodeScannerDelegate {
     func QRScanner(category: String, price: String) {
         amountTextField.text = price
         commentTextField.text = category
