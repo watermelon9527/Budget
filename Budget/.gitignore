@@ -85,4 +85,8 @@ fastlane/test_output
 
 iOSInjectionProject/
 
+
+###Xcode Patch ###
+!*.xcworkspace/xcuserdata/nonochan.xcuserdatad/UserInterfaceState.xcuserstate
+
 # End of https://www.toptal.com/developers/gitignore/api/swift
