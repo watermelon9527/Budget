@@ -25,7 +25,6 @@
 		B99606F12574B88E00A18EBA /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99606F02574B88E00A18EBA /* SignInViewController.swift */; };
 		B9AD55B8257788BE00B50B15 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD55B7257788BE00B50B15 /* TabBarViewController.swift */; };
 		B9B40DCE258CADAF00573A46 /* Budget.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B40DCD258CADAF00573A46 /* Budget.swift */; };
-		B9C1C7F32A08D1BC0006ABB8 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = B9C1C7F22A08D1BC0006ABB8 /* .gitignore */; };
 		B9DAD4E5256E36D500D02EA2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DAD4E4256E36D500D02EA2 /* AppDelegate.swift */; };
 		B9DAD4E7256E36D500D02EA2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DAD4E6256E36D500D02EA2 /* SceneDelegate.swift */; };
 		B9DAD4E9256E36D500D02EA2 /* BudgetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DAD4E8256E36D500D02EA2 /* BudgetViewController.swift */; };
@@ -70,7 +69,6 @@
 		B99606F02574B88E00A18EBA /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		B9AD55B7257788BE00B50B15 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		B9B40DCD258CADAF00573A46 /* Budget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Budget.swift; sourceTree = "<group>"; };
-		B9C1C7F22A08D1BC0006ABB8 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		B9CD02D1257E707E00E53AA2 /* Budget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Budget.entitlements; sourceTree = "<group>"; };
 		B9DAD4E1256E36D500D02EA2 /* Budget.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Budget.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9DAD4E4256E36D500D02EA2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -198,7 +196,6 @@
 				B9F287CB259C220500FECED4 /* GoogleService-Info.plist */,
 				B9DAD4EF256E36D800D02EA2 /* LaunchScreen.storyboard */,
 				B9DAD4F2256E36D800D02EA2 /* Info.plist */,
-				B9C1C7F22A08D1BC0006ABB8 /* .gitignore */,
 			);
 			path = Budget;
 			sourceTree = "<group>";
@@ -315,7 +312,6 @@
 				B9F287CD259C220500FECED4 /* GoogleService-Info.plist in Resources */,
 				B9454C1025A806CD0084283A /* README.md in Resources */,
 				B9DAD4EE256E36D800D02EA2 /* Assets.xcassets in Resources */,
-				B9C1C7F32A08D1BC0006ABB8 /* .gitignore in Resources */,
 				B9DAD4EC256E36D500D02EA2 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
