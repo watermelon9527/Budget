@@ -1,5 +1,5 @@
 //
-//  Recird.swift
+//  Record.swift
 //  Budget
 //
 //  Created by nono chan  on 2020/12/8.

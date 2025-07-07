@@ -6,7 +6,8 @@ target 'Budget' do
   use_frameworks!
 
   # Pods for Budget
-
+  pod 'Firebase/Firestore'
+  pod 'FirebaseFirestoreSwift'
 
   post_install do |installer|
     installer.pods_project.build_configurations.each do |config|

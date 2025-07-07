@@ -10,7 +10,6 @@ A bookkeeping application for set up budget and accounting.
 - Implemented scanning QR Code function with AVFoundation, user can record consumption details rapidly 
 - Utilized Open-API of financial department to parse receipt, make users record their expenses without typing
 - Implemented Auto Layout and applied to all sizes of iPhone and iPad
-- Set up Sign in with Apple, user can sign in faster without sign up
 - Retrieved data and parsed data by Firestore, user will not lose their data by changing their phone
 - Record expensed and displayed designate images on specific day with FSCalendar
 - Displayed target budget with UICircularProgressring, users can realized their    budget clearly
